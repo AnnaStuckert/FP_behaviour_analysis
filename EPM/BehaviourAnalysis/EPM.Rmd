@@ -1,0 +1,137 @@
+---
+title: "LDCT"
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+date: '2022-12-05'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Load data
+```{r}
+# Loading
+library(pacman)
+p_load(readxl, tidyverse)
+# xlsx files
+df <- read_excel("EPM.xlsx")
+
+```
+
+
+
+group assignments
+
+```{r}
+# Group assignment for each mouse_id
+group_assignments <- c(
+  "423" = "TDP-43",
+  "372" = "TDP-43",
+  "376" = "TDP-43",
+  "374" = "WT",
+  "429" = "WT"
+)
+class(df$ID)
+
+# Add group column to mean_per_mouse
+df <- df %>%
+  mutate(genotype = group_assignments[as.character(ID)])
+```
+
+
+Time spent in dark chamber:
+```{r}
+#periphery_preference = time spent in periphery / time spent in center
+ df<-  df %>% mutate(time_dark=df$`In zone Closed_arm1 cumulative`+df$`In zone Closed_arm2 cumulative`)
+ df<-  df %>% mutate(time_light=df$`In zone Open_arm1 cumulative`+df$`In zone Open_arm2 cumaltive`)
+# 
+# #relative time spent in light over dark
+ df<-  df %>% mutate(light_preference=time_light/(time_light+time_dark)*100) 
+#relative time spent in dark over light
+df<-  df %>% mutate(dark_preference=time_dark/(time_light+time_dark)*100) 
+
+```
+
+Frequency in arms
+```{r}
+#frequency in dark and light arms
+df<-  df %>% mutate(freq_dark=df$`In zone Closed_arm1  frequency`+df$`In zone Closed_arm2 frequency`)
+df<-  df %>% mutate(freq_light=df$`In zone Open_arm1 frequency`+df$`In zone Open_arm2 frequency`)
+
+#relative time spent in dark over light as entries in open arm / total arm entries
+df<-  df %>% mutate(light_preference_freq=freq_light/(freq_light+freq_dark)*100) 
+
+df<-  df %>% mutate(dark_preference_freq=freq_dark/(freq_light+freq_dark)*100) 
+
+```
+
+
+LMM
+
+create a TDP-43 group
+```{r}
+df_TDP <-  df %>% filter(genotype == "TDP-43")
+```
+
+
+#dark preference
+```{r}
+#Loading packages for linear mixed effects modelling
+library(lmerTest)
+library(lme4)
+
+#creating a linear model of the same variables as included in the anova
+m_anova <-lmer(dark_preference ~  Week + (1|ID), data=df_TDP)
+summary(m_anova)
+
+# Obtain estimated marginal means
+emmeans_results <- emmeans(m_anova, ~ Week)
+
+# Perform pairwise comparisons
+pairwise_results <- contrast(emmeans_results, method = "pairwise")
+
+# Display the results
+summary(pairwise_results)
+
+#bonferroni
+pwc <- pairs(emmeans_results, adjust = "bon")
+pwc
+```
+
+#dark preference
+```{r}
+
+p_load(ggbeeswarm, ggsignif)
+
+df$Week <- factor(df$Week , levels = c("Preinduction","1st week post induction"))
+
+ggplot(df, aes(x = Week, y = dark_preference)) +
+  geom_beeswarm(size = 2.5, aes(color = ID)) +
+  ylab("Darkness Preference") +
+  xlab("Timepoint") +
+  # geom_signif(
+  #   comparisons = list(c("Preinduction", "1st week post induction")),
+  #   map_signif_level = TRUE,
+  #   y_position = 1.3,
+  #   annotations = c("0.1283")
+  # ) +
+  # geom_signif(
+  #   comparisons = list(c("Preinduction", "2nd week post induction")),
+  #   map_signif_level = TRUE,
+  #   y_position = 1.15,
+  #   annotations = c("0.0087")
+  # ) +
+  # geom_signif(
+  #   comparisons = list(c("1st week post induction", "2nd week post induction")),
+  #   map_signif_level = TRUE,
+  #   y_position = 1,
+  #   annotations = c("0.4487")
+  # ) +
+  geom_crossbar(stat = "summary", fun = mean, width = 0.2, fatten = 1.5) +
+  geom_errorbar(stat = "summary", fun.data = mean_se, width = 0.1, position = "dodge") +
+  theme(text = element_text(size = 13)) +
+  facet_wrap(~ genotype, ncol = 2)
+
+```
