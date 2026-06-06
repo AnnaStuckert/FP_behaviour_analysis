@@ -1,0 +1,3 @@
+DigitalIOName,DigitalIOFlag,DigitalIOState,SystemTimestamp,ComputerTimestamp
+Input1,1,True,1872.698112,54400001.238300003
+Input1,1,False,2472.5813119999998,54999880.4912
