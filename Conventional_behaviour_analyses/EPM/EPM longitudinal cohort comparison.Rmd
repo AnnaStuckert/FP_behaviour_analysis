@@ -1,0 +1,601 @@
+---
+title: "LDCT"
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+date: '2022-12-05'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Load data
+```{r}
+# Loading
+library(pacman)
+p_load(readxl, tidyverse)
+# xlsx files
+df <- read_excel("EPM_longitudinal_data.xlsx")
+#df <- read_excel("EPM_longitudinal_data_4weeks.xlsx")
+
+
+```
+
+
+```{r}
+
+# Group assignment for each mouse_id
+group_assignments <- c(
+  # WT
+  "224" = "WT",
+  "281" = "WT",
+  "262" = "WT",
+  "384" = "WT",
+  "439" = "WT",
+  "441" = "WT",
+  "443" = "WT",
+  "390" = "WT",
+  "392" = "WT",
+
+  # TDP-43
+  "98"  = "TDP-43",
+  "102" = "TDP-43",
+  "112" = "TDP-43",
+  "120" = "TDP-43",
+  "124" = "TDP-43",
+  "128" = "TDP-43",
+  "129" = "TDP-43",
+  "137" = "TDP-43",
+  "141" = "TDP-43",
+  "247" = "TDP-43",
+  "271" = "TDP-43",
+  "250" = "TDP-43",
+  "256" = "TDP-43",
+  "382" = "TDP-43",
+  "433" = "TDP-43",
+  "445" = "TDP-43"
+)
+
+class(df$ID)
+
+# Add group column to mean_per_mouse
+df <- df %>%
+  mutate(genotype = group_assignments[as.character(ID)])
+```
+# Removal of cohort 4 TG mice
+```{r}
+
+#df$ID <- as.numeric(df$ID)
+# #df$ID<- as.numeric(df$ID) #Change mouse number from class character to class numeric
+df<-df[!(df$ID=="445"),]
+df<-df[!(df$ID=="433"),]
+df<-df[!(df$ID=="382"),]
+
+
+#taking out influential datapoints
+# df<-df[!(df$ID=="247"),]
+# df<-df[!(df$ID=="250"),]
+# df<-df[!(df$ID=="281"),]
+
+# #removal of other cohorts but cohort 4
+# df<-df[!(df$cohort=="1"),]
+# df<-df[!(df$cohort=="2"),]
+# df<-df[!(df$cohort=="3"),]
+
+```
+
+Time spent in dark chamber:
+```{r}
+#periphery_preference = time spent in periphery / time spent in center
+ df<-  df %>% mutate(time_dark=df$`In zone Closed_arm1 cumulative`+df$`In zone Closed_arm2 cumulative`)
+ df<-  df %>% mutate(time_light=df$`In zone Open_arm1 cumulative`+df$`In zone Open_arm2 cumaltive`)
+# 
+# #relative time spent in light over dark
+ df<-  df %>% mutate(light_preference=time_light/(time_light+time_dark)*100) 
+#relative time spent in dark over light
+df<-  df %>% mutate(dark_preference=time_dark/(time_light+time_dark)*100) 
+
+```
+
+
+
+
+LMM
+
+
+
+#dark preference
+```{r}
+
+#df$Week <- factor(df$Week, levels = c("Preinduction","1st week post induction","2nd week post induction"))
+
+
+df$Week <- factor(df$Week, levels = c("Preinduction","1st week post induction","2nd week post induction", "3rd week post induction"))
+
+df$genotype <- factor(df$genotype, levels = c("WT","TDP-43"))
+
+#Loading packages for linear mixed effects modelling
+library(lmerTest)
+library(lme4)
+
+#creating a linear model of the same variables as included in the anova
+m_anova <-lmer(dark_preference ~  Week*genotype + (1|ID), data=df)
+summary(m_anova)
+
+# Obtain estimated marginal means
+emmeans_results <- emmeans(m_anova, ~ Week*genotype)
+
+# Perform pairwise comparisons
+pairwise_results <- contrast(emmeans_results, method = "pairwise")
+
+# Display the results
+summary(pairwise_results)
+
+#bonferroni
+pwc <- pairs(emmeans_results, adjust = "bon")
+pwc
+
+
+# PLANNED COMPARISONS
+
+emm <- emmeans(m_anova, ~ Week * genotype)
+# Weeks compared within each genotype
+within_genotype <- pairs(emm, by = "genotype", adjust = "bon")
+
+summary(within_genotype)
+
+# Genotypes compared within each week
+between_genotype <- pairs(emm, by = "Week", adjust = "bon")
+
+summary(between_genotype)
+
+# PLANNED COMPARISONS
+
+emm <- emmeans(m_anova, ~ Week * genotype)
+# Weeks compared within each genotype
+within_genotype <- pairs(emm, by = "genotype", adjust = "bon")
+
+summary(within_genotype)
+
+#store the p values
+
+# Genotypes compared within each week
+between_genotype <- pairs(emm, by = "Week", adjust = "bon")
+
+summary(between_genotype)
+```
+
+#store the p values
+```{r}
+
+# Get the summary of the within_genotype object
+within_sum <- summary(within_genotype)
+
+# View to understand structure
+within_sum
+# It should show a data.frame/tbl with columns: contrast, estimate, SE, df, t.ratio, p.value
+
+# ----------------------------
+# 1️⃣ Extract p-values for TDP comparisons
+# ----------------------------
+TDP_pre_1 <- within_sum$p.value[within_sum$genotype == "TDP-43" & within_sum$contrast == "Preinduction - 1st week post induction"]
+TDP_pre_2 <- within_sum$p.value[within_sum$genotype == "TDP-43" & within_sum$contrast == "Preinduction - 2nd week post induction"]
+TDP_1_2   <- within_sum$p.value[within_sum$genotype == "TDP-43" & within_sum$contrast == "1st week post induction - 2nd week post induction"]
+
+# ----------------------------
+# 2️⃣ Extract p-values for WT comparisons (optional)
+# ----------------------------
+WT_pre_1 <- within_sum$p.value[within_sum$genotype == "WT" & within_sum$contrast == "Preinduction - 1st week post induction"]
+WT_pre_2 <- within_sum$p.value[within_sum$genotype == "WT" & within_sum$contrast == "Preinduction - 2nd week post induction"]
+WT_1_2   <- within_sum$p.value[within_sum$genotype == "WT" & within_sum$contrast == "1st week post induction - 2nd week post induction"]
+
+# ----------------------------
+# 3️⃣ Check
+# ----------------------------
+TDP_pre_1
+TDP_pre_2
+TDP_1_2
+
+WT_pre_1
+WT_pre_2
+WT_1_2
+
+
+```
+
+```{r}
+
+levels(df$Week)[levels(df$Week) == "1st week post induction"] <- "1st week"
+levels(df$Week)[levels(df$Week) == "2nd week post induction"] <- "2nd week"
+levels(df$Week)[levels(df$Week) == "3rd week post induction"] <- "3rd week"
+
+# ----------------------------
+# 1️⃣ Get summary of between_genotype object
+# ----------------------------
+between_sum <- summary(between_genotype)
+
+# View to understand structure
+between_sum
+# It should show columns: contrast, estimate, SE, df, t.ratio, p.value, Week
+
+# ----------------------------
+# 2️⃣ Extract p-values for each week comparison between WT and TDP
+# ----------------------------
+
+# Preinduction: WT vs TDP
+Pre_vs_TDP_pre <- between_sum$p.value[between_sum$Week == "Preinduction" & between_sum$contrast == "WT - (TDP-43)"]
+
+# 1st week: WT vs TDP
+Pre_vs_TDP_w1 <- between_sum$p.value[between_sum$Week == "1st week post induction" & between_sum$contrast == "WT - (TDP-43)"]
+
+# 2nd week: WT vs TDP
+Pre_vs_TDP_w2 <- between_sum$p.value[between_sum$Week == "2nd week post induction" & between_sum$contrast == "WT - (TDP-43)"]
+
+# ----------------------------
+# 3️⃣ Check
+# ----------------------------
+Pre_vs_TDP_pre
+Pre_vs_TDP_w1
+Pre_vs_TDP_w2
+
+```
+
+
+
+# assumption checks
+```{r}
+p_load(performance)
+
+check <- check_model(m_anova)
+check
+```
+
+#assumption checks
+```{r}
+plot(fitted(m_anova), residuals(m_anova))  # Should look like random scatter
+
+
+
+qqnorm(residuals(m_anova)); qqline(residuals(m_anova))  # Q-Q plot - some tails
+shapiro.test(residuals(m_anova))  # Shapiro-Wilk test (for small samples)
+
+```
+
+plot
+```{r}
+
+# library(ggplot2)
+# library(ggbeeswarm)
+# library(dplyr)
+# 
+# # Ensure correct Week order
+# df <- df %>%
+#   mutate(
+#     Week = factor(
+#       Week,
+#       levels = c("Preinduction", "1st week post induction", "2nd week post induction", "3rd week post induction")
+#     )
+#   )
+# 
+# # Plot: Dark preference by Week, colored by genotype, faceted by cohort
+# ggplot(df, aes(x = Week, y = dark_preference, color = genotype)) +
+#   geom_beeswarm(size = 2.5, cex = 1.1, priority = "density") +
+#   stat_summary(
+#     aes(group = Week),
+#     fun = mean,
+#     geom = "crossbar",
+#     color = "black",
+#     width = 0.25,
+#     fatten = 1.3,
+#     show.legend = FALSE
+#   ) +
+#   stat_summary(
+#     aes(group = Week),
+#     fun.data = mean_se,
+#     geom = "errorbar",
+#     color = "black",
+#     width = 0.12,
+#     show.legend = FALSE
+#   ) +
+#   facet_wrap(~ cohort) +
+#   scale_y_continuous(
+#     limits = c(0, 100),
+#     expand = expansion(mult = c(0.02, 0.06))
+#   ) +
+#   labs(
+#     x = "Timepoint",
+#     y = "Darkness preference (%)",
+#     color = "Genotype",
+#     title = "Dark preference across weeks by cohort"
+#   ) +
+#   theme_minimal(base_size = 13) +
+#   theme(
+#     panel.grid.minor = element_blank(),
+#     legend.position = "right",
+#     strip.text = element_text(face = "bold")
+#   )
+
+
+
+```
+
+
+```{r}
+# p_load(ggbeeswarm, ggsignif)
+levels(df$Week)[levels(df$Week) == "1st week post induction"] <- "1st week"
+levels(df$Week)[levels(df$Week) == "2nd week post induction"] <- "2nd week"
+levels(df$Week)[levels(df$Week) == "3rd week post induction"] <- "3rd week"
+# 
+# 
+# ggplot(df, aes(x = Week, y = dark_preference)) +
+#   geom_beeswarm(data = df, size = 2.5, aes(color = ID)) +
+#   ylab("dark_preference") +
+#   xlab("Timepoint") +
+#   # geom_signif(comparisons = list(c("Preinduction", "1st week post induction")),
+#   #             map_signif_level = TRUE,
+#   #             y_position = 1.3,
+#   #             annotations = c("0.1283")) +
+#   # geom_signif(comparisons = list(c("Preinduction", "2nd week post induction")),
+#   #             map_signif_level = TRUE,
+#   #             y_position = 1.15,
+#   #             annotations = c(" 0.0087")) +
+#   # geom_signif(comparisons = list(c("1st week post induction", "2nd week post induction")),
+#   #             map_signif_level = TRUE,
+#   #             y_position = 1,
+#   #             annotations = c("0.4487")) +
+# facet_wrap(~genotype)+
+#   geom_crossbar(stat = "summary", fun = mean, width = 0.2, fatten = 1.5) +
+#   geom_errorbar(data = df, stat = "summary", fun.data = mean_se, width = 0.1, position = "dodge") +
+#   theme(text = element_text(size = 13))
+
+```
+
+
+
+```{r}
+library(ggplot2)
+library(ggdist)
+library(ggsignif)
+library(dplyr)
+
+levels(df$Week)[levels(df$Week) == "1st week post induction"] <- "1st week"
+levels(df$Week)[levels(df$Week) == "2nd week post induction"] <- "2nd week"
+levels(df$Week)[levels(df$Week) == "3rd week post induction"] <- "3rd week"
+# ----------------------------
+# 1️⃣ Combined x-axis variable
+# ----------------------------
+df$Week_genotype <- interaction(df$genotype, df$Week, sep = "_", lex.order = TRUE)
+
+# X-axis labels (weeks only)
+week_labels <- c("Preinduction", "1st week", "2nd week")
+x_labels <- rep(week_labels, times = length(levels(df$genotype)))
+
+# ----------------------------
+# 2️⃣ Define comparisons
+# ----------------------------
+
+# Within-genotype comparisons (already done)
+comparisons_within <- list(
+  c("WT_Preinduction", "WT_1st week"),
+  c("WT_1st week", "WT_2nd week"),
+  c("WT_Preinduction", "WT_2nd week"),
+  c("TDP-43_Preinduction", "TDP-43_1st week"),
+  c("TDP-43_1st week", "TDP-43_2nd week"),
+  c("TDP-43_Preinduction", "TDP-43_2nd week")
+)
+
+# Between-genotype comparisons (WT vs TDP at each week)
+comparisons_between <- list(
+  c("WT_Preinduction", "TDP-43_Preinduction"),
+  c("WT_1st week", "TDP-43_1st week"),
+  c("WT_2nd week", "TDP-43_2nd week")
+)
+
+# ----------------------------
+# 3️⃣ Compute staggered y_positions
+# ----------------------------
+
+y_max_WT  <- max(df$dark_preference[df$genotype == "WT"], na.rm = TRUE)
+y_max_TDP <- max(df$dark_preference[df$genotype == "TDP-43"], na.rm = TRUE)
+y_max_all <- max(df$dark_preference, na.rm = TRUE)  # for between-genotype
+
+# Within-genotype: stagger 5%,10%,15% above each genotype's max
+y_positions_within <- c(
+  y_max_WT  * (1 + c(0.05, 0.10, 0.15)),
+  y_max_TDP * (1 + c(0.05, 0.10, 0.15))
+)
+
+# Between-genotype: stagger 5%,10%,15% above overall max
+y_positions_between <- y_max_all * (1 + c(0.20, 0.25, 0.30))
+
+# ----------------------------
+# 4️⃣ Combine into one data.frame for geom_signif with P= and 4 decimals
+# ----------------------------
+
+sig_df <- data.frame(
+  xmin = c(sapply(comparisons_within, `[`, 1), sapply(comparisons_between, `[`, 1)),
+  xmax = c(sapply(comparisons_within, `[`, 2), sapply(comparisons_between, `[`, 2)),
+  y_position = c(y_positions_within, y_positions_between),
+  annotations = c(
+    # within-genotype p-values with "P =" and 4 decimals
+    paste0("P = ", formatC(c(WT_pre_1, WT_1_2, WT_pre_2, TDP_pre_1, TDP_1_2, TDP_pre_2),
+                            format = "f", digits = 4)),
+    # between-genotype p-values with "P =" and 4 decimals
+    paste0("P = ", formatC(c(Pre_vs_TDP_pre, Pre_vs_TDP_w1, Pre_vs_TDP_w2),
+                            format = "f", digits = 4))
+  )
+)
+
+# sig_df <- data.frame(
+#   xmin = c(sapply(comparisons_within, `[`, 1), sapply(comparisons_between, `[`, 1)),
+#   xmax = c(sapply(comparisons_within, `[`, 2), sapply(comparisons_between, `[`, 2)),
+#   y_position = c(y_positions_within, y_positions_between),
+#   annotations = c(
+#     # within-genotype p-values
+#     format(round(c(WT_pre_1, WT_1_2, WT_pre_2, TDP_pre_1, TDP_1_2, TDP_pre_2), 2), nsmall = 2),
+#     # between-genotype p-values
+#     format(round(c(Pre_vs_TDP_pre, Pre_vs_TDP_w1, Pre_vs_TDP_w2), 2), nsmall = 2)
+#   )
+# )
+
+# ----------------------------
+# 5️⃣ Raincloud plot with all significance bars
+# ----------------------------
+
+ggplot(df, aes(x = Week_genotype, y = dark_preference, color = genotype, fill = genotype)) +
+
+  # half violin
+  ggdist::stat_halfeye(
+    side = "left",
+    adjust = 0.5,
+    justification = 1.1,
+    .width = 0,
+    point_colour = NA,
+    alpha = 0.6,
+    scale = 0.5
+  ) +
+
+  # connect repeated IDs
+  geom_line(aes(group = ID), color = "gray50", linewidth = 0.5, alpha = 0.4) +
+
+  # individual datapoints
+  geom_jitter(width = 0.05, size = 2.5, alpha = 0.6) +
+
+  # mean ± SE
+  geom_crossbar(stat = "summary",
+                fun = mean,
+                width = 0.2,
+                fatten = 1.5,
+                color = "black",
+                fill = "black") +
+
+  geom_errorbar(stat = "summary",
+                fun.data = mean_se,
+                width = 0.1,
+                color = "black",
+                fill = "black") +
+
+  # significance bars using manual mode
+  geom_signif(
+    data = sig_df,
+    aes(xmin = xmin, xmax = xmax, annotations = annotations, y_position = y_position),
+    manual = TRUE,
+    tip_length = 0.02,
+    textsize = 4,
+    inherit.aes = FALSE
+  ) +
+
+  # replace x-axis labels
+  scale_x_discrete(labels = x_labels) +
+
+  # labels and theme
+  ylab("Periphery Preference %") +
+  xlab("Timepoint") +
+  theme(text = element_text(size = 16))
+
+
+# ----------------------------
+# 6️⃣ Save the plot in vector format
+# ----------------------------
+
+# Option 1: Save as PDF
+ggsave(
+  filename = "raincloud_plot_EPM.pdf",  # filename
+  plot = last_plot(),               # current last plot
+  width = 10,                       # width in inches
+  height = 6,                       # height in inches
+  device = "pdf"                    # vector format
+)
+
+# Option 2: Save as SVG
+ggsave(
+  filename = "raincloud_plot_EPM.svg",
+  plot = last_plot(),
+  width = 10,
+  height = 6,
+  device = "svg"
+)
+
+```
+
+# SUBTRACTION METHOD
+
+
+```{r}
+df_norm <- df %>%
+  group_by(ID) %>%
+  mutate(dark_preference = dark_preference - dark_preference[Week == "Preinduction"]) %>%
+  ungroup() %>%
+  filter(Week %in% c("1st week", "2nd week"))
+
+```
+
+
+#LMM of subtracted data
+dark_preference
+```{r}
+
+# Mixed model (correct for repeated measures)
+m_anova <- lmer(dark_preference ~ Week * genotype + (1 | ID), data = df_norm)
+
+# Estimated marginal means for genotype within each week
+emm <- emmeans(m_anova, ~ genotype | Week)
+
+# WT vs TDP-43 comparisons for each week (repeated-measures aware)
+genotype_comparisons <- contrast(emm, method = "pairwise", adjust = "tukey")
+
+summary(genotype_comparisons)
+
+```
+
+```{r}
+test_against_zero <- test(emm, null = 0)
+test_against_zero
+
+
+```
+
+#plot
+```{r}
+library(ggplot2)
+library(ggbeeswarm)
+library(dplyr)
+
+ggplot(df_norm, aes(x = Week, y = dark_preference, color = ID)) +
+  facet_wrap(~ genotype) +
+  geom_beeswarm(size = 2.5, cex = 1.2, alpha = 0.9) +
+
+  # Mean crossbar
+  geom_crossbar(
+    stat = "summary",
+    fun = mean,
+    width = 0.2,
+    fatten = 1.5,
+    color = "black"
+  ) +
+
+  # Mean ± SE error bars
+  geom_errorbar(
+    stat = "summary",
+    fun.data = mean_se,
+    width = 0.1,
+    color = "black"
+  ) +
+
+  labs(
+    x = "Timepoint",
+    y = "Distance (normalized to Preinduction)"
+  ) +
+
+  theme_bw() +
+  theme(
+    text = element_text(size = 16),
+    strip.text = element_text(size = 16, face = "bold"),
+    axis.title = element_text(size = 18),
+    axis.text = element_text(size = 14),
+    panel.grid = element_blank(),
+    legend.position = "none"   # remove ID color legend (cleaner)
+  )
+
+```
