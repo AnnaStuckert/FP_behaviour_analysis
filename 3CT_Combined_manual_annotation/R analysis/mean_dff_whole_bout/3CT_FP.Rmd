@@ -1,0 +1,1062 @@
+---
+title: "3CT_FP"
+output: html_document
+date: "2026-04-22"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Mean dFF across entire behaviour
+```{r}
+# =========================
+# Libraries
+# =========================
+library(pacman)
+p_load(tidyverse, readr, lmerTest, emmeans)
+
+# =========================
+# Load data
+# =========================
+df <- read_csv("social_NE_lmer_ready.csv")
+
+# =========================
+# Filter for Social_interaction ONLY
+# =========================
+df <- df %>%
+  filter(behavior == "Social_interaction")
+
+# df <- df %>%
+#   filter(behavior == "Social_interaction", week != "W3")
+
+# =========================
+# Format variables
+# =========================
+df$week <- as.factor(df$week)
+df$mouse_id <- as.factor(df$mouse_id)
+
+# Ensure correct order
+df$week <- factor(df$week,
+                  levels = c("Preinduction", "W1", "W2", "W3"))
+
+# =========================
+# Linear mixed model
+# =========================
+m_anova <- lmerTest::lmer(mean_dFF ~ week + (1 | mouse_id), data = df)
+
+summary(m_anova)
+# Emmeans + Dunnett contrasts
+# =========================
+emmeans_results <- emmeans(m_anova, ~ week)
+
+dunnett_results <- contrast(
+  emmeans_results,
+  method = "trt.vs.ctrl",
+  ref = 1
+)
+
+dunnett_table <- as.data.frame(summary(dunnett_results, infer = TRUE))
+print(dunnett_table)
+
+# =========================
+# SIGNIFICANCE ANNOTATION (DUNNETT)
+# =========================
+
+dunnett_table$group <- c("W1", "W2", "W3")
+#dunnett_table$group <- c("W1", "W2")
+
+# =========================
+# Summary stats for plotting
+# =========================
+summary_df <- df %>%
+  group_by(week) %>%
+  summarise(
+    mean = mean(mean_dFF, na.rm = TRUE),
+    se = sd(mean_dFF, na.rm = TRUE) / sqrt(n()),
+    .groups = "drop"
+  )
+
+# y-position above bars
+y_max <- max(summary_df$mean + summary_df$se)
+
+dunnett_table$y <- c(
+  y_max * 1.20,
+  y_max * 1.30,
+  y_max * 1.40
+)
+# dunnett_table$y <- c(
+#   y_max * 1.20,
+#   y_max * 1.30
+# )
+
+dunnett_table$label <- case_when(
+  dunnett_table$p.value < 0.001 ~ "***",
+  dunnett_table$p.value < 0.01  ~ "**",
+  dunnett_table$p.value < 0.05  ~ "*",
+  TRUE ~ "ns"
+)
+dunnett_table
+
+# =========================
+# Summary stats for plotting
+# =========================
+summary_df <- df %>%
+  group_by(week) %>%
+  summarise(
+    mean = mean(mean_dFF, na.rm = TRUE),
+    se = sd(mean_dFF, na.rm = TRUE) / sqrt(n()),
+    .groups = "drop"
+  )
+
+# =========================
+# Plot
+# =========================
+library(ggplot2)
+
+plot_bar <- ggplot(summary_df, aes(x = week, y = mean, fill = week)) +
+
+  geom_col(width = 0.6, color = "black", alpha = 0.85) +
+
+  geom_errorbar(
+    aes(ymin = mean - se, ymax = mean + se),
+    width = 0.15,
+    linewidth = 0.8
+  ) +
+
+  geom_jitter(
+    data = df,
+    aes(x = week, y = mean_dFF),
+    inherit.aes = FALSE,
+    width = 0.08,
+    size = 2,
+    alpha = 0.6
+  ) +
+
+  geom_line(
+    data = df,
+    aes(x = week, y = mean_dFF, group = mouse_id),
+    inherit.aes = FALSE,
+    color = "gray60",
+    alpha = 0.4,
+    linewidth = 0.6
+  ) +
+
+  scale_fill_manual(values = c(
+    "Preinduction" = "#feca8d",
+    "W1" = "#f1605d",
+    "W2" = "#440f76"
+  )) +
+
+  labs(
+    x = "Week",
+    y = "Mean ΔF/F"
+  ) +
+
+  theme_bw(base_size = 14) +
+  theme(
+    legend.position = "none",
+    text = element_text(size = 14)
+  )+
+  geom_text(
+  data = dunnett_table,
+  aes(x = group, y = y, label = label),
+  inherit.aes = FALSE,
+  size = 5
+)
+
+plot_bar
+
+# =========================
+# Save figure
+# =========================
+# ggsave(
+#   "NE_SocialInteraction_barplot.svg",
+#   plot = plot_bar,
+#   width = 8,
+#   height = 6
+# )
+
+# =========================
+# Model diagnostics
+# =========================
+p_load(performance)
+check_model(m_anova)
+
+qqnorm(residuals(m_anova))
+qqline(residuals(m_anova))
+
+shapiro.test(residuals(m_anova))
+```
+
+# power analysis of obtained
+
+
+```{r}
+# =========================
+# Libraries
+# =========================
+library(tidyverse)
+library(lmerTest)   # <- main model engine
+library(lme4)
+library(emmeans)
+library(future.apply)
+
+# =========================
+# Ensure correct ordering
+# =========================
+df$week <- factor(df$week,
+                  levels = c("Preinduction", "W1", "W2", "W3"))
+
+df$mouse_id <- as.factor(df$mouse_id)
+
+# =========================
+# Fit model (lmerTest)
+# =========================
+m_anova <- lmerTest::lmer(
+  mean_dFF ~ week + (1 | mouse_id),
+  data = df
+)
+
+# =========================
+# Simulation settings
+# =========================
+n_simulations <- 1000
+
+plan(multisession,
+     workers = max(1, parallel::detectCores() - 2))
+
+# =========================
+# Power simulation
+# =========================
+results <- future_lapply(1:n_simulations, function(i) {
+
+  # -------------------------
+  # SAFE simulation from fitted model
+  # -------------------------
+  mf <- model.frame(m_anova)
+
+  sim_values <- simulate(m_anova, nsim = 1, re.form = NULL)[,1]
+
+  sim_df <- mf
+  sim_df$mean_dFF <- sim_values
+
+  sim_df$week <- factor(sim_df$week,
+                        levels = levels(df$week))
+  sim_df$mouse_id <- factor(sim_df$mouse_id)
+
+  # -------------------------
+  # refit model (lmerTest)
+  # -------------------------
+  m_sim <- tryCatch(
+    lmerTest::lmer(mean_dFF ~ week + (1 | mouse_id), data = sim_df),
+    error = function(e) NULL
+  )
+
+  # -------------------------
+  # Dunnett-style contrasts
+  # -------------------------
+  get_pvals <- function(model) {
+
+    if (is.null(model)) return(rep(NA, 3))
+
+    em <- emmeans(model, ~ week)
+
+    contrast_out <- contrast(
+      em,
+      method = "trt.vs.ctrl",
+      ref = 1
+    )
+
+    summary(contrast_out)$p.value
+  }
+
+  list(
+    p = get_pvals(m_sim),
+    singular = if (!is.null(m_sim)) isSingular(m_sim) else NA
+  )
+
+}, future.seed = TRUE)
+
+# =========================
+# Extract results
+# =========================
+p_mat <- do.call(rbind, lapply(results, function(x) x$p))
+
+colnames(p_mat) <- c("W1_vs_Pre", "W2_vs_Pre", "W3_vs_Pre")
+#colnames(p_mat) <- c("W1_vs_Pre", "W2_vs_Pre")
+
+# =========================
+# POWER SUMMARY
+# =========================
+power_summary <- colMeans(p_mat < 0.05, na.rm = TRUE)
+
+print("Estimated Power (lmerTest + Dunnett):")
+print(power_summary)
+
+# =========================
+# MODEL STABILITY
+# =========================
+singular_rate <- mean(sapply(results, function(x) x$singular), na.rm = TRUE)
+
+cat("\nSingular fit rate:", singular_rate, "\n")
+```
+
+
+```{r}
+# =========================
+# Libraries
+# =========================
+library(lme4)
+library(lmerTest)
+library(simr)
+
+# =========================
+# Fit model
+# =========================
+design <- lmer(
+  mean_dFF ~ week + (1 | mouse_id),
+  data = df
+)
+
+summary(design)
+
+# =========================
+# Set number of simulations
+# =========================
+nsim <- 1000
+
+# =========================
+# Power simulation
+# (choose ONE contrast at a time)
+# =========================
+
+# W1 vs Pre
+power_W1 <- powerSim(
+  design,
+  test = fixed("weekW1", "t"),
+  nsim = nsim
+)
+
+# W2 vs Pre
+power_W2 <- powerSim(
+  design,
+  test = fixed("weekW2", "t"),
+  nsim = nsim
+)
+
+# W3 vs Pre
+power_W3 <- powerSim(
+  design,
+  test = fixed("weekW3", "t"),
+  nsim = nsim
+)
+
+# =========================
+# Results
+# =========================
+power_W1
+power_W2
+power_W3
+
+
+```
+
+#calculate group sizes
+
+```{r}
+df_beh <- df %>%
+  filter(behavior == "Social_interaction")
+
+library(tidyr)
+
+wide_df <- df_beh %>%
+  select(mouse_id, week, mean_dFF) %>%
+  pivot_wider(names_from = week, values_from = mean_dFF)
+
+cohens_d_results <- tibble(
+  comparison = c("W1", "W2", "W3"),
+  d = c(
+    mean(wide_df$W1 - wide_df$Preinduction, na.rm = TRUE) /
+      sd(wide_df$W1 - wide_df$Preinduction, na.rm = TRUE),
+
+    mean(wide_df$W2 - wide_df$Preinduction, na.rm = TRUE) /
+      sd(wide_df$W2 - wide_df$Preinduction, na.rm = TRUE),
+
+    mean(wide_df$W3 - wide_df$Preinduction, na.rm = TRUE) /
+      sd(wide_df$W3 - wide_df$Preinduction, na.rm = TRUE)
+  )
+)
+
+print(cohens_d_results)
+
+sample_size_results <- cohens_d_results %>%
+  rowwise() %>%
+  mutate(
+    required_n = ceiling(
+      power.t.test(
+        delta = cohens_d,
+        sd = 1,
+        sig.level = 0.05,
+        power = 0.8,
+        type = "one.sample"
+      )$n
+    )
+  )
+
+print(sample_size_results)
+
+print(cohens_d_results)
+```
+
+
+#Novel interaction
+
+#Mean dFF across entire behaviour
+```{r}
+# =========================
+# Libraries
+# =========================
+library(pacman)
+p_load(tidyverse, readr, lmerTest, emmeans)
+
+# =========================
+# Load data
+# =========================
+df <- read_csv("social_NE_lmer_ready.csv")
+
+# =========================
+# Filter for Social_interaction ONLY
+# =========================
+df <- df %>%
+  filter(behavior == "Novel_interaction")
+
+# df <- df %>%
+#   filter(behavior == "Novel_interaction", week != "W3")
+
+# =========================
+# Format variables
+# =========================
+df$week <- as.factor(df$week)
+df$mouse_id <- as.factor(df$mouse_id)
+
+# Ensure correct order
+df$week <- factor(df$week,
+                  levels = c("Preinduction", "W1", "W2", "W3"))
+
+# =========================
+# Linear mixed model
+# =========================
+m_anova <- lmerTest::lmer(mean_dFF ~ week + (1 | mouse_id), data = df)
+
+summary(m_anova)
+# Emmeans + Dunnett contrasts
+# =========================
+emmeans_results <- emmeans(m_anova, ~ week)
+
+dunnett_results <- contrast(
+  emmeans_results,
+  method = "trt.vs.ctrl",
+  ref = 1
+)
+
+dunnett_table <- as.data.frame(summary(dunnett_results, infer = TRUE))
+print(dunnett_table)
+
+# =========================
+# SIGNIFICANCE ANNOTATION (DUNNETT)
+# =========================
+
+dunnett_table$group <- c("W1", "W2", "W3")
+
+# y-position above bars
+y_max <- max(summary_df$mean + summary_df$se)
+
+dunnett_table$y <- c(
+  y_max * 1.20,
+  y_max * 1.30,
+  y_max * 1.40
+)
+
+dunnett_table$label <- case_when(
+  dunnett_table$p.value < 0.001 ~ "***",
+  dunnett_table$p.value < 0.01  ~ "**",
+  dunnett_table$p.value < 0.05  ~ "*",
+  TRUE ~ "ns"
+)
+dunnett_table
+
+# =========================
+# Summary stats for plotting
+# =========================
+summary_df <- df %>%
+  group_by(week) %>%
+  summarise(
+    mean = mean(mean_dFF, na.rm = TRUE),
+    se = sd(mean_dFF, na.rm = TRUE) / sqrt(n()),
+    .groups = "drop"
+  )
+
+# =========================
+# Plot
+# =========================
+library(ggplot2)
+
+plot_bar <- ggplot(summary_df, aes(x = week, y = mean, fill = week)) +
+
+  geom_col(width = 0.6, color = "black", alpha = 0.85) +
+
+  geom_errorbar(
+    aes(ymin = mean - se, ymax = mean + se),
+    width = 0.15,
+    linewidth = 0.8
+  ) +
+
+  geom_jitter(
+    data = df,
+    aes(x = week, y = mean_dFF),
+    inherit.aes = FALSE,
+    width = 0.08,
+    size = 2,
+    alpha = 0.6
+  ) +
+
+  geom_line(
+    data = df,
+    aes(x = week, y = mean_dFF, group = mouse_id),
+    inherit.aes = FALSE,
+    color = "gray60",
+    alpha = 0.4,
+    linewidth = 0.6
+  ) +
+
+  scale_fill_manual(values = c(
+    "Preinduction" = "#feca8d",
+    "W1" = "#f1605d",
+    "W2" = "#440f76"
+  )) +
+
+  labs(
+    x = "Week",
+    y = "Mean ΔF/F"
+  ) +
+
+  theme_bw(base_size = 14) +
+  theme(
+    legend.position = "none",
+    text = element_text(size = 14)
+  )+
+  geom_text(
+  data = dunnett_table,
+  aes(x = group, y = y, label = label),
+  inherit.aes = FALSE,
+  size = 5
+)
+
+plot_bar
+
+# =========================
+# Save figure
+# =========================
+# ggsave(
+#   "NE_SocialInteraction_barplot.svg",
+#   plot = plot_bar,
+#   width = 8,
+#   height = 6
+# )
+
+# =========================
+# Model diagnostics
+# =========================
+check_model(m_anova)
+
+qqnorm(residuals(m_anova))
+qqline(residuals(m_anova))
+
+shapiro.test(residuals(m_anova))
+```
+
+
+```{r}
+# =========================
+# Libraries
+# =========================
+library(pacman)
+p_load(tidyverse, readr, lmerTest, emmeans)
+
+# =========================
+# Load data
+# =========================
+df <- read_csv("novel_NE_lmer_ready.csv")
+
+# =========================
+# Filter for Social_interaction ONLY
+# =========================
+df <- df %>%
+  filter(behavior == "Social_interaction")
+
+# df <- df %>%
+#   filter(behavior == "Social_interaction", week != "W3")
+
+
+# =========================
+# Format variables
+# =========================
+df$week <- as.factor(df$week)
+df$mouse_id <- as.factor(df$mouse_id)
+
+# Ensure correct order
+df$week <- factor(df$week,
+                  levels = c("Preinduction", "W1", "W2", "W3"))
+
+# =========================
+# Linear mixed model
+# =========================
+m_anova <- lmerTest::lmer(mean_dFF ~ week + (1 | mouse_id), data = df)
+
+summary(m_anova)
+# Emmeans + Dunnett contrasts
+# =========================
+emmeans_results <- emmeans(m_anova, ~ week)
+
+dunnett_results <- contrast(
+  emmeans_results,
+  method = "trt.vs.ctrl",
+  ref = 1
+)
+
+dunnett_table <- as.data.frame(summary(dunnett_results, infer = TRUE))
+print(dunnett_table)
+
+# =========================
+# SIGNIFICANCE ANNOTATION (DUNNETT)
+# =========================
+
+dunnett_table$group <- c("W1", "W2", "W3")
+#dunnett_table$group <- c("W1", "W2")
+
+# =========================
+# Summary stats for plotting
+# =========================
+summary_df <- df %>%
+  group_by(week) %>%
+  summarise(
+    mean = mean(mean_dFF, na.rm = TRUE),
+    se = sd(mean_dFF, na.rm = TRUE) / sqrt(n()),
+    .groups = "drop"
+  )
+
+# y-position above bars
+y_max <- max(summary_df$mean + summary_df$se)
+
+dunnett_table$y <- c(
+  y_max * 1.20,
+  y_max * 1.30,
+  y_max * 1.40
+)
+# dunnett_table$y <- c(
+#   y_max * 1.20,
+#   y_max * 1.30
+# )
+
+dunnett_table$label <- case_when(
+  dunnett_table$p.value < 0.001 ~ "***",
+  dunnett_table$p.value < 0.01  ~ "**",
+  dunnett_table$p.value < 0.05  ~ "*",
+  TRUE ~ "ns"
+)
+dunnett_table
+
+# =========================
+# Summary stats for plotting
+# =========================
+summary_df <- df %>%
+  group_by(week) %>%
+  summarise(
+    mean = mean(mean_dFF, na.rm = TRUE),
+    se = sd(mean_dFF, na.rm = TRUE) / sqrt(n()),
+    .groups = "drop"
+  )
+
+# =========================
+# Plot
+# =========================
+library(ggplot2)
+
+plot_bar <- ggplot(summary_df, aes(x = week, y = mean, fill = week)) +
+
+  geom_col(width = 0.6, color = "black", alpha = 0.85) +
+
+  geom_errorbar(
+    aes(ymin = mean - se, ymax = mean + se),
+    width = 0.15,
+    linewidth = 0.8
+  ) +
+
+  geom_jitter(
+    data = df,
+    aes(x = week, y = mean_dFF),
+    inherit.aes = FALSE,
+    width = 0.08,
+    size = 2,
+    alpha = 0.6
+  ) +
+
+  geom_line(
+    data = df,
+    aes(x = week, y = mean_dFF, group = mouse_id),
+    inherit.aes = FALSE,
+    color = "gray60",
+    alpha = 0.4,
+    linewidth = 0.6
+  ) +
+
+  scale_fill_manual(values = c(
+    "Preinduction" = "#feca8d",
+    "W1" = "#f1605d",
+    "W2" = "#440f76"
+  )) +
+
+  labs(
+    x = "Week",
+    y = "Mean ΔF/F"
+  ) +
+
+  theme_bw(base_size = 14) +
+  theme(
+    legend.position = "none",
+    text = element_text(size = 14)
+  )+
+  geom_text(
+  data = dunnett_table,
+  aes(x = group, y = y, label = label),
+  inherit.aes = FALSE,
+  size = 5
+)
+
+plot_bar
+
+# =========================
+# Save figure
+# =========================
+# ggsave(
+#   "NE_SocialInteraction_barplot.svg",
+#   plot = plot_bar,
+#   width = 8,
+#   height = 6
+# )
+
+# =========================
+# Model diagnostics
+# =========================
+p_load(performance)
+check_model(m_anova)
+
+qqnorm(residuals(m_anova))
+qqline(residuals(m_anova))
+
+shapiro.test(residuals(m_anova))
+```
+
+
+```{r}
+# =========================
+# Libraries
+# =========================
+library(pacman)
+p_load(tidyverse, readr, lmerTest, emmeans)
+
+# =========================
+# Load data
+# =========================
+df <- read_csv("novel_NE_lmer_ready.csv")
+
+# =========================
+# Filter for Social_interaction ONLY
+# =========================
+df <- df %>%
+  filter(behavior == "Novel_interaction")
+
+# df <- df %>%
+#   filter(behavior == "Novel_interaction", week != "W3")
+
+
+# =========================
+# Format variables
+# =========================
+df$week <- as.factor(df$week)
+df$mouse_id <- as.factor(df$mouse_id)
+
+# Ensure correct order
+df$week <- factor(df$week,
+                  levels = c("Preinduction", "W1", "W2", "W3"))
+
+# =========================
+# Linear mixed model
+# =========================
+m_anova <- lmerTest::lmer(mean_dFF ~ week + (1 | mouse_id), data = df)
+
+summary(m_anova)
+# Emmeans + Dunnett contrasts
+# =========================
+emmeans_results <- emmeans(m_anova, ~ week)
+
+dunnett_results <- contrast(
+  emmeans_results,
+  method = "trt.vs.ctrl",
+  ref = 1
+)
+
+dunnett_table <- as.data.frame(summary(dunnett_results, infer = TRUE))
+print(dunnett_table)
+
+# =========================
+# SIGNIFICANCE ANNOTATION (DUNNETT)
+# =========================
+
+dunnett_table$group <- c("W1", "W2", "W3")
+#dunnett_table$group <- c("W1", "W2")
+
+# =========================
+# Summary stats for plotting
+# =========================
+summary_df <- df %>%
+  group_by(week) %>%
+  summarise(
+    mean = mean(mean_dFF, na.rm = TRUE),
+    se = sd(mean_dFF, na.rm = TRUE) / sqrt(n()),
+    .groups = "drop"
+  )
+
+# y-position above bars
+y_max <- max(summary_df$mean + summary_df$se)
+
+dunnett_table$y <- c(
+  y_max * 1.20,
+  y_max * 1.30,
+  y_max * 1.40
+)
+# dunnett_table$y <- c(
+#   y_max * 1.20,
+#   y_max * 1.30
+# )
+
+dunnett_table$label <- case_when(
+  dunnett_table$p.value < 0.001 ~ "***",
+  dunnett_table$p.value < 0.01  ~ "**",
+  dunnett_table$p.value < 0.05  ~ "*",
+  TRUE ~ "ns"
+)
+dunnett_table
+
+# =========================
+# Summary stats for plotting
+# =========================
+summary_df <- df %>%
+  group_by(week) %>%
+  summarise(
+    mean = mean(mean_dFF, na.rm = TRUE),
+    se = sd(mean_dFF, na.rm = TRUE) / sqrt(n()),
+    .groups = "drop"
+  )
+
+# =========================
+# Plot
+# =========================
+library(ggplot2)
+
+plot_bar <- ggplot(summary_df, aes(x = week, y = mean, fill = week)) +
+
+  geom_col(width = 0.6, color = "black", alpha = 0.85) +
+
+  geom_errorbar(
+    aes(ymin = mean - se, ymax = mean + se),
+    width = 0.15,
+    linewidth = 0.8
+  ) +
+
+  geom_jitter(
+    data = df,
+    aes(x = week, y = mean_dFF),
+    inherit.aes = FALSE,
+    width = 0.08,
+    size = 2,
+    alpha = 0.6
+  ) +
+
+  geom_line(
+    data = df,
+    aes(x = week, y = mean_dFF, group = mouse_id),
+    inherit.aes = FALSE,
+    color = "gray60",
+    alpha = 0.4,
+    linewidth = 0.6
+  ) +
+
+  scale_fill_manual(values = c(
+    "Preinduction" = "#feca8d",
+    "W1" = "#f1605d",
+    "W2" = "#440f76"
+  )) +
+
+  labs(
+    x = "Week",
+    y = "Mean ΔF/F"
+  ) +
+
+  theme_bw(base_size = 14) +
+  theme(
+    legend.position = "none",
+    text = element_text(size = 14)
+  )+
+  geom_text(
+  data = dunnett_table,
+  aes(x = group, y = y, label = label),
+  inherit.aes = FALSE,
+  size = 5
+)
+
+plot_bar
+
+# =========================
+# Save figure
+# =========================
+# ggsave(
+#   "NE_SocialInteraction_barplot.svg",
+#   plot = plot_bar,
+#   width = 8,
+#   height = 6
+# )
+
+# =========================
+# Model diagnostics
+# =========================
+p_load(performance)
+check_model(m_anova)
+
+qqnorm(residuals(m_anova))
+qqline(residuals(m_anova))
+
+shapiro.test(residuals(m_anova))
+```
+
+
+#Power analysis from Justin
+<!-- ```{r} -->
+<!-- library(lmerTest) -->
+<!-- library(dplyr) -->
+<!-- library(tidyr) -->
+<!-- library(future.apply) -->
+
+<!-- # Function to generate simulated data -->
+<!-- generate_mouse_data <- function(n_mice = 6, seed = 123, effect = TRUE) { -->
+<!--   set.seed(seed) -->
+<!--   offset <- rnorm(n_mice, 0, 0.5) -->
+
+<!--   pre_mean  <- 0.7360542	 -->
+<!--   pre_sd    <- 0.3123088	 -->
+<!--   week1_mean <- 0.4530723	 -->
+<!--   week1_sd   <- 0.3123088 -->
+<!--   week2_mean <- 0.2482669	 -->
+<!--   week2_sd   <- 0.5282258	 -->
+
+<!--   if (!effect) { -->
+<!--     week1_mean <- pre_mean -->
+<!--     week2_mean <- pre_mean -->
+<!--   } -->
+
+<!--   df <- data.frame( -->
+<!--     id = 1:n_mice, -->
+<!--     week_preinduction = rnorm(n_mice, pre_mean, pre_sd) + offset, -->
+<!--     week_post1 = rnorm(n_mice, week1_mean, week1_sd) + offset, -->
+<!--     week_post2 = rnorm(n_mice, week2_mean, week2_sd) + offset -->
+<!--   ) -->
+
+<!--   #drop_out <- sample(1:n_mice, 5) -->
+<!--   #df$week_post2[drop_out] <- NA -->
+
+<!--   return(df) -->
+<!-- } -->
+
+<!-- n_simulations <- 1000 -->
+<!-- plan(multisession, workers = max(1, parallel::detectCores() - 2)) -->
+
+<!-- # Simulation loop -->
+<!-- results <- future_lapply(1:n_simulations, function(i) { -->
+<!--   df_effect <- generate_mouse_data(seed = i, effect = TRUE) %>% -->
+<!--     pivot_longer(starts_with("week"), names_to = "week_number", values_to = "distance") -->
+<!--   df_null <- generate_mouse_data(seed = i + 1, effect = FALSE) %>% -->
+<!--     pivot_longer(starts_with("week"), names_to = "week_number", values_to = "distance") -->
+
+<!--   df_effect$week_number <- factor(df_effect$week_number, levels = c("week_preinduction", "week_post1", "week_post2")) -->
+<!--   df_null$week_number <- factor(df_null$week_number, levels = c("week_preinduction", "week_post1", "week_post2")) -->
+
+<!--   m_effect <- tryCatch( -->
+<!--     lmer(distance ~ week_number + (1 | id), data = df_effect), -->
+<!--     error = function(e) NULL -->
+<!--   ) -->
+<!--   m_null <- tryCatch( -->
+<!--     lmer(distance ~ week_number + (1 | id), data = df_null), -->
+<!--     error = function(e) NULL -->
+<!--   ) -->
+
+<!--   get_pvals <- function(model) { -->
+<!--     if (is.null(model)) return(rep(NA, 2)) -->
+<!--     p <- summary(model)$coefficients[, "Pr(>|t|)"] -->
+<!--     return(p[c("week_numberweek_post1", "week_numberweek_post2")]) -->
+<!--   } -->
+
+<!--   list( -->
+<!--     p_effect = get_pvals(m_effect), -->
+<!--     p_null = get_pvals(m_null), -->
+<!--     singular_effect = if (!is.null(m_effect)) isSingular(m_effect) else NA, -->
+<!--     singular_null = if (!is.null(m_null)) isSingular(m_null) else NA -->
+<!--   ) -->
+<!-- }, future.seed = TRUE) -->
+
+<!-- # Organize p-values -->
+<!-- p_names <- c("week_post1", "week_post2") -->
+<!-- p_values <- lapply(1:2, function(j) { -->
+<!--   data.frame( -->
+<!--     predictor = p_names[j], -->
+<!--     p_effect = sapply(results, function(x) x$p_effect[j]), -->
+<!--     p_null = sapply(results, function(x) x$p_null[j]) -->
+<!--   ) -->
+<!-- }) -->
+<!-- p_values_df <- bind_rows(p_values) -->
+
+<!-- # Mark significance -->
+<!-- p_values_df <- p_values_df %>% -->
+<!--   mutate( -->
+<!--     significant_effect = p_effect < 0.05, -->
+<!--     significant_null = p_null < 0.05 -->
+<!--   ) -->
+
+<!-- # Summarise p-value significance -->
+<!-- p_values_summary <- p_values_df %>% -->
+<!--   group_by(predictor) %>% -->
+<!--   summarise( -->
+<!--     significant_effect = mean(significant_effect, na.rm = TRUE) * 100, -->
+<!--     significant_null = mean(significant_null, na.rm = TRUE) * 100, -->
+<!--     .groups = "drop" -->
+<!--   ) -->
+
+<!-- # Summarise singularity -->
+<!-- singular_summary <- data.frame( -->
+<!--   singular_effect = sapply(results, function(x) x$singular_effect), -->
+<!--   singular_null = sapply(results, function(x) x$singular_null) -->
+<!-- ) -->
+
+<!-- singular_table_effect <- table(singular_summary$singular_effect, useNA = "ifany") -->
+<!-- singular_table_null <- table(singular_summary$singular_null, useNA = "ifany") -->
+
+<!-- # Print results -->
+<!-- print(p_values_summary) -->
+<!-- cat("\nSingular Fit Summary (Effect Model):\n") -->
+<!-- print(singular_table_effect) -->
+<!-- cat("\nSingular Fit Summary (Null Model):\n") -->
+<!-- print(singular_table_null) -->
+
+<!-- ``` -->
+
+
