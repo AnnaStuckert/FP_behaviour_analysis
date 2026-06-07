@@ -1,0 +1,80 @@
+---
+title: "Untitled"
+output: html_document
+date: "2026-04-01"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(pacman)
+
+p_load(tidyverse, ggridges)
+
+theme_set(theme_minimal())
+
+```
+
+```{r}
+df_cond = read.csv('behaviour_bouts_raw_by_condition_vol2.csv') %>% 
+  mutate(group = ifelse(mouse_id %in% c("372", "376", "423", "398", "400", "459"), 'NE', NA),
+         group = ifelse(mouse_id %in% c("374", "429", "461", "463", "402"), 'WT', group),
+         cond_group = paste0(condition, ', ', group)
+         ) 
+```
+
+
+```{r}
+behaviors_list = c('Social_interaction', 'Novel_interaction')
+
+for (b in behaviors_list) {
+  
+plot = df_cond %>% 
+  filter(behavior == b) %>% 
+  ggplot(aes(x = duration_s, y = week)) +
+  geom_density_ridges(scale = 3, 
+                      rel_min_height = 0, 
+                      quantile_lines = T, 
+                      quantiles = 0.5,
+                      alpha = 0.7,
+                      bandwidth = 2
+                      ) +
+  facet_wrap(~cond_group, 
+             #scales = 'free'
+             )  +
+  #scale_x_continuous(lim = c(20, 90)) +
+  labs(title = b) # +
+  #scale_y_discrete(breaks = function(y) y[seq(1, length(y), by = 2)]) + 
+  #theme(axis.title.x = element_text(size = 20), 
+  #      axis.title.y = element_text(size = 20)
+  #      )
+
+print(plot)
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
