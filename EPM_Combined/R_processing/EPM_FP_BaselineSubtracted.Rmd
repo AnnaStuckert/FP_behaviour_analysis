@@ -9,7 +9,7 @@ p_load(tidyverse, readr, lmerTest, emmeans, performance)
 # =========================
 # Load NEW Python export
 # =========================
-df <- read_csv("post2s_open_to_closed.csv")
+df <- read_csv("post2s_open_to_closed_BaselineSubtracted.csv")
 
 # =========================
 # Optional filters
@@ -142,7 +142,7 @@ plot_bar
 # Save figure
 # =========================
 ggsave(
-  "post2s_transition_barplot_open_to_closed.svg",
+  "post2s_transition_barplot_open_to_closed_BaselineSubtracted.svg",
   plot = plot_bar,
   width = 8,
   height = 6
@@ -171,7 +171,7 @@ p_load(tidyverse, readr, lmerTest, emmeans, performance)
 # =========================
 # Load NEW Python export
 # =========================
-df <- read_csv("post2s_closed_to_open.csv")
+df <- read_csv("post2s_closed_to_open_BaselineSubtracted.csv")
 
 # =========================
 # Optional filters
@@ -304,7 +304,7 @@ plot_bar
 # Save figure
 # =========================
 ggsave(
-  "post2s_transition_barplot_closed_to_open.svg",
+  "post2s_transition_barplot_closed_to_open_BaselineSubtracted.svg",
   plot = plot_bar,
   width = 8,
   height = 6
