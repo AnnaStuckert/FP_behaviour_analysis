@@ -1,0 +1,160 @@
+```{r}
+# =========================
+# Libraries
+# =========================
+library(pacman)
+p_load(tidyverse, readr, lmerTest, emmeans, performance)
+
+# =========================
+# Load NEW Python export
+# =========================
+df <- read_csv("post2s_open_to_closed.csv")
+
+# =========================
+# Optional filters
+# =========================
+df <- df %>%
+  filter(week != "W3")  # keep same logic as before
+
+# If you want only NE or WT:
+# df <- df %>% filter(genotype == "NE")
+
+# =========================
+# Format variables
+# =========================
+df$week <- factor(df$week,
+                  levels = c("Preinduction", "W1", "W2", "W3"))
+
+df$mouse_id <- as.factor(df$mouse_id)
+df$genotype <- as.factor(df$genotype)
+
+# =========================
+# Linear mixed model
+# =========================
+m_anova <- lmerTest::lmer(mean_dFF ~ week + (1 | mouse_id), data = df)
+
+summary(m_anova)
+
+# =========================
+# Emmeans + Dunnett
+# =========================
+emmeans_results <- emmeans(m_anova, ~ week)
+
+dunnett_results <- contrast(
+  emmeans_results,
+  method = "trt.vs.ctrl",
+  ref = 1
+)
+
+dunnett_table <- as.data.frame(summary(dunnett_results, infer = TRUE))
+
+# =========================
+# Significance labels
+# =========================
+dunnett_table$label <- case_when(
+  dunnett_table$p.value < 0.001 ~ "***",
+  dunnett_table$p.value < 0.01  ~ "**",
+  dunnett_table$p.value < 0.05  ~ "*",
+  TRUE ~ "ns"
+)
+
+# map to weeks (Preinduction is control)
+dunnett_table$group <- c("W1", "W2")
+
+# =========================
+# Summary stats
+# =========================
+summary_df <- df %>%
+  group_by(week) %>%
+  summarise(
+    mean = mean(mean_dFF, na.rm = TRUE),
+    se = sd(mean_dFF, na.rm = TRUE) / sqrt(n()),
+    .groups = "drop"
+  )
+
+# y position for stats
+y_max <- max(summary_df$mean + summary_df$se)
+
+dunnett_table$y <- c(
+  y_max * 1.2,
+  y_max * 1.3
+)
+
+# =========================
+# Plot
+# =========================
+library(ggplot2)
+
+plot_bar <- ggplot(summary_df, aes(x = week, y = mean, fill = week)) +
+
+  geom_col(width = 0.6, color = "black", alpha = 0.85) +
+
+  geom_errorbar(
+    aes(ymin = mean - se, ymax = mean + se),
+    width = 0.15,
+    linewidth = 0.8
+  ) +
+
+  geom_jitter(
+    data = df,
+    aes(x = week, y = mean_dFF),
+    width = 0.08,
+    size = 2,
+    alpha = 0.6
+  ) +
+
+  geom_line(
+    data = df,
+    aes(x = week, y = mean_dFF, group = mouse_id),
+    color = "gray60",
+    alpha = 0.4,
+    linewidth = 0.6
+  ) +
+
+  scale_fill_manual(values = c(
+    "Preinduction" = "#feca8d",
+    "W1" = "#f1605d",
+    "W2" = "#440f76"
+  )) +
+
+  labs(
+    x = "Week",
+    y = "Mean ΔF/F (0–2 s post onset)"
+  ) +
+
+  theme_bw(base_size = 14) +
+  theme(
+    legend.position = "none",
+    text = element_text(size = 14)
+  ) +
+
+  geom_text(
+    data = dunnett_table,
+    aes(x = group, y = y, label = label),
+    inherit.aes = FALSE,
+    size = 5
+  )
+
+plot_bar
+
+# =========================
+# Save figure
+# =========================
+ggsave(
+  "post2s_transition_barplot.svg",
+  plot = plot_bar,
+  width = 8,
+  height = 6
+)
+
+# =========================
+# Model diagnostics
+# =========================
+check_model(m_anova)
+
+qqnorm(residuals(m_anova))
+qqline(residuals(m_anova))
+
+shapiro.test(residuals(m_anova))
+```
+
