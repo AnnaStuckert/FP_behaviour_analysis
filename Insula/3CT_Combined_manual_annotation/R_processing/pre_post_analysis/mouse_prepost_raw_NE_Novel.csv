@@ -1,0 +1,13 @@
+mouse_id,genotype,condition,week,behavior,pre_mean_dFF,post_mean_dFF,n_events
+588,NE,Novel,Preinduction,Novel_interaction,0.015972535285578182,-0.05682177607939949,4
+588,NE,Novel,Preinduction,Social_interaction,1.40443930807416,4.103586000469705,3
+590,NE,Novel,Preinduction,Novel_interaction,-0.8598328293180753,0.10680687994756614,11
+590,NE,Novel,Preinduction,Social_interaction,0.9111877409711863,1.8172960565143361,8
+566,NE,Novel,Preinduction,Novel_interaction,-0.24898016489345975,1.657911261571592,10
+566,NE,Novel,Preinduction,Social_interaction,-1.288315543171932,0.10411870200950357,7
+580,NE,Novel,Preinduction,Novel_interaction,0.40559742489714534,1.0249707321639687,4
+580,NE,Novel,Preinduction,Social_interaction,-0.3422336360962835,0.9149671329268269,6
+533,NE,Novel,Preinduction,Novel_interaction,-0.4438243259099521,1.2689259438499179,3
+533,NE,Novel,Preinduction,Social_interaction,0.7368363765553202,6.949819745336516,3
+541,NE,Novel,Preinduction,Novel_interaction,4.221266778197357,5.500774243042729,1
+541,NE,Novel,Preinduction,Social_interaction,1.7441103799362638,0.7070256043764568,6

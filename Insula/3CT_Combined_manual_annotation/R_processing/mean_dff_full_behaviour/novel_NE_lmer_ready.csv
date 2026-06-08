@@ -1,0 +1,13 @@
+mouse_id,week,behavior,mean_dFF
+533,Preinduction,Novel_interaction,1.2689259438499179
+541,Preinduction,Novel_interaction,5.500774243042729
+566,Preinduction,Novel_interaction,1.657911261571592
+580,Preinduction,Novel_interaction,1.0249707321639687
+588,Preinduction,Novel_interaction,-0.05682177607939949
+590,Preinduction,Novel_interaction,0.10680687994756614
+533,Preinduction,Social_interaction,6.949819745336516
+541,Preinduction,Social_interaction,0.7070256043764568
+566,Preinduction,Social_interaction,0.10411870200950357
+580,Preinduction,Social_interaction,0.9149671329268269
+588,Preinduction,Social_interaction,4.103586000469705
+590,Preinduction,Social_interaction,1.8172960565143361
