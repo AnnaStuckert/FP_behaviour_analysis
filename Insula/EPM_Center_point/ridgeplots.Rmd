@@ -1,0 +1,72 @@
+---
+title: "Untitled"
+output: html_document
+date: "2026-04-01"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(pacman)
+
+p_load(tidyverse, ggridges)
+
+theme_set(theme_minimal())
+
+```
+
+
+```{r}
+df = read.csv('behaviour_bouts_raw.csv') %>% 
+  mutate(group = ifelse(mouse_id %in% c("ID372", "ID376", "ID423", "ID398", "ID400", "ID459"), 'NE', NA),
+         group = ifelse(mouse_id %in% c("ID374", "ID429", "ID461", "ID463", "ID402"), 'WT', group)
+         ) #%>% 
+  #group_by(mouse_id, week, behavior, group) %>% 
+  #summarise(duration_s = mean(duration_s, na.rm = T))
+
+```
+
+```{r}
+behaviors = df$behavior %>% unique()
+```
+
+
+```{r}
+behaviors_list = list(
+  c("In zone 3(O1_round / Nose-point)", "In zone(O1_round / Nose-point)", 
+    "In zone 3(O2_round / Nose-point)", "In zone(O2_round / Nose-point)"),
+  c("In zone 3(O1_prevC1 / Nose-point)", "In zone(O1_prevC1 / Nose-point)", 
+    "In zone(O2_prevC2 / Nose-point)", "In zone 3(O2_prevC2 / Nose-point)"),
+  c("In zone(C2_prevO2 / Nose-point)", "In zone 3(C2_prevO2 / Nose-point)",
+    "In zone 3(C1_prevO1 / Nose-point)", "In zone(C1_prevO1 / Nose-point)"),
+  c( "In zone 3(NeutralZone / Nose-point)", "In zone(NeutralZone / Nose-point)")
+)
+
+   
+          
+
+for (behaviors in behaviors_list) {
+  
+plot = df %>% filter(behavior %in% behaviors) %>% 
+  ggplot(aes(x = duration_s, y = week)) +
+  geom_density_ridges(scale = 3, 
+                      rel_min_height = 0, 
+                      quantile_lines = T, 
+                      quantiles = 0.5,
+                      alpha = 0.7,
+                      bandwidth = 2
+                      ) +
+  facet_wrap(~group)  +
+  #scale_x_continuous(lim = c(20, 90)) +
+  labs(title = paste(behaviors, collapse = ', ')) # +
+  #scale_y_discrete(breaks = function(y) y[seq(1, length(y), by = 2)]) + 
+  #theme(axis.title.x = element_text(size = 20), 
+  #      axis.title.y = element_text(size = 20)
+  #      )
+
+print(plot)
+}
+
+```

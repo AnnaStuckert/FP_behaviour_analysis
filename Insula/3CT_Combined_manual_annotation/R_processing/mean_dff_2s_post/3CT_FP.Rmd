@@ -187,120 +187,122 @@ qqnorm(residuals(m_anova))
 qqline(residuals(m_anova))
 
 shapiro.test(residuals(m_anova))
+
 ```
 
-# power analysis
+
+<!-- # power analysis -->
 
 
-```{r}
-# =========================
-# Libraries
-# =========================
-library(tidyverse)
-library(lmerTest)   # <- main model engine
-library(lme4)
-library(emmeans)
-library(future.apply)
+<!-- ```{r} -->
+<!-- # ========================= -->
+<!-- # Libraries -->
+<!-- # ========================= -->
+<!-- library(tidyverse) -->
+<!-- library(lmerTest)   # <- main model engine -->
+<!-- library(lme4) -->
+<!-- library(emmeans) -->
+<!-- library(future.apply) -->
 
-# =========================
-# Ensure correct ordering
-# =========================
-df$week <- factor(df$week,
-                  levels = c("Preinduction", "W1", "W2", "W3"))
+<!-- # ========================= -->
+<!-- # Ensure correct ordering -->
+<!-- # ========================= -->
+<!-- df$week <- factor(df$week, -->
+<!--                   levels = c("Preinduction", "W1", "W2", "W3")) -->
 
-df$mouse_id <- as.factor(df$mouse_id)
+<!-- df$mouse_id <- as.factor(df$mouse_id) -->
 
-# =========================
-# Fit model (lmerTest)
-# =========================
-m_anova <- lmerTest::lmer(
-  mean_dFF ~ week + (1 | mouse_id),
-  data = df
-)
+<!-- # ========================= -->
+<!-- # Fit model (lmerTest) -->
+<!-- # ========================= -->
+<!-- m_anova <- lmerTest::lmer( -->
+<!--   mean_dFF ~ week + (1 | mouse_id), -->
+<!--   data = df -->
+<!-- ) -->
 
-# =========================
-# Simulation settings
-# =========================
-n_simulations <- 1000
+<!-- # ========================= -->
+<!-- # Simulation settings -->
+<!-- # ========================= -->
+<!-- n_simulations <- 1000 -->
 
-plan(multisession,
-     workers = max(1, parallel::detectCores() - 2))
+<!-- plan(multisession, -->
+<!--      workers = max(1, parallel::detectCores() - 2)) -->
 
-# =========================
-# Power simulation
-# =========================
-results <- future_lapply(1:n_simulations, function(i) {
+<!-- # ========================= -->
+<!-- # Power simulation -->
+<!-- # ========================= -->
+<!-- results <- future_lapply(1:n_simulations, function(i) { -->
 
-  # -------------------------
-  # SAFE simulation from fitted model
-  # -------------------------
-  mf <- model.frame(m_anova)
+<!--   # ------------------------- -->
+<!--   # SAFE simulation from fitted model -->
+<!--   # ------------------------- -->
+<!--   mf <- model.frame(m_anova) -->
 
-  sim_values <- simulate(m_anova, nsim = 1, re.form = NULL)[,1]
+<!--   sim_values <- simulate(m_anova, nsim = 1, re.form = NULL)[,1] -->
 
-  sim_df <- mf
-  sim_df$mean_dFF <- sim_values
+<!--   sim_df <- mf -->
+<!--   sim_df$mean_dFF <- sim_values -->
 
-  sim_df$week <- factor(sim_df$week,
-                        levels = levels(df$week))
-  sim_df$mouse_id <- factor(sim_df$mouse_id)
+<!--   sim_df$week <- factor(sim_df$week, -->
+<!--                         levels = levels(df$week)) -->
+<!--   sim_df$mouse_id <- factor(sim_df$mouse_id) -->
 
-  # -------------------------
-  # refit model (lmerTest)
-  # -------------------------
-  m_sim <- tryCatch(
-    lmerTest::lmer(mean_dFF ~ week + (1 | mouse_id), data = sim_df),
-    error = function(e) NULL
-  )
+<!--   # ------------------------- -->
+<!--   # refit model (lmerTest) -->
+<!--   # ------------------------- -->
+<!--   m_sim <- tryCatch( -->
+<!--     lmerTest::lmer(mean_dFF ~ week + (1 | mouse_id), data = sim_df), -->
+<!--     error = function(e) NULL -->
+<!--   ) -->
 
-  # -------------------------
-  # Dunnett-style contrasts
-  # -------------------------
-  get_pvals <- function(model) {
+<!--   # ------------------------- -->
+<!--   # Dunnett-style contrasts -->
+<!--   # ------------------------- -->
+<!--   get_pvals <- function(model) { -->
 
-    if (is.null(model)) return(rep(NA, 3))
+<!--     if (is.null(model)) return(rep(NA, 3)) -->
 
-    em <- emmeans(model, ~ week)
+<!--     em <- emmeans(model, ~ week) -->
 
-    contrast_out <- contrast(
-      em,
-      method = "trt.vs.ctrl",
-      ref = 1
-    )
+<!--     contrast_out <- contrast( -->
+<!--       em, -->
+<!--       method = "trt.vs.ctrl", -->
+<!--       ref = 1 -->
+<!--     ) -->
 
-    summary(contrast_out)$p.value
-  }
+<!--     summary(contrast_out)$p.value -->
+<!--   } -->
 
-  list(
-    p = get_pvals(m_sim),
-    singular = if (!is.null(m_sim)) isSingular(m_sim) else NA
-  )
+<!--   list( -->
+<!--     p = get_pvals(m_sim), -->
+<!--     singular = if (!is.null(m_sim)) isSingular(m_sim) else NA -->
+<!--   ) -->
 
-}, future.seed = TRUE)
+<!-- }, future.seed = TRUE) -->
 
-# =========================
-# Extract results
-# =========================
-p_mat <- do.call(rbind, lapply(results, function(x) x$p))
+<!-- # ========================= -->
+<!-- # Extract results -->
+<!-- # ========================= -->
+<!-- p_mat <- do.call(rbind, lapply(results, function(x) x$p)) -->
 
-#colnames(p_mat) <- c("W1_vs_Pre", "W2_vs_Pre", "W3_vs_Pre")
-colnames(p_mat) <- c("W1_vs_Pre", "W2_vs_Pre")
+<!-- #colnames(p_mat) <- c("W1_vs_Pre", "W2_vs_Pre", "W3_vs_Pre") -->
+<!-- colnames(p_mat) <- c("W1_vs_Pre", "W2_vs_Pre") -->
 
-# =========================
-# POWER SUMMARY
-# =========================
-power_summary <- colMeans(p_mat < 0.05, na.rm = TRUE)
+<!-- # ========================= -->
+<!-- # POWER SUMMARY -->
+<!-- # ========================= -->
+<!-- power_summary <- colMeans(p_mat < 0.05, na.rm = TRUE) -->
 
-print("Estimated Power (lmerTest + Dunnett):")
-print(power_summary)
+<!-- print("Estimated Power (lmerTest + Dunnett):") -->
+<!-- print(power_summary) -->
 
-# =========================
-# MODEL STABILITY
-# =========================
-singular_rate <- mean(sapply(results, function(x) x$singular), na.rm = TRUE)
+<!-- # ========================= -->
+<!-- # MODEL STABILITY -->
+<!-- # ========================= -->
+<!-- singular_rate <- mean(sapply(results, function(x) x$singular), na.rm = TRUE) -->
 
-cat("\nSingular fit rate:", singular_rate, "\n")
-```
+<!-- cat("\nSingular fit rate:", singular_rate, "\n") -->
+<!-- ``` -->
 
 #Novel interaction in social cond
 
