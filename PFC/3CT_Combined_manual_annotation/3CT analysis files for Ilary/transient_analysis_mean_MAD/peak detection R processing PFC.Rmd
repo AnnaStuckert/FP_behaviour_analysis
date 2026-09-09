@@ -1,0 +1,2464 @@
+---
+title: "Untitled"
+output: html_document
+date: "2026-08-30"
+---
+```{r}
+library(Matrix)
+library(TMB)
+library(glmmTMB)
+
+packageVersion("Matrix")
+packageVersion("TMB")
+packageVersion("glmmTMB")
+```
+#MAD 
+```{r}
+# ==========================================================
+# FIBER PHOTOMETRY TRANSIENT ANALYSIS
+# MAD-BASED PEAK COUNTS
+#
+# Separate Poisson GLMMs for:
+#   Hab
+#   Social
+#   Novel
+#
+# Outcome:
+#   n_peaks
+#
+# Fixed effect:
+#   timepoint
+#
+# Random intercept:
+#   mouse_id
+#
+# Offset:
+#   log(duration_s)
+#
+# Post hoc:
+#   Dunnett:
+#     W1 vs Preinduction
+#     W2 vs Preinduction
+# ==========================================================
+
+
+# ==========================================================
+# 1. PACKAGES
+# ==========================================================
+
+library(tidyverse)
+library(lme4)
+library(emmeans)
+
+
+# ==========================================================
+# 2. IMPORT DATA
+# ==========================================================
+
+df <- read.csv(
+  "MAD_whole_trial_peak_data_for_R.csv"
+)
+
+
+# ==========================================================
+# 3. PREPARE DATA
+# ==========================================================
+
+df <- df %>%
+
+  mutate(
+
+    mouse_id =
+      factor(mouse_id),
+
+    trial_type =
+      factor(
+        trial_type,
+        levels = c(
+          "Hab",
+          "Social",
+          "Novel"
+        )
+      ),
+
+    timepoint =
+      factor(
+        timepoint,
+        levels = c(
+          "Preinduction",
+          "W1",
+          "W2"
+        )
+      ),
+
+    n_peaks =
+      as.integer(n_peaks),
+
+    duration_s =
+      as.numeric(duration_s)
+
+  ) %>%
+
+  filter(
+
+    trial_type %in%
+      c(
+        "Hab",
+        "Social",
+        "Novel"
+      ),
+
+    timepoint %in%
+      c(
+        "Preinduction",
+        "W1",
+        "W2"
+      ),
+
+    !is.na(n_peaks),
+
+    !is.na(duration_s),
+
+    duration_s > 0
+
+  ) %>%
+
+  droplevels()
+
+
+# ==========================================================
+# 4. DATA CHECKS
+# ==========================================================
+
+cat(
+  "\n====================================================\n",
+  "MAD DATA CHECK\n",
+  "====================================================\n"
+)
+
+print(
+  table(
+    df$trial_type,
+    df$timepoint
+  )
+)
+
+cat(
+  "\nNumber of mice:",
+  n_distinct(df$mouse_id),
+  "\n"
+)
+
+cat(
+  "\nPeak counts:\n"
+)
+
+print(
+  summary(df$n_peaks)
+)
+
+cat(
+  "\nRecording durations:\n"
+)
+
+print(
+  summary(df$duration_s)
+)
+
+
+# ==========================================================
+# 5. DESCRIPTIVES
+# ==========================================================
+
+descriptive_MAD <- df %>%
+
+  group_by(
+    trial_type,
+    timepoint
+  ) %>%
+
+  summarise(
+
+    n_mice =
+      n_distinct(mouse_id),
+
+    mean_peaks =
+      mean(
+        n_peaks,
+        na.rm = TRUE
+      ),
+
+    sd_peaks =
+      sd(
+        n_peaks,
+        na.rm = TRUE
+      ),
+
+    sem_peaks =
+      sd_peaks /
+      sqrt(n_mice),
+
+    median_peaks =
+      median(
+        n_peaks,
+        na.rm = TRUE
+      ),
+
+    mean_duration_s =
+      mean(
+        duration_s,
+        na.rm = TRUE
+      ),
+
+    .groups =
+      "drop"
+  )
+
+
+print(
+  descriptive_MAD
+)
+
+
+write.csv(
+  descriptive_MAD,
+  "MAD_descriptive_statistics.csv",
+  row.names = FALSE
+)
+
+
+# ==========================================================
+# 6. ANALYSIS FUNCTION
+# ==========================================================
+
+run_poisson_MAD <- function(
+  data,
+  trial_name
+) {
+
+
+  cat(
+    "\n\n====================================================\n",
+    trial_name,
+    " - MAD\n",
+    "====================================================\n"
+  )
+
+
+  d <- data %>%
+
+    filter(
+      trial_type ==
+        trial_name
+    ) %>%
+
+    droplevels()
+
+
+  print(
+    d %>%
+      select(
+        mouse_id,
+        timepoint,
+        n_peaks,
+        duration_s
+      ) %>%
+      arrange(
+        mouse_id,
+        timepoint
+      )
+  )
+
+
+  # ========================================================
+  # FULL POISSON GLMM
+  # ========================================================
+
+  model_full <- glmer(
+
+    n_peaks ~
+
+      timepoint +
+
+      offset(
+        log(duration_s)
+      ) +
+
+      (
+        1 |
+        mouse_id
+      ),
+
+    family =
+      poisson(
+        link = "log"
+      ),
+
+    data =
+      d,
+
+    control =
+      glmerControl(
+        optimizer = "bobyqa"
+      )
+
+  )
+
+
+  cat(
+    "\n-----------------------------\n",
+    "MODEL SUMMARY\n",
+    "-----------------------------\n"
+  )
+
+
+  print(
+    summary(model_full)
+  )
+
+
+  # ========================================================
+  # SINGULAR FIT CHECK
+  # ========================================================
+
+  singular_fit <- isSingular(
+    model_full,
+    tol = 1e-4
+  )
+
+
+  cat(
+    "\nSingular fit:",
+    singular_fit,
+    "\n"
+  )
+
+
+  # ========================================================
+  # DISPERSION
+  # ========================================================
+
+  pearson_residuals <- residuals(
+    model_full,
+    type = "pearson"
+  )
+
+
+  pearson_chisq <- sum(
+    pearson_residuals^2
+  )
+
+
+  residual_df <-
+    nrow(d) -
+    length(
+      fixef(model_full)
+    )
+
+
+  dispersion_ratio <-
+    pearson_chisq /
+    residual_df
+
+
+  dispersion_p <- pchisq(
+
+    pearson_chisq,
+
+    df =
+      residual_df,
+
+    lower.tail =
+      FALSE
+  )
+
+
+  cat(
+    "\n-----------------------------\n",
+    "DISPERSION CHECK\n",
+    "-----------------------------\n"
+  )
+
+
+  cat(
+    "Dispersion ratio:",
+    round(
+      dispersion_ratio,
+      3
+    ),
+    "\n"
+  )
+
+
+  cat(
+    "Approximate p-value:",
+    round(
+      dispersion_p,
+      4
+    ),
+    "\n"
+  )
+
+
+  # ========================================================
+  # NULL MODEL
+  # ========================================================
+
+  model_null <- glmer(
+
+    n_peaks ~
+
+      offset(
+        log(duration_s)
+      ) +
+
+      (
+        1 |
+        mouse_id
+      ),
+
+    family =
+      poisson(
+        link = "log"
+      ),
+
+    data =
+      d,
+
+    control =
+      glmerControl(
+        optimizer = "bobyqa"
+      )
+
+  )
+
+
+  # ========================================================
+  # OVERALL TIMEPOINT TEST
+  # ========================================================
+
+  overall_test <- anova(
+
+    model_null,
+    model_full,
+
+    test =
+      "Chisq"
+  )
+
+
+  cat(
+    "\n-----------------------------\n",
+    "OVERALL TIMEPOINT TEST\n",
+    "-----------------------------\n"
+  )
+
+
+  print(
+    overall_test
+  )
+
+
+  # ========================================================
+  # ESTIMATED MARGINAL MEANS
+  # ========================================================
+
+  emm <- emmeans(
+
+    model_full,
+
+    ~ timepoint,
+
+    type =
+      "response"
+  )
+
+
+  cat(
+    "\n-----------------------------\n",
+    "ESTIMATED MARGINAL MEANS\n",
+    "-----------------------------\n"
+  )
+
+
+  print(
+    emm
+  )
+
+
+  # ========================================================
+  # DUNNETT POST HOC
+  #
+  # Preinduction = reference
+  # ========================================================
+
+  dunnett_results <- contrast(
+
+    emm,
+
+    method =
+      "trt.vs.ctrl",
+
+    ref =
+      1,
+
+    adjust =
+      "dunnettx"
+  )
+
+
+  cat(
+    "\n-----------------------------\n",
+    "DUNNETT POST HOC TEST\n",
+    "-----------------------------\n"
+  )
+
+
+  print(
+    dunnett_results
+  )
+
+
+  # ========================================================
+  # SAVE MODEL
+  # ========================================================
+
+  saveRDS(
+
+    model_full,
+
+    paste0(
+      "MAD_",
+      trial_name,
+      "_Poisson_model.rds"
+    )
+  )
+
+
+  # ========================================================
+  # RETURN
+  # ========================================================
+
+  list(
+
+    data =
+      d,
+
+    model =
+      model_full,
+
+    null_model =
+      model_null,
+
+    overall =
+      overall_test,
+
+    emm =
+      emm,
+
+    dunnett =
+      dunnett_results,
+
+    dispersion_ratio =
+      dispersion_ratio,
+
+    dispersion_p =
+      dispersion_p,
+
+    singular =
+      singular_fit
+  )
+}
+
+
+# ==========================================================
+# 7. RUN MODELS
+# ==========================================================
+
+hab_MAD <- run_poisson_MAD(
+  df,
+  "Hab"
+)
+
+
+social_MAD <- run_poisson_MAD(
+  df,
+  "Social"
+)
+
+
+novel_MAD <- run_poisson_MAD(
+  df,
+  "Novel"
+)
+
+
+# ==========================================================
+# 8. DIAGNOSTIC SUMMARY
+# ==========================================================
+
+diagnostics_MAD <- tibble(
+
+  trial_type =
+    c(
+      "Hab",
+      "Social",
+      "Novel"
+    ),
+
+  dispersion_ratio =
+    c(
+      hab_MAD$dispersion_ratio,
+      social_MAD$dispersion_ratio,
+      novel_MAD$dispersion_ratio
+    ),
+
+  dispersion_p =
+    c(
+      hab_MAD$dispersion_p,
+      social_MAD$dispersion_p,
+      novel_MAD$dispersion_p
+    ),
+
+  singular_fit =
+    c(
+      hab_MAD$singular,
+      social_MAD$singular,
+      novel_MAD$singular
+    )
+)
+
+
+print(
+  diagnostics_MAD
+)
+
+
+write.csv(
+  diagnostics_MAD,
+  "MAD_Poisson_diagnostics.csv",
+  row.names = FALSE
+)
+
+
+# ==========================================================
+# 9. DUNNETT RESULTS
+# ==========================================================
+
+dunnett_MAD <- bind_rows(
+
+  as.data.frame(
+    hab_MAD$dunnett
+  ) %>%
+    mutate(
+      trial_type =
+        "Hab"
+    ),
+
+  as.data.frame(
+    social_MAD$dunnett
+  ) %>%
+    mutate(
+      trial_type =
+        "Social"
+    ),
+
+  as.data.frame(
+    novel_MAD$dunnett
+  ) %>%
+    mutate(
+      trial_type =
+        "Novel"
+    )
+
+) %>%
+
+  select(
+    trial_type,
+    everything()
+  )
+
+
+print(
+  dunnett_MAD
+)
+
+
+write.csv(
+  dunnett_MAD,
+  "MAD_Poisson_Dunnett_results.csv",
+  row.names = FALSE
+)
+
+
+# ==========================================================
+# 10. ESTIMATED MARGINAL MEANS
+# ==========================================================
+
+emm_MAD <- bind_rows(
+
+  as.data.frame(
+    hab_MAD$emm
+  ) %>%
+    mutate(
+      trial_type =
+        "Hab"
+    ),
+
+  as.data.frame(
+    social_MAD$emm
+  ) %>%
+    mutate(
+      trial_type =
+        "Social"
+    ),
+
+  as.data.frame(
+    novel_MAD$emm
+  ) %>%
+    mutate(
+      trial_type =
+        "Novel"
+    )
+
+) %>%
+
+  select(
+    trial_type,
+    everything()
+  )
+
+
+write.csv(
+  emm_MAD,
+  "MAD_Poisson_estimated_marginal_means.csv",
+  row.names = FALSE
+)
+
+
+# ==========================================================
+# 11. PLOT SUMMARY
+# ==========================================================
+
+plot_summary_MAD <- df %>%
+
+  group_by(
+    trial_type,
+    timepoint
+  ) %>%
+
+  summarise(
+
+    mean_peaks =
+      mean(
+        n_peaks,
+        na.rm = TRUE
+      ),
+
+    sd_peaks =
+      sd(
+        n_peaks,
+        na.rm = TRUE
+      ),
+
+    n_mice =
+      n_distinct(mouse_id),
+
+    sem_peaks =
+      sd_peaks /
+      sqrt(n_mice),
+
+    .groups =
+      "drop"
+  )
+
+
+# ==========================================================
+# 12. PREPARE P-VALUES FOR PLOT
+# ==========================================================
+
+p_MAD <- bind_rows(
+
+  as.data.frame(
+    hab_MAD$dunnett
+  ) %>%
+    mutate(
+      trial_type =
+        "Hab"
+    ),
+
+  as.data.frame(
+    social_MAD$dunnett
+  ) %>%
+    mutate(
+      trial_type =
+        "Social"
+    ),
+
+  as.data.frame(
+    novel_MAD$dunnett
+  ) %>%
+    mutate(
+      trial_type =
+        "Novel"
+    )
+
+) %>%
+
+  group_by(
+    trial_type
+  ) %>%
+
+  mutate(
+
+    comparison_number =
+      row_number()
+
+  ) %>%
+
+  ungroup() %>%
+
+  mutate(
+
+    p_label = case_when(
+
+      p.value < 0.001 ~
+        "p < .001",
+
+      p.value < 0.01 ~
+        paste0(
+          "p = ",
+          sub(
+            "^0",
+            "",
+            sprintf(
+              "%.3f",
+              p.value
+            )
+          )
+        ),
+
+      TRUE ~
+        paste0(
+          "p = ",
+          sub(
+            "^0",
+            "",
+            sprintf(
+              "%.2f",
+              p.value
+            )
+          )
+        )
+    )
+  )
+
+
+# ==========================================================
+# 13. BRACKET HEIGHTS
+# ==========================================================
+
+plot_heights_MAD <- df %>%
+
+  group_by(
+    trial_type
+  ) %>%
+
+  summarise(
+
+    ymax =
+      max(
+        n_peaks,
+        na.rm = TRUE
+      ),
+
+    ymin =
+      min(
+        n_peaks,
+        na.rm = TRUE
+      ),
+
+    .groups =
+      "drop"
+  ) %>%
+
+  mutate(
+
+    yrange =
+      ymax - ymin,
+
+    yrange =
+      ifelse(
+        yrange == 0,
+        max(
+          ymax * 0.2,
+          1
+        ),
+        yrange
+      ),
+
+    y_w1 =
+      ymax +
+      0.15 * yrange,
+
+    y_w2 =
+      ymax +
+      0.40 * yrange
+
+  )
+
+
+p_MAD <- p_MAD %>%
+
+  left_join(
+    plot_heights_MAD,
+    by =
+      "trial_type"
+  ) %>%
+
+  mutate(
+
+    x_start =
+      1,
+
+    x_end =
+      ifelse(
+        comparison_number == 1,
+        2,
+        3
+      ),
+
+    y_position =
+      ifelse(
+        comparison_number == 1,
+        y_w1,
+        y_w2
+      ),
+
+    text_x =
+      (
+        x_start +
+        x_end
+      ) /
+      2,
+
+    bracket_height =
+      0.04 *
+      yrange
+  )
+
+
+# ==========================================================
+# 14. PLOT
+# ==========================================================
+
+plot_MAD <- ggplot() +
+
+  geom_line(
+
+    data =
+      df,
+
+    aes(
+      x =
+        timepoint,
+      y =
+        n_peaks,
+      group =
+        mouse_id
+    ),
+
+    alpha =
+      0.35,
+
+    linewidth =
+      0.5
+  ) +
+
+  geom_point(
+
+    data =
+      df,
+
+    aes(
+      x =
+        timepoint,
+      y =
+        n_peaks
+    ),
+
+    size =
+      2,
+
+    alpha =
+      0.7
+  ) +
+
+  geom_point(
+
+    data =
+      plot_summary_MAD,
+
+    aes(
+      x =
+        timepoint,
+      y =
+        mean_peaks
+    ),
+
+    size =
+      4
+  ) +
+
+  geom_errorbar(
+
+    data =
+      plot_summary_MAD,
+
+    aes(
+
+      x =
+        timepoint,
+
+      ymin =
+        mean_peaks -
+        sem_peaks,
+
+      ymax =
+        mean_peaks +
+        sem_peaks
+
+    ),
+
+    width =
+      0.1,
+
+    linewidth =
+      0.8
+  ) +
+
+  # Horizontal brackets
+  geom_segment(
+
+    data =
+      p_MAD,
+
+    aes(
+      x =
+        x_start,
+      xend =
+        x_end,
+      y =
+        y_position,
+      yend =
+        y_position
+    ),
+
+    inherit.aes =
+      FALSE,
+
+    linewidth =
+      0.5
+  ) +
+
+  # Left bracket ends
+  geom_segment(
+
+    data =
+      p_MAD,
+
+    aes(
+      x =
+        x_start,
+      xend =
+        x_start,
+      y =
+        y_position,
+      yend =
+        y_position -
+        bracket_height
+    ),
+
+    inherit.aes =
+      FALSE,
+
+    linewidth =
+      0.5
+  ) +
+
+  # Right bracket ends
+  geom_segment(
+
+    data =
+      p_MAD,
+
+    aes(
+      x =
+        x_end,
+      xend =
+        x_end,
+      y =
+        y_position,
+      yend =
+        y_position -
+        bracket_height
+    ),
+
+    inherit.aes =
+      FALSE,
+
+    linewidth =
+      0.5
+  ) +
+
+  # Adjusted Dunnett p-values
+  geom_text(
+
+    data =
+      p_MAD,
+
+    aes(
+      x =
+        text_x,
+      y =
+        y_position +
+        0.05 *
+        yrange,
+      label =
+        p_label
+    ),
+
+    inherit.aes =
+      FALSE,
+
+    size =
+      3.7
+  ) +
+
+  facet_wrap(
+    ~ trial_type,
+    scales =
+      "free_y"
+  ) +
+
+  scale_y_continuous(
+
+    expand =
+      expansion(
+        mult =
+          c(
+            0.05,
+            0.30
+          )
+      )
+  ) +
+
+  labs(
+
+    x =
+      "Timepoint",
+
+    y =
+      "Number of detected transients",
+
+    title =
+      "MAD-based transient counts"
+
+  ) +
+
+  theme_classic(
+    base_size =
+      13
+  )
+
+
+print(
+  plot_MAD
+)
+
+
+ggsave(
+
+  filename =
+    "MAD_Poisson_peak_counts_with_Dunnett_pvalues.png",
+
+  plot =
+    plot_MAD,
+
+  width =
+    10,
+
+  height =
+    4.5,
+
+  dpi =
+    300
+)
+
+
+cat(
+  "\nMAD ANALYSIS COMPLETE\n")
+```
+
+
+# SD
+```{r}
+# ==========================================================
+# FIBER PHOTOMETRY TRANSIENT ANALYSIS
+# SD-BASED PEAK COUNTS
+#
+# Separate Poisson GLMMs for:
+#   Hab
+#   Social
+#   Novel
+#
+# Outcome:
+#   n_peaks
+#
+# Fixed effect:
+#   timepoint
+#
+# Random intercept:
+#   mouse_id
+#
+# Offset:
+#   log(duration_s)
+#
+# Post hoc:
+#   Dunnett:
+#     W1 vs Preinduction
+#     W2 vs Preinduction
+# ==========================================================
+
+
+# ==========================================================
+# 1. PACKAGES
+# ==========================================================
+
+library(tidyverse)
+library(lme4)
+library(emmeans)
+
+
+# ==========================================================
+# 2. IMPORT DATA
+# ==========================================================
+
+df <- read.csv(
+  "whole_trial_peak_data_for_R_SD.csv"
+)
+
+
+# ==========================================================
+# 3. PREPARE DATA
+# ==========================================================
+
+df <- df %>%
+
+  mutate(
+
+    mouse_id =
+      factor(mouse_id),
+
+    trial_type =
+      factor(
+        trial_type,
+        levels =
+          c(
+            "Hab",
+            "Social",
+            "Novel"
+          )
+      ),
+
+    timepoint =
+      factor(
+        timepoint,
+        levels =
+          c(
+            "Preinduction",
+            "W1",
+            "W2"
+          )
+      ),
+
+    n_peaks =
+      as.integer(
+        n_peaks
+      ),
+
+    duration_s =
+      as.numeric(
+        duration_s
+      )
+
+  ) %>%
+
+  filter(
+
+    trial_type %in%
+      c(
+        "Hab",
+        "Social",
+        "Novel"
+      ),
+
+    timepoint %in%
+      c(
+        "Preinduction",
+        "W1",
+        "W2"
+      ),
+
+    !is.na(
+      n_peaks
+    ),
+
+    !is.na(
+      duration_s
+    ),
+
+    duration_s >
+      0
+
+  ) %>%
+
+  droplevels()
+
+
+# ==========================================================
+# 4. DATA CHECKS
+# ==========================================================
+
+cat(
+  "\n====================================================\n",
+  "SD DATA CHECK\n",
+  "====================================================\n"
+)
+
+
+print(
+  table(
+    df$trial_type,
+    df$timepoint
+  )
+)
+
+
+cat(
+  "\nNumber of mice:",
+  n_distinct(
+    df$mouse_id
+  ),
+  "\n"
+)
+
+
+cat(
+  "\nPeak counts:\n"
+)
+
+
+print(
+  summary(
+    df$n_peaks
+  )
+)
+
+
+cat(
+  "\nRecording durations:\n"
+)
+
+
+print(
+  summary(
+    df$duration_s
+  )
+)
+
+
+# ==========================================================
+# 5. DESCRIPTIVES
+# ==========================================================
+
+descriptive_SD <- df %>%
+
+  group_by(
+    trial_type,
+    timepoint
+  ) %>%
+
+  summarise(
+
+    n_mice =
+      n_distinct(
+        mouse_id
+      ),
+
+    mean_peaks =
+      mean(
+        n_peaks,
+        na.rm =
+          TRUE
+      ),
+
+    sd_peaks =
+      sd(
+        n_peaks,
+        na.rm =
+          TRUE
+      ),
+
+    sem_peaks =
+      sd_peaks /
+      sqrt(
+        n_mice
+      ),
+
+    median_peaks =
+      median(
+        n_peaks,
+        na.rm =
+          TRUE
+      ),
+
+    mean_duration_s =
+      mean(
+        duration_s,
+        na.rm =
+          TRUE
+      ),
+
+    .groups =
+      "drop"
+  )
+
+
+print(
+  descriptive_SD
+)
+
+
+write.csv(
+  descriptive_SD,
+  "SD_descriptive_statistics.csv",
+  row.names =
+    FALSE
+)
+
+
+# ==========================================================
+# 6. ANALYSIS FUNCTION
+# ==========================================================
+
+run_poisson_SD <- function(
+  data,
+  trial_name
+) {
+
+
+  cat(
+    "\n\n====================================================\n",
+    trial_name,
+    " - SD\n",
+    "====================================================\n"
+  )
+
+
+  d <- data %>%
+
+    filter(
+      trial_type ==
+        trial_name
+    ) %>%
+
+    droplevels()
+
+
+  print(
+    d %>%
+
+      select(
+        mouse_id,
+        timepoint,
+        n_peaks,
+        duration_s
+      ) %>%
+
+      arrange(
+        mouse_id,
+        timepoint
+      )
+  )
+
+
+  # ========================================================
+  # FULL POISSON GLMM
+  # ========================================================
+
+  model_full <- glmer(
+
+    n_peaks ~
+
+      timepoint +
+
+      offset(
+        log(
+          duration_s
+        )
+      ) +
+
+      (
+        1 |
+        mouse_id
+      ),
+
+    family =
+      poisson(
+        link =
+          "log"
+      ),
+
+    data =
+      d,
+
+    control =
+      glmerControl(
+        optimizer =
+          "bobyqa"
+      )
+
+  )
+
+
+  cat(
+    "\n-----------------------------\n",
+    "MODEL SUMMARY\n",
+    "-----------------------------\n"
+  )
+
+
+  print(
+    summary(
+      model_full
+    )
+  )
+
+
+  # ========================================================
+  # SINGULAR FIT CHECK
+  # ========================================================
+
+  singular_fit <- isSingular(
+
+    model_full,
+
+    tol =
+      1e-4
+  )
+
+
+  cat(
+    "\nSingular fit:",
+    singular_fit,
+    "\n"
+  )
+
+
+  # ========================================================
+  # DISPERSION
+  # ========================================================
+
+  pearson_residuals <- residuals(
+
+    model_full,
+
+    type =
+      "pearson"
+  )
+
+
+  pearson_chisq <- sum(
+    pearson_residuals^2
+  )
+
+
+  residual_df <-
+
+    nrow(
+      d
+    ) -
+
+    length(
+      fixef(
+        model_full
+      )
+    )
+
+
+  dispersion_ratio <-
+
+    pearson_chisq /
+    residual_df
+
+
+  dispersion_p <- pchisq(
+
+    pearson_chisq,
+
+    df =
+      residual_df,
+
+    lower.tail =
+      FALSE
+  )
+
+
+  cat(
+    "\n-----------------------------\n",
+    "DISPERSION CHECK\n",
+    "-----------------------------\n"
+  )
+
+
+  cat(
+    "Dispersion ratio:",
+    round(
+      dispersion_ratio,
+      3
+    ),
+    "\n"
+  )
+
+
+  cat(
+    "Approximate p-value:",
+    round(
+      dispersion_p,
+      4
+    ),
+    "\n"
+  )
+
+
+  # ========================================================
+  # NULL MODEL
+  # ========================================================
+
+  model_null <- glmer(
+
+    n_peaks ~
+
+      offset(
+        log(
+          duration_s
+        )
+      ) +
+
+      (
+        1 |
+        mouse_id
+      ),
+
+    family =
+      poisson(
+        link =
+          "log"
+      ),
+
+    data =
+      d,
+
+    control =
+      glmerControl(
+        optimizer =
+          "bobyqa"
+      )
+
+  )
+
+
+  # ========================================================
+  # OVERALL TIMEPOINT TEST
+  # ========================================================
+
+  overall_test <- anova(
+
+    model_null,
+    model_full,
+
+    test =
+      "Chisq"
+  )
+
+
+  cat(
+    "\n-----------------------------\n",
+    "OVERALL TIMEPOINT TEST\n",
+    "-----------------------------\n"
+  )
+
+
+  print(
+    overall_test
+  )
+
+
+  # ========================================================
+  # ESTIMATED MARGINAL MEANS
+  # ========================================================
+
+  emm <- emmeans(
+
+    model_full,
+
+    ~ timepoint,
+
+    type =
+      "response"
+  )
+
+
+  cat(
+    "\n-----------------------------\n",
+    "ESTIMATED MARGINAL MEANS\n",
+    "-----------------------------\n"
+  )
+
+
+  print(
+    emm
+  )
+
+
+  # ========================================================
+  # DUNNETT POST HOC
+  # ========================================================
+
+  dunnett_results <- contrast(
+
+    emm,
+
+    method =
+      "trt.vs.ctrl",
+
+    ref =
+      1,
+
+    adjust =
+      "dunnettx"
+  )
+
+
+  cat(
+    "\n-----------------------------\n",
+    "DUNNETT POST HOC TEST\n",
+    "-----------------------------\n"
+  )
+
+
+  print(
+    dunnett_results
+  )
+
+
+  # ========================================================
+  # SAVE MODEL
+  # ========================================================
+
+  saveRDS(
+
+    model_full,
+
+    paste0(
+      "SD_",
+      trial_name,
+      "_Poisson_model.rds"
+    )
+  )
+
+
+  # ========================================================
+  # RETURN
+  # ========================================================
+
+  list(
+
+    data =
+      d,
+
+    model =
+      model_full,
+
+    null_model =
+      model_null,
+
+    overall =
+      overall_test,
+
+    emm =
+      emm,
+
+    dunnett =
+      dunnett_results,
+
+    dispersion_ratio =
+      dispersion_ratio,
+
+    dispersion_p =
+      dispersion_p,
+
+    singular =
+      singular_fit
+  )
+}
+
+
+# ==========================================================
+# 7. RUN MODELS
+# ==========================================================
+
+hab_SD <- run_poisson_SD(
+  df,
+  "Hab"
+)
+
+
+social_SD <- run_poisson_SD(
+  df,
+  "Social"
+)
+
+
+novel_SD <- run_poisson_SD(
+  df,
+  "Novel"
+)
+
+
+# ==========================================================
+# 8. DIAGNOSTIC SUMMARY
+# ==========================================================
+
+diagnostics_SD <- tibble(
+
+  trial_type =
+    c(
+      "Hab",
+      "Social",
+      "Novel"
+    ),
+
+  dispersion_ratio =
+    c(
+      hab_SD$dispersion_ratio,
+      social_SD$dispersion_ratio,
+      novel_SD$dispersion_ratio
+    ),
+
+  dispersion_p =
+    c(
+      hab_SD$dispersion_p,
+      social_SD$dispersion_p,
+      novel_SD$dispersion_p
+    ),
+
+  singular_fit =
+    c(
+      hab_SD$singular,
+      social_SD$singular,
+      novel_SD$singular
+    )
+)
+
+
+print(
+  diagnostics_SD
+)
+
+
+write.csv(
+  diagnostics_SD,
+  "SD_Poisson_diagnostics.csv",
+  row.names =
+    FALSE
+)
+
+
+# ==========================================================
+# 9. DUNNETT RESULTS
+# ==========================================================
+
+dunnett_SD <- bind_rows(
+
+  as.data.frame(
+    hab_SD$dunnett
+  ) %>%
+    mutate(
+      trial_type =
+        "Hab"
+    ),
+
+  as.data.frame(
+    social_SD$dunnett
+  ) %>%
+    mutate(
+      trial_type =
+        "Social"
+    ),
+
+  as.data.frame(
+    novel_SD$dunnett
+  ) %>%
+    mutate(
+      trial_type =
+        "Novel"
+    )
+
+) %>%
+
+  select(
+    trial_type,
+    everything()
+  )
+
+
+print(
+  dunnett_SD
+)
+
+
+write.csv(
+  dunnett_SD,
+  "SD_Poisson_Dunnett_results.csv",
+  row.names =
+    FALSE
+)
+
+
+# ==========================================================
+# 10. ESTIMATED MARGINAL MEANS
+# ==========================================================
+
+emm_SD <- bind_rows(
+
+  as.data.frame(
+    hab_SD$emm
+  ) %>%
+    mutate(
+      trial_type =
+        "Hab"
+    ),
+
+  as.data.frame(
+    social_SD$emm
+  ) %>%
+    mutate(
+      trial_type =
+        "Social"
+    ),
+
+  as.data.frame(
+    novel_SD$emm
+  ) %>%
+    mutate(
+      trial_type =
+        "Novel"
+    )
+
+) %>%
+
+  select(
+    trial_type,
+    everything()
+  )
+
+
+write.csv(
+  emm_SD,
+  "SD_Poisson_estimated_marginal_means.csv",
+  row.names =
+    FALSE
+)
+
+
+# ==========================================================
+# 11. PLOT SUMMARY
+# ==========================================================
+
+plot_summary_SD <- df %>%
+
+  group_by(
+    trial_type,
+    timepoint
+  ) %>%
+
+  summarise(
+
+    mean_peaks =
+      mean(
+        n_peaks,
+        na.rm =
+          TRUE
+      ),
+
+    sd_peaks =
+      sd(
+        n_peaks,
+        na.rm =
+          TRUE
+      ),
+
+    n_mice =
+      n_distinct(
+        mouse_id
+      ),
+
+    sem_peaks =
+      sd_peaks /
+      sqrt(
+        n_mice
+      ),
+
+    .groups =
+      "drop"
+  )
+
+
+# ==========================================================
+# 12. PREPARE P-VALUES FOR PLOT
+# ==========================================================
+
+p_SD <- bind_rows(
+
+  as.data.frame(
+    hab_SD$dunnett
+  ) %>%
+    mutate(
+      trial_type =
+        "Hab"
+    ),
+
+  as.data.frame(
+    social_SD$dunnett
+  ) %>%
+    mutate(
+      trial_type =
+        "Social"
+    ),
+
+  as.data.frame(
+    novel_SD$dunnett
+  ) %>%
+    mutate(
+      trial_type =
+        "Novel"
+    )
+
+) %>%
+
+  group_by(
+    trial_type
+  ) %>%
+
+  mutate(
+
+    comparison_number =
+      row_number()
+
+  ) %>%
+
+  ungroup() %>%
+
+  mutate(
+
+    p_label =
+      case_when(
+
+        p.value <
+          0.001 ~
+          "p < .001",
+
+        p.value <
+          0.01 ~
+          paste0(
+            "p = ",
+            sub(
+              "^0",
+              "",
+              sprintf(
+                "%.3f",
+                p.value
+              )
+            )
+          ),
+
+        TRUE ~
+          paste0(
+            "p = ",
+            sub(
+              "^0",
+              "",
+              sprintf(
+                "%.2f",
+                p.value
+              )
+            )
+          )
+      )
+  )
+
+
+# ==========================================================
+# 13. BRACKET HEIGHTS
+# ==========================================================
+
+plot_heights_SD <- df %>%
+
+  group_by(
+    trial_type
+  ) %>%
+
+  summarise(
+
+    ymax =
+      max(
+        n_peaks,
+        na.rm =
+          TRUE
+      ),
+
+    ymin =
+      min(
+        n_peaks,
+        na.rm =
+          TRUE
+      ),
+
+    .groups =
+      "drop"
+  ) %>%
+
+  mutate(
+
+    yrange =
+      ymax -
+      ymin,
+
+    yrange =
+      ifelse(
+        yrange ==
+          0,
+        max(
+          ymax *
+            0.2,
+          1
+        ),
+        yrange
+      ),
+
+    y_w1 =
+      ymax +
+      0.15 *
+      yrange,
+
+    y_w2 =
+      ymax +
+      0.40 *
+      yrange
+
+  )
+
+
+p_SD <- p_SD %>%
+
+  left_join(
+    plot_heights_SD,
+    by =
+      "trial_type"
+  ) %>%
+
+  mutate(
+
+    x_start =
+      1,
+
+    x_end =
+      ifelse(
+        comparison_number ==
+          1,
+        2,
+        3
+      ),
+
+    y_position =
+      ifelse(
+        comparison_number ==
+          1,
+        y_w1,
+        y_w2
+      ),
+
+    text_x =
+      (
+        x_start +
+        x_end
+      ) /
+      2,
+
+    bracket_height =
+      0.04 *
+      yrange
+  )
+
+
+# ==========================================================
+# 14. PLOT
+# ==========================================================
+
+plot_SD <- ggplot() +
+
+  geom_line(
+
+    data =
+      df,
+
+    aes(
+      x =
+        timepoint,
+      y =
+        n_peaks,
+      group =
+        mouse_id
+    ),
+
+    alpha =
+      0.35,
+
+    linewidth =
+      0.5
+  ) +
+
+  geom_point(
+
+    data =
+      df,
+
+    aes(
+      x =
+        timepoint,
+      y =
+        n_peaks
+    ),
+
+    size =
+      2,
+
+    alpha =
+      0.7
+  ) +
+
+  geom_point(
+
+    data =
+      plot_summary_SD,
+
+    aes(
+      x =
+        timepoint,
+      y =
+        mean_peaks
+    ),
+
+    size =
+      4
+  ) +
+
+  geom_errorbar(
+
+    data =
+      plot_summary_SD,
+
+    aes(
+
+      x =
+        timepoint,
+
+      ymin =
+        mean_peaks -
+        sem_peaks,
+
+      ymax =
+        mean_peaks +
+        sem_peaks
+
+    ),
+
+    width =
+      0.1,
+
+    linewidth =
+      0.8
+  ) +
+
+  geom_segment(
+
+    data =
+      p_SD,
+
+    aes(
+      x =
+        x_start,
+      xend =
+        x_end,
+      y =
+        y_position,
+      yend =
+        y_position
+    ),
+
+    inherit.aes =
+      FALSE,
+
+    linewidth =
+      0.5
+  ) +
+
+  geom_segment(
+
+    data =
+      p_SD,
+
+    aes(
+      x =
+        x_start,
+      xend =
+        x_start,
+      y =
+        y_position,
+      yend =
+        y_position -
+        bracket_height
+    ),
+
+    inherit.aes =
+      FALSE,
+
+    linewidth =
+      0.5
+  ) +
+
+  geom_segment(
+
+    data =
+      p_SD,
+
+    aes(
+      x =
+        x_end,
+      xend =
+        x_end,
+      y =
+        y_position,
+      yend =
+        y_position -
+        bracket_height
+    ),
+
+    inherit.aes =
+      FALSE,
+
+    linewidth =
+      0.5
+  ) +
+
+  geom_text(
+
+    data =
+      p_SD,
+
+    aes(
+      x =
+        text_x,
+      y =
+        y_position +
+        0.05 *
+        yrange,
+      label =
+        p_label
+    ),
+
+    inherit.aes =
+      FALSE,
+
+    size =
+      3.7
+  ) +
+
+  facet_wrap(
+    ~ trial_type,
+    scales =
+      "free_y"
+  ) +
+
+  scale_y_continuous(
+
+    expand =
+      expansion(
+        mult =
+          c(
+            0.05,
+            0.30
+          )
+      )
+  ) +
+
+  labs(
+
+    x =
+      "Timepoint",
+
+    y =
+      "Number of detected transients",
+
+    title =
+      "SD-based transient counts"
+
+  ) +
+
+  theme_classic(
+    base_size =
+      13
+  )
+
+
+print(
+  plot_SD
+)
+
+
+ggsave(
+
+  filename =
+    "SD_Poisson_peak_counts_with_Dunnett_pvalues.png",
+
+  plot =
+    plot_SD,
+
+  width =
+    10,
+
+  height =
+    4.5,
+
+  dpi =
+    300
+)
+
+
+cat(
+  "\nSD ANALYSIS COMPLETE\n"
+)
+```
+

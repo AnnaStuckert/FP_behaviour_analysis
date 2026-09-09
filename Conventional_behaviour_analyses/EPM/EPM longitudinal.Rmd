@@ -1,0 +1,433 @@
+---
+title: "LDCT"
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+date: '2022-12-05'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Load data
+```{r}
+# Loading
+library(pacman)
+p_load(readxl, tidyverse)
+# xlsx files
+#df <- read_excel("EPM_longitudinal_data_4weeks.xlsx") #nose point
+df <- read_excel("EPM_longitudinal_data_center_point.xlsx") # center point
+#df <- read_excel("EPM_longitudinal_data_center_point_5C3_original.xlsx") # center point
+
+```
+
+
+
+```{r}
+# remove WT animals
+df<-df[!(df$ID==429),]
+df<-df[!(df$ID==374),]
+df<-df[!(df$ID==461),]
+df<-df[!(df$ID==463),]
+df<-df[!(df$ID==402),]
+
+#sorting away PFC animals
+
+df<-df[!(df$ID==423),]
+df<-df[!(df$ID==376),]
+df<-df[!(df$ID==372),]
+df<-df[!(df$ID==398),]
+df<-df[!(df$ID==400),]
+df<-df[!(df$ID==459),]
+df<-df[!(df$ID==450),]
+df<-df[!(df$ID==584),]
+df<-df[!(df$ID==597),]
+
+
+#sorting away insula animals
+# df<-df[!(df$ID==533),]
+# df<-df[!(df$ID==541),]
+# df<-df[!(df$ID==580),]
+# df<-df[!(df$ID==566),]
+# df<-df[!(df$ID==588),]
+# df<-df[!(df$ID==590),]
+
+
+
+```
+
+
+Time spent in dark chamber:
+```{r}
+#periphery_preference = time spent in periphery / time spent in center
+ df<-  df %>% mutate(time_dark=df$`In zone Closed_arm1 cumulative`+df$`In zone Closed_arm2 cumulative`)
+ df<-  df %>% mutate(time_light=df$`In zone Open_arm1 cumulative`+df$`In zone Open_arm2 cumaltive`+ df$`O1_round cumulative`+df$`O2_round cumulative`)
+# 
+# #relative time spent in light over dark
+ df<-  df %>% mutate(light_preference=time_light/(time_light+time_dark)*100) 
+#relative time spent in dark over light
+df<-  df %>% mutate(dark_preference=time_dark/(time_light+time_dark)*100) 
+
+```
+
+
+plot
+
+Time spent in dark chamber:
+```{r}
+#periphery_preference = time spent in periphery / time spent in center
+ df<-  df %>% mutate(time_dark=df$`In zone Closed_arm1 cumulative`+df$`In zone Closed_arm2 cumulative`)
+ df<-  df %>% mutate(time_light=df$`In zone Open_arm1 cumulative`+df$`In zone Open_arm2 cumaltive`)
+# 
+# #relative time spent in light over dark
+ df<-  df %>% mutate(light_preference=time_light/(time_light+time_dark)*100) 
+#relative time spent in dark over light
+df<-  df %>% mutate(dark_preference=time_dark/(time_light+time_dark)*100) 
+
+```
+
+Frequency in arms
+```{r}
+#frequency in dark and light arms
+df<-  df %>% mutate(freq_dark=df$`In zone Closed_arm1  frequency`+df$`In zone Closed_arm2 frequency`)
+df<-  df %>% mutate(freq_light=df$`In zone Open_arm1 frequency`+df$`In zone Open_arm2 frequency`)
+
+#relative time spent in dark over light as entries in open arm / total arm entries
+df<-  df %>% mutate(light_preference_freq=freq_light/(freq_light+freq_dark)*100) 
+
+df<-  df %>% mutate(dark_preference_freq=freq_dark/(freq_light+freq_dark)*100) 
+
+```
+
+LMM
+
+#dark preference
+```{r}
+#Loading packages for linear mixed effects modelling
+library(lmerTest)
+library(lme4)
+
+df$Week <- factor(df$Week , levels = c("Preinduction","1st week post induction","2nd week post induction"))
+
+levels(df$Week)[levels(df$Week) == "1st week post induction"] <- "1st week"
+levels(df$Week)[levels(df$Week) == "2nd week post induction"] <- "2nd week"
+
+#creating a linear model of the same variables as included in the anova
+m_anova <-lmer(dark_preference ~  Week + (1|ID), data=df)
+summary(m_anova)
+
+# Obtain estimated marginal means
+emmeans_results <- emmeans(m_anova, ~ Week)
+
+# for plot
+emmeans_results_df <- as.data.frame(emmeans_results)
+
+
+# Perform pairwise comparisons
+pairwise_results <- contrast(emmeans_results, method = "pairwise")
+
+# Display the results
+summary(pairwise_results)
+
+#bonferroni
+pwc <- pairs(emmeans_results, adjust = "bon")
+pwc
+```
+
+
+
+# assumption checks
+```{r}
+p_load(performance)
+
+check <- check_model(m_anova)
+check
+```
+
+#assumption checks
+```{r}
+qqnorm(residuals(m_anova)); qqline(residuals(m_anova))  # Q-Q plot - some tails
+shapiro.test(residuals(m_anova))  # Shapiro-Wilk test (for small samples)
+
+```
+
+#assumption checks
+
+
+```{r}
+#assumption check 1 - Normality of residuals (should be normally distributed) 
+qqnorm(resid(m_anova))
+qqline(resid(m_anova))
+shapiro.test(residuals(m_anova)) 
+
+```
+
+```{r}
+#checks for distribution, compliments residual plot
+hist(resid(m_anova)) 
+```
+
+```{r}
+#Assumption 2 - Homoscedasticity (variance should be consistent) - passes
+plot(fitted(m_anova), resid(m_anova))
+#meets assumption, evenly distributed, thus, Homoscedasticity
+```
+
+```{r}
+#When you plot residuals by ID, you're looking for:
+#No systematic pattern across individuals.
+#No obvious trends within IDs (e.g., all high or all low residuals).
+#Ideally, residuals centered around zero with some variation.
+boxplot(resid(m_anova) ~ df$ID)
+```
+
+```{r}
+#Assumption 3 - confidence intervals - passes
+confint(m_anova, method = "boot")
+#if CI includes zero between 2.5% and 97.5% then that effect is not statistically significant.
+
+```
+
+
+# Raincloud
+
+```{r}
+# Convert emmeans pairwise comparisons to data frame (BONFERRONI already applied in pwc)
+pairwise_results_oft <- as.data.frame(pwc)
+
+# Filter significant results (optional, not required for plotting)
+sig_results_oft <- pairwise_results_oft %>%
+  dplyr::filter(p.value < 0.05)
+
+# Add significance labels
+sig_labels_oft <- pairwise_results_oft %>%
+  dplyr::mutate(
+    label = dplyr::case_when(
+      p.value < 0.001 ~ "***",
+      p.value < 0.01 ~ "**",
+      p.value < 0.05 ~ "*",
+      TRUE ~ "ns"
+    )
+  )
+
+# View labeled results
+sig_labels_oft
+```
+
+
+
+```{r}
+
+library(dplyr)
+library(tidyr)
+
+# IMPORTANT: ensure this is a data.frame
+pairwise_results_oft <- as.data.frame(pwc)
+
+# pre-compute safe y-position reference (NEVER rely on df inside pipe)
+y_max <- max(df$dark_preference, na.rm = TRUE)
+
+sig_labels_oft <- pairwise_results_oft %>%
+  
+  # split contrasts into groups
+  separate(contrast, into = c("group1", "group2"), sep = " - ") %>%
+  
+  mutate(
+    # significance labels (Bonferroni already in pwc)
+    label = case_when(
+      p.value < 0.001 ~ "***",
+      p.value < 0.01 ~ "**",
+      p.value < 0.05 ~ "*",
+      TRUE ~ "ns"
+    ),
+    
+    # safe, automatic y positioning
+    y.position = y_max * (1 + 0.05 * row_number())
+  ) %>%
+  
+  # explicitly use dplyr::select to avoid masking issues
+  dplyr::select(group1, group2, y.position, label)
+
+sig_labels_oft
+
+```
+Repeated measures plot
+```{r}
+p_load(ggpubr, ggdist)
+
+plot_raincloud <- ggplot(df, aes(x = Week, y = dark_preference, fill = Week, color = Week)) +
+  
+  # Half-violin, nudged left
+  stat_halfeye(
+    side = "left",
+    adjust = 0.5,
+    justification = 1.1,
+    .width = 0,
+    point_colour = NA,
+    alpha = 0.6,
+    scale = 0.5, #make plot narrower
+    position = position_nudge(x = -0.05)
+  ) +
+  
+#  # Boxplot
+#  geom_boxplot(
+#    width = 0.05,
+#    outlier.shape = NA,
+#    alpha = 0.7,
+#    color = "black",
+#    show.legend=FALSE,
+#    position = position_nudge(x = -0.15)
+#  ) +
+  
+  
+  #connect IDs
+  geom_line(
+  aes(x = Week, y = dark_preference, group = ID),
+  color = "gray50",
+  linewidth = 0.5,
+  alpha = 0.4
+) +
+
+ # Jittered points
+  geom_jitter(
+    width = 0.04,
+    size = 2.0,
+    alpha = 0.5,
+  ) +
+  
+  #add means for SE bars
+  geom_point(
+    data = emmeans_results_df,
+    aes(x = Week, y = emmean),
+    color = "black",
+    size = 3.0,
+    inherit.aes = FALSE,
+    position = position_nudge(x = -0.15)
+  ) +
+  
+    
+  #adding in model SE data
+  geom_errorbar(
+    data = emmeans_results_df,
+    aes(x = Week, ymin = emmean - SE, ymax = emmean + SE),
+    width = 0.10,
+    inherit.aes = FALSE,
+    linewidth = 0.6,
+    position = position_nudge(x = -0.15)
+  ) +
+  
+  
+  # # Add in significant lines and asterisks
+  # stat_pvalue_manual(
+  #   sig_labels_oft,
+  #   label = "p.adj.signif",
+  #   tip.length = 0.02,
+  #   size = 6,
+  #   inherit.aes = FALSE
+  # ) +
+  
+  stat_pvalue_manual(
+    sig_labels_oft,
+    label = "label",
+    tip.length = 0.02,
+    size = 6,
+    inherit.aes = FALSE
+  ) +
+
+  # Manual colors
+  scale_fill_manual(values = c("Preinduction" = "#feca8d", "1st week" = "#f1605d", "2nd week" = "#440f76")) +
+  scale_color_manual(values = c("Preinduction" = "#feca8d", "1st week" = "#f1605d", "2nd week" = "#440f76")) +
+  
+  # Labels and theme
+  labs(
+    x = "Timepoint",
+    y = "Darkness Preference %",
+    fill = "Group",
+    color = "Group"
+  ) +
+  theme_bw() +
+  theme(
+    text = element_text(size = 16),
+    legend.position = "right"
+  )
+
+plot_raincloud
+ggsave("EPM_dark_preference_time.svg", plot = plot_raincloud, width = 8, height = 6)
+```
+
+
+
+# distance moved
+
+
+```{r}
+#Loading packages for linear mixed effects modelling
+library(lmerTest)
+library(lme4)
+
+df$distance <- df$`Distance moved`
+
+
+#creating a linear model of the same variables as included in the anova
+m_anova <-lmer(distance ~  Week + (1|ID), data=df)
+summary(m_anova)
+
+# Obtain estimated marginal means
+emmeans_results <- emmeans(m_anova, ~ Week)
+
+# Perform pairwise comparisons
+pairwise_results <- contrast(emmeans_results, method = "pairwise")
+
+# Display the results
+summary(pairwise_results)
+
+#bonferroni
+pwc <- pairs(emmeans_results, adjust = "bon")
+pwc
+```
+
+
+
+
+#distance
+```{r}
+cbbPalette <- c("#fcfdbf", "#feca8d", "#D67236", "#f1605d", "#9e2f7f", "#440f76")
+
+p_load(ggbeeswarm, ggsignif)
+
+#df$Week <- factor(df$Week , levels = c("Preinduction","1st week post induction","2nd week post #induction"))
+
+
+ggplot(df, aes(x = Week, y = distance)) +
+  geom_beeswarm(data = df, size = 2.5, aes(color = ID)) +
+  ylab("Distance moved") +
+  xlab("Timepoint") +
+  # geom_signif(comparisons = list(c("Preinduction", "3rd week post induction")),
+  #             map_signif_level = TRUE,
+  #             y_position = 115,
+  #             annotations = c("0.0052")) +
+  #   geom_signif(comparisons = list(c("Preinduction", "1st week post induction")),
+  #             map_signif_level = TRUE,
+  #             y_position = 105,
+  #             annotations = c("0.0128")) +
+  #     geom_signif(comparisons = list(c("Preinduction", "2nd week post induction")),
+  #             map_signif_level = TRUE,
+  #             y_position = 110,
+  #             annotations = c("0.0046")) +
+  # geom_signif(comparisons = list(c("Preinduction", "3rd week post induction")),
+  #             map_signif_level = TRUE,
+  #             y_position = 115,
+  #             annotations = c("0.1561")) +
+  #   geom_signif(comparisons = list(c("Preinduction", "1st week post induction")),
+  #             map_signif_level = TRUE,
+  #             y_position = 105,
+  #             annotations = c("0.1204")) +
+  #     geom_signif(comparisons = list(c("Preinduction", "2nd week post induction")),
+  #             map_signif_level = TRUE,
+  #             y_position = 110,
+  #             annotations = c("0.1293")) +
+  geom_crossbar(stat = "summary", fun = mean, width = 0.2, fatten = 1.5) +
+  geom_errorbar(data = df, stat = "summary", fun.data = mean_se, width = 0.1, position = "dodge") +
+  theme(text = element_text(size = 13))
+```

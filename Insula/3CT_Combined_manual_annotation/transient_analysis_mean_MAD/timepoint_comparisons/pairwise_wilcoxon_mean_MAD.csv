@@ -1,0 +1,10 @@
+trial_type,comparison,timepoint_1,timepoint_2,n_mice,wilcoxon_stat,p_raw,p_holm
+Hab,Preinduction vs W1,Preinduction,W1,6,9.0,0.84375,0.84375
+Hab,Preinduction vs W2,Preinduction,W2,6,0.0,0.043114446783075355,0.09375
+Hab,W1 vs W2,W1,W2,6,0.0,0.03125,0.09375
+Social,Preinduction vs W1,Preinduction,W1,6,6.0,0.4375,0.4375
+Social,Preinduction vs W2,Preinduction,W2,6,0.0,0.043114446783075355,0.09375
+Social,W1 vs W2,W1,W2,6,0.0,0.03125,0.09375
+Novel,Preinduction vs W1,Preinduction,W1,5,6.0,0.8125,0.8125
+Novel,Preinduction vs W2,Preinduction,W2,6,0.0,0.03125,0.09375
+Novel,W1 vs W2,W1,W2,5,1.0,0.125,0.25

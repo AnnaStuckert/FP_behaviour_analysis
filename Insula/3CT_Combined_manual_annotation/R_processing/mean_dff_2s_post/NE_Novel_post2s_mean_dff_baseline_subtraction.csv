@@ -27,6 +27,8 @@ mouse_id,genotype,condition,week,behavior,mean_dFF,n_events
 590,NE,Novel,W2,Social_interaction,0.3433380797007922,8
 566,NE,Novel,W2,Novel_interaction,1.0408654502710373,18
 566,NE,Novel,W2,Social_interaction,-1.0021205876417167,8
+580,NE,Novel,W2,Novel_interaction,0.25355055738559173,8
+580,NE,Novel,W2,Social_interaction,-0.06687218013620679,9
 533,NE,Novel,W2,Novel_interaction,1.481665642109018,12
 533,NE,Novel,W2,Social_interaction,0.6922727203426231,8
 541,NE,Novel,W2,Novel_interaction,-2.284724544854028,7

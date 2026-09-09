@@ -10,6 +10,7 @@ mouse_id,week,behavior,mean_dFF
 566,W2,Novel_interaction,-0.7730267318332104
 580,Preinduction,Novel_interaction,0.9716626164170861
 580,W1,Novel_interaction,0.46461336271510223
+580,W2,Novel_interaction,1.0222649590515351
 588,Preinduction,Novel_interaction,-0.45146692653690146
 588,W1,Novel_interaction,0.8158926328686009
 588,W2,Novel_interaction,0.24125288037395962
@@ -26,6 +27,7 @@ mouse_id,week,behavior,mean_dFF
 566,W2,Social_interaction,0.22275383414627453
 580,Preinduction,Social_interaction,0.9813594731146834
 580,W1,Social_interaction,1.1101119633218828
+580,W2,Social_interaction,0.4687638708545723
 588,Preinduction,Social_interaction,2.05653627357269
 588,W1,Social_interaction,1.9640126746233242
 588,W2,Social_interaction,1.4185308006467918

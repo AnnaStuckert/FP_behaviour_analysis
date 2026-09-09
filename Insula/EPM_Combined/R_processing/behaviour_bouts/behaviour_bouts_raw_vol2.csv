@@ -1,75 +1,75 @@
 week,mouse_id,behavior,duration_s
-Preinduction,ID588,In Zone(C1_prevO1 / Nose-point),10.960000000239233
+Preinduction,ID588,In Zone(C1_prevO1 / Nose-point),10.840000000236614
 Preinduction,ID588,In Zone(C1_prevO1 / Nose-point),4.080000000089058
 Preinduction,ID588,In Zone(C1_prevO1 / Nose-point),35.16000000076747
 Preinduction,ID588,In Zone(C1_prevO1 / Nose-point),32.8800000007177
 Preinduction,ID588,In Zone(C1_prevO1 / Nose-point),31.880000000695873
 Preinduction,ID588,In Zone(C1_prevO1 / Nose-point),46.800000001021544
-Preinduction,ID588,In Zone(C1_prevO1 / Nose-point),76.52000000167027
+Preinduction,ID588,In Zone(C1_prevO1 / Nose-point),76.64000000167289
 Preinduction,ID588,In Zone(C2_prevO2 / Nose-point),10.560000000230502
-Preinduction,ID588,In Zone(C2_prevO2 / Nose-point),14.040000000306463
-Preinduction,ID588,In Zone(C2_prevO2 / Nose-point),15.080000000329164
-Preinduction,ID588,In Zone(C2_prevO2 / Nose-point),1.6400000000357977
+Preinduction,ID588,In Zone(C2_prevO2 / Nose-point),14.00000000030559
+Preinduction,ID588,In Zone(C2_prevO2 / Nose-point),15.120000000330037
+Preinduction,ID588,In Zone(C2_prevO2 / Nose-point),1.760000000038417
 Preinduction,ID588,In Zone(C2_prevO2 / Nose-point),16.9600000003702
 Preinduction,ID588,In Zone(C2_prevO2 / Nose-point),10.440000000227883
-Preinduction,ID588,In Zone(C2_prevO2 / Nose-point),16.080000000350992
+Preinduction,ID588,In Zone(C2_prevO2 / Nose-point),16.20000000035361
 Preinduction,ID588,In Zone(C2_prevO2 / Nose-point),21.120000000461005
-Preinduction,ID588,In Zone(NeutralZone/ Nose-point),2.160000000047148
+Preinduction,ID588,In Zone(NeutralZone/ Nose-point),2.2000000000480213
 Preinduction,ID588,In Zone(NeutralZone/ Nose-point),3.880000000084692
-Preinduction,ID588,In Zone(NeutralZone/ Nose-point),1.5200000000331784
+Preinduction,ID588,In Zone(NeutralZone/ Nose-point),1.6400000000357977
 Preinduction,ID588,In Zone(NeutralZone/ Nose-point),1.2400000000270666
-Preinduction,ID588,In Zone(NeutralZone/ Nose-point),1.080000000023574
+Preinduction,ID588,In Zone(NeutralZone/ Nose-point),1.1600000000253203
 Preinduction,ID588,In Zone(NeutralZone/ Nose-point),4.840000000105647
 Preinduction,ID588,In Zone(NeutralZone/ Nose-point),3.520000000076834
 Preinduction,ID588,In Zone(NeutralZone/ Nose-point),7.96000000017375
-Preinduction,ID588,In Zone(NeutralZone/ Nose-point),3.160000000068976
-Preinduction,ID588,In Zone(NeutralZone/ Nose-point),3.6800000000803266
+Preinduction,ID588,In Zone(NeutralZone/ Nose-point),3.08000000006723
+Preinduction,ID588,In Zone(NeutralZone/ Nose-point),3.5600000000777072
 Preinduction,ID588,In Zone(O1_prevC1 / Nose-point),3.120000000068103
 Preinduction,ID588,In Zone(O1_prevC1 / Nose-point),1.5200000000331784
-Preinduction,ID588,In Zone(O1_prevC1 / Nose-point),1.6000000000349246
-Preinduction,ID588,In Zone(O1_prevC1 / Nose-point),2.6800000000584987
-Preinduction,ID588,In Zone(O1_prevC1 / Nose-point),3.760000000082073
-Preinduction,ID588,In Zone(O1_prevC1 / Nose-point),3.840000000083819
-Preinduction,ID588,In Zone(O1_prevC1 / Nose-point),4.0000000000873115
-Preinduction,ID588,In Zone(O1_prevC1 / Nose-point),28.040000000612054
-Preinduction,ID588,In Zone(O1_prevC1 / Nose-point),1.9600000000427826
 Preinduction,ID588,In Zone(O1_prevC1 / Nose-point),1.4800000000323053
+Preinduction,ID588,In Zone(O1_prevC1 / Nose-point),2.800000000061118
+Preinduction,ID588,In Zone(O1_prevC1 / Nose-point),3.760000000082073
+Preinduction,ID588,In Zone(O1_prevC1 / Nose-point),3.9200000000855653
+Preinduction,ID588,In Zone(O1_prevC1 / Nose-point),3.880000000084692
+Preinduction,ID588,In Zone(O1_prevC1 / Nose-point),27.920000000609434
+Preinduction,ID588,In Zone(O1_prevC1 / Nose-point),1.8800000000410364
+Preinduction,ID588,In Zone(O1_prevC1 / Nose-point),1.400000000030559
 Preinduction,ID588,In Zone(O1_prevC1 / Nose-point),2.2800000000497676
-Preinduction,ID588,In Zone(O1_prevC1 / Nose-point),10.000000000218279
+Preinduction,ID588,In Zone(O1_prevC1 / Nose-point),10.080000000220025
 Preinduction,ID588,In Zone(O1_round / Nose-point),3.7200000000811997
-Preinduction,ID588,In Zone(O1_round / Nose-point),3.840000000083819
-Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),1.1200000000244472
-Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),1.720000000037544
-Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),1.4400000000314321
-Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),4.560000000099535
-Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),2.360000000051514
-Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),5.480000000119617
+Preinduction,ID588,In Zone(O1_round / Nose-point),3.880000000084692
+Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),1.3200000000288128
+Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),1.8000000000392902
+Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),1.5600000000340515
+Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),4.480000000097789
 Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),2.44000000005326
-Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),6.520000000142318
+Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),5.4000000001178705
+Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),2.44000000005326
+Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),6.600000000144064
 Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),1.8000000000392902
 Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),2.2000000000480213
 Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),17.400000000379805
-Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),3.9200000000855653
-Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),11.200000000244472
+Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),4.040000000088185
+Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),11.160000000243599
 Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),9.440000000206055
 Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),5.200000000113505
 Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),8.240000000179862
 Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),2.0000000000436557
 Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),22.280000000486325
-Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),5.880000000128348
+Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),5.960000000130094
 Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),1.6800000000366708
 Preinduction,ID588,In Zone(O2_prevC2 / Nose-point),13.400000000292493
 Preinduction,ID588,In Zone(O2_round / Nose-point),3.6400000000794535
 Preinduction,ID588,In Zone(O2_round / Nose-point),3.760000000082073
 Preinduction,ID588,Other,0.9200000000200816
 Preinduction,ID588,Other,0.8000000000174623
-Preinduction,ID588,Other,0.4800000000104774
-Preinduction,ID588,Other,0.6000000000130967
-Preinduction,ID588,Other,0.9600000000209548
-Preinduction,ID588,Other,0.7200000000157161
-Preinduction,ID588,Other,0.6000000000130967
 Preinduction,ID588,Other,0.3200000000069849
-Preinduction,ID588,Other,0.3200000000069849
+Preinduction,ID588,Other,0.6000000000130967
+Preinduction,ID588,Other,0.8400000000183354
+Preinduction,ID588,Other,0.7600000000165892
+Preinduction,ID588,Other,0.6000000000130967
+Preinduction,ID588,Other,0.08000000000174623
+Preinduction,ID588,Other,0.2400000000052387
 Preinduction,ID588,Other,0.680000000014843
 Preinduction,ID588,Other,0.3200000000069849
 Preinduction,ID588,Other,1.1200000000244472
@@ -78,12 +78,12 @@ Preinduction,ID588,Other,1.0000000000218279
 Preinduction,ID588,Other,0.12000000000261934
 Preinduction,ID588,Other,0.8400000000183354
 Preinduction,ID588,Other,0.8400000000183354
-Preinduction,ID588,Other,0.6400000000139698
+Preinduction,ID588,Other,0.5600000000122236
 Preinduction,ID588,Other,1.2400000000270666
-Preinduction,ID590,In Zone(C1_prevO1 / Nose-point),13.320000000290747
-Preinduction,ID590,In Zone(C1_prevO1 / Nose-point),314.8400000068723
-Preinduction,ID590,In Zone(C1_prevO1 / Nose-point),2.6000000000567525
-Preinduction,ID590,In Zone(C1_prevO1 / Nose-point),3.6400000000794535
+Preinduction,ID590,In Zone(C1_prevO1 / Nose-point),13.400000000292493
+Preinduction,ID590,In Zone(C1_prevO1 / Nose-point),314.72000000686967
+Preinduction,ID590,In Zone(C1_prevO1 / Nose-point),2.5200000000550062
+Preinduction,ID590,In Zone(C1_prevO1 / Nose-point),3.5600000000777072
 Preinduction,ID590,In Zone(C1_prevO1 / Nose-point),11.520000000251457
 Preinduction,ID590,In Zone(C2_prevO2 / Nose-point),3.9200000000855653
 Preinduction,ID590,In Zone(C2_prevO2 / Nose-point),3.440000000075088
@@ -99,132 +99,132 @@ Preinduction,ID590,In Zone(NeutralZone/ Nose-point),3.0400000000663567
 Preinduction,ID590,In Zone(NeutralZone/ Nose-point),5.600000000122236
 Preinduction,ID590,In Zone(NeutralZone/ Nose-point),4.040000000088185
 Preinduction,ID590,In Zone(NeutralZone/ Nose-point),1.040000000022701
-Preinduction,ID590,In Zone(NeutralZone/ Nose-point),1.4800000000323053
+Preinduction,ID590,In Zone(NeutralZone/ Nose-point),1.5600000000340515
 Preinduction,ID590,In Zone(NeutralZone/ Nose-point),1.5200000000331784
-Preinduction,ID590,In Zone(O1_prevC1 / Nose-point),1.0000000000218279
 Preinduction,ID590,In Zone(O1_prevC1 / Nose-point),1.9200000000419095
-Preinduction,ID590,In Zone(O1_prevC1 / Nose-point),3.2800000000715954
-Preinduction,ID590,In Zone(O1_prevC1 / Nose-point),2.360000000051514
+Preinduction,ID590,In Zone(O1_prevC1 / Nose-point),7.1200000001554145
+Preinduction,ID590,In Zone(O1_prevC1 / Nose-point),2.2800000000497676
 Preinduction,ID590,In Zone(O1_prevC1 / Nose-point),2.44000000005326
-Preinduction,ID590,In Zone(O1_round / Nose-point),4.0000000000873115
-Preinduction,ID590,In Zone(O1_round / Nose-point),5.240000000114378
+Preinduction,ID590,In Zone(O1_round / Nose-point),5.120000000111759
 Preinduction,ID590,In Zone(O2_prevC2 / Nose-point),2.3200000000506407
 Preinduction,ID590,In Zone(O2_prevC2 / Nose-point),1.040000000022701
 Preinduction,ID590,In Zone(O2_prevC2 / Nose-point),3.3200000000724685
 Preinduction,ID590,In Zone(O2_prevC2 / Nose-point),3.4000000000742148
-Preinduction,ID590,In Zone(O2_prevC2 / Nose-point),6.0800000001327135
+Preinduction,ID590,In Zone(O2_prevC2 / Nose-point),6.200000000135333
 Preinduction,ID590,In Zone(O2_prevC2 / Nose-point),6.480000000141445
-Preinduction,ID590,In Zone(O2_prevC2 / Nose-point),1.3200000000288128
+Preinduction,ID590,In Zone(O2_prevC2 / Nose-point),1.4800000000323053
 Preinduction,ID590,Other,1.6800000000366708
 Preinduction,ID590,Other,0.8400000000183354
-Preinduction,ID590,Other,2.0000000000436557
-Preinduction,ID590,Other,0.20000000000436557
+Preinduction,ID590,Other,2.9200000000637374
+Preinduction,ID590,Other,0.2800000000061118
+Preinduction,ID590,Other,1.1600000000253203
 Preinduction,ID590,Other,1.080000000023574
-Preinduction,ID590,Other,1.080000000023574
-Preinduction,ID590,Other,0.40000000000873115
+Preinduction,ID590,Other,0.5200000000113505
 Preinduction,ID566,In Zone(C1_prevO1 / Nose-point),4.160000000090804
-Preinduction,ID566,In Zone(C1_prevO1 / Nose-point),143.5600000031336
-Preinduction,ID566,In Zone(C1_prevO1 / Nose-point),100.76000000219938
+Preinduction,ID566,In Zone(C1_prevO1 / Nose-point),143.48000000313186
+Preinduction,ID566,In Zone(C1_prevO1 / Nose-point),100.56000000219501
 Preinduction,ID566,In Zone(C1_prevO1 / Nose-point),50.72000000110711
 Preinduction,ID566,In Zone(C1_prevO1 / Nose-point),5.680000000123982
-Preinduction,ID566,In Zone(C1_prevO1 / Nose-point),45.32000000098924
+Preinduction,ID566,In Zone(C1_prevO1 / Nose-point),45.24000000098749
 Preinduction,ID566,In Zone(C2_prevO2 / Nose-point),15.840000000345754
-Preinduction,ID566,In Zone(C2_prevO2 / Nose-point),34.84000000076048
-Preinduction,ID566,In Zone(C2_prevO2 / Nose-point),3.3200000000724685
+Preinduction,ID566,In Zone(C2_prevO2 / Nose-point),34.92000000076223
+Preinduction,ID566,In Zone(C2_prevO2 / Nose-point),3.440000000075088
 Preinduction,ID566,In Zone(C2_prevO2 / Nose-point),69.60000000151922
 Preinduction,ID566,In Zone(C2_prevO2 / Nose-point),38.36000000083732
 Preinduction,ID566,In Zone(C2_prevO2 / Nose-point),4.160000000090804
+Preinduction,ID566,In Zone(NeutralZone/ Nose-point),1.040000000022701
 Preinduction,ID566,In Zone(NeutralZone/ Nose-point),1.1200000000244472
 Preinduction,ID566,In Zone(NeutralZone/ Nose-point),2.720000000059372
 Preinduction,ID566,In Zone(NeutralZone/ Nose-point),2.080000000045402
 Preinduction,ID566,In Zone(NeutralZone/ Nose-point),3.6400000000794535
 Preinduction,ID566,In Zone(NeutralZone/ Nose-point),3.0000000000654836
-Preinduction,ID566,In Zone(NeutralZone/ Nose-point),12.280000000268046
+Preinduction,ID566,In Zone(NeutralZone/ Nose-point),12.400000000270666
 Preinduction,ID566,In Zone(O1_prevC1 / Nose-point),3.480000000075961
 Preinduction,ID566,In Zone(O1_prevC1 / Nose-point),4.960000000108266
-Preinduction,ID566,In Zone(O1_prevC1 / Nose-point),1.1200000000244472
 Preinduction,ID566,In Zone(O2_prevC2 / Nose-point),5.480000000119617
-Preinduction,ID566,In Zone(O2_prevC2 / Nose-point),2.160000000047148
-Preinduction,ID566,In Zone(O2_prevC2 / Nose-point),14.160000000309083
-Preinduction,ID566,In Zone(O2_prevC2 / Nose-point),4.0000000000873115
-Preinduction,ID566,In Zone(O2_prevC2 / Nose-point),3.480000000075961
 Preinduction,ID566,In Zone(O2_prevC2 / Nose-point),2.2800000000497676
-Preinduction,ID566,In Zone(O2_prevC2 / Nose-point),8.720000000190339
+Preinduction,ID566,In Zone(O2_prevC2 / Nose-point),14.160000000309083
+Preinduction,ID566,In Zone(O2_prevC2 / Nose-point),4.080000000089058
+Preinduction,ID566,In Zone(O2_prevC2 / Nose-point),3.480000000075961
+Preinduction,ID566,In Zone(O2_prevC2 / Nose-point),2.360000000051514
+Preinduction,ID566,In Zone(O2_prevC2 / Nose-point),8.800000000192085
 Preinduction,ID566,Other,1.080000000023574
-Preinduction,ID566,Other,1.2800000000279397
-Preinduction,ID566,Other,2.8800000000628643
-Preinduction,ID566,Other,0.9600000000209548
+Preinduction,ID566,Other,0.3200000000069849
+Preinduction,ID566,Other,2.760000000060245
+Preinduction,ID566,Other,0.8800000000192085
 Preinduction,ID566,Other,0.4800000000104774
 Preinduction,ID566,Other,0.16000000000349246
 Preinduction,ID566,Other,1.1600000000253203
-Preinduction,ID566,Other,0.8800000000192085
-Preinduction,ID580,In Zone(C1_prevO1 / Nose-point),11.000000000240107
+Preinduction,ID566,Other,1.8000000000392902
+Preinduction,ID580,In Zone(C1_prevO1 / Nose-point),11.04000000024098
 Preinduction,ID580,In Zone(C1_prevO1 / Nose-point),54.36000000118656
-Preinduction,ID580,In Zone(C1_prevO1 / Nose-point),52.76000000115164
-Preinduction,ID580,In Zone(C1_prevO1 / Nose-point),84.28000000183965
-Preinduction,ID580,In Zone(C1_prevO1 / Nose-point),108.04000000235828
-Preinduction,ID580,In Zone(C1_prevO1 / Nose-point),14.840000000323926
+Preinduction,ID580,In Zone(C1_prevO1 / Nose-point),52.88000000115426
+Preinduction,ID580,In Zone(C1_prevO1 / Nose-point),84.24000000183878
+Preinduction,ID580,In Zone(C1_prevO1 / Nose-point),107.84000000235392
+Preinduction,ID580,In Zone(C1_prevO1 / Nose-point),14.76000000032218
 Preinduction,ID580,In Zone(C1_prevO1 / Nose-point),85.36000000186323
 Preinduction,ID580,In Zone(C2_prevO2 / Nose-point),16.80000000036671
 Preinduction,ID580,In Zone(C2_prevO2 / Nose-point),11.520000000251457
 Preinduction,ID580,In Zone(C2_prevO2 / Nose-point),41.32000000090193
+Preinduction,ID580,In Zone(C2_prevO2 / Nose-point),1.040000000022701
 Preinduction,ID580,In Zone(NeutralZone/ Nose-point),1.8800000000410364
 Preinduction,ID580,In Zone(NeutralZone/ Nose-point),1.4400000000314321
 Preinduction,ID580,In Zone(NeutralZone/ Nose-point),3.4000000000742148
 Preinduction,ID580,In Zone(NeutralZone/ Nose-point),7.440000000162399
 Preinduction,ID580,In Zone(NeutralZone/ Nose-point),4.0000000000873115
-Preinduction,ID580,In Zone(NeutralZone/ Nose-point),2.160000000047148
-Preinduction,ID580,In Zone(NeutralZone/ Nose-point),1.5200000000331784
+Preinduction,ID580,In Zone(NeutralZone/ Nose-point),2.080000000045402
+Preinduction,ID580,In Zone(NeutralZone/ Nose-point),1.6000000000349246
 Preinduction,ID580,In Zone(NeutralZone/ Nose-point),7.96000000017375
 Preinduction,ID580,In Zone(NeutralZone/ Nose-point),3.2400000000707223
-Preinduction,ID580,In Zone(O1_prevC1 / Nose-point),4.440000000096916
-Preinduction,ID580,In Zone(O1_prevC1 / Nose-point),7.720000000168511
-Preinduction,ID580,In Zone(O1_prevC1 / Nose-point),2.5600000000558794
-Preinduction,ID580,In Zone(O1_prevC1 / Nose-point),4.720000000103028
+Preinduction,ID580,In Zone(O1_prevC1 / Nose-point),4.400000000096043
+Preinduction,ID580,In Zone(O1_prevC1 / Nose-point),7.640000000166765
+Preinduction,ID580,In Zone(O1_prevC1 / Nose-point),2.480000000054133
+Preinduction,ID580,In Zone(O1_prevC1 / Nose-point),4.640000000101281
 Preinduction,ID580,In Zone(O1_prevC1 / Nose-point),1.9200000000419095
-Preinduction,ID580,In Zone(O2_prevC2 / Nose-point),4.560000000099535
+Preinduction,ID580,In Zone(O2_prevC2 / Nose-point),4.520000000098662
 Preinduction,ID580,In Zone(O2_prevC2 / Nose-point),2.5600000000558794
-Preinduction,ID580,In Zone(O2_prevC2 / Nose-point),12.520000000273285
+Preinduction,ID580,In Zone(O2_prevC2 / Nose-point),12.440000000271539
 Preinduction,ID580,In Zone(O2_prevC2 / Nose-point),2.6000000000567525
-Preinduction,ID580,In Zone(O2_prevC2 / Nose-point),5.920000000129221
-Preinduction,ID580,In Zone(O2_prevC2 / Nose-point),15.40000000033615
-Preinduction,ID580,In Zone(O2_prevC2 / Nose-point),1.8000000000392902
-Preinduction,ID580,In Zone(O2_prevC2 / Nose-point),1.9200000000419095
-Preinduction,ID580,In Zone(O2_prevC2 / Nose-point),7.200000000157161
 Preinduction,ID580,In Zone(O2_prevC2 / Nose-point),6.000000000130967
-Preinduction,ID580,In Zone(O2_round / Nose-point),1.1600000000253203
+Preinduction,ID580,In Zone(O2_prevC2 / Nose-point),15.40000000033615
+Preinduction,ID580,In Zone(O2_prevC2 / Nose-point),1.9600000000427826
+Preinduction,ID580,In Zone(O2_prevC2 / Nose-point),2.040000000044529
+Preinduction,ID580,In Zone(O2_prevC2 / Nose-point),4.040000000088185
+Preinduction,ID580,In Zone(O2_prevC2 / Nose-point),6.0800000001327135
+Preinduction,ID580,In Zone(O2_round / Nose-point),3.200000000069849
 Preinduction,ID580,Other,0.4800000000104774
-Preinduction,ID580,Other,0.20000000000436557
+Preinduction,ID580,Other,0.3200000000069849
 Preinduction,ID580,Other,0.040000000000873115
 Preinduction,ID580,Other,1.9200000000419095
+Preinduction,ID580,Other,0.08000000000174623
 Preinduction,ID580,Other,0.9200000000200816
 Preinduction,ID533,In Zone(C1_prevO1 / Nose-point),5.800000000126602
-Preinduction,ID533,In Zone(C1_prevO1 / Nose-point),7.040000000153668
+Preinduction,ID533,In Zone(C1_prevO1 / Nose-point),6.960000000151922
 Preinduction,ID533,In Zone(C1_prevO1 / Nose-point),4.88000000010652
-Preinduction,ID533,In Zone(C1_prevO1 / Nose-point),17.040000000371947
-Preinduction,ID533,In Zone(C1_prevO1 / Nose-point),22.920000000500295
+Preinduction,ID533,In Zone(C1_prevO1 / Nose-point),16.920000000369328
+Preinduction,ID533,In Zone(C1_prevO1 / Nose-point),22.88000000049942
 Preinduction,ID533,In Zone(C1_prevO1 / Nose-point),23.560000000514265
 Preinduction,ID533,In Zone(C1_prevO1 / Nose-point),114.32000000249536
-Preinduction,ID533,In Zone(C2_prevO2 / Nose-point),6.520000000142318
+Preinduction,ID533,In Zone(C2_prevO2 / Nose-point),6.640000000144937
 Preinduction,ID533,In Zone(C2_prevO2 / Nose-point),12.160000000265427
-Preinduction,ID533,In Zone(C2_prevO2 / Nose-point),4.200000000091677
-Preinduction,ID533,In Zone(C2_prevO2 / Nose-point),20.320000000443542
+Preinduction,ID533,In Zone(C2_prevO2 / Nose-point),4.120000000089931
+Preinduction,ID533,In Zone(C2_prevO2 / Nose-point),20.44000000044616
 Preinduction,ID533,In Zone(C2_prevO2 / Nose-point),46.84000000102242
-Preinduction,ID533,In Zone(C2_prevO2 / Nose-point),28.36000000061904
+Preinduction,ID533,In Zone(C2_prevO2 / Nose-point),28.320000000618165
 Preinduction,ID533,In Zone(C2_prevO2 / Nose-point),1.360000000029686
 Preinduction,ID533,In Zone(C2_prevO2 / Nose-point),14.52000000031694
 Preinduction,ID533,In Zone(C2_prevO2 / Nose-point),12.84000000028027
-Preinduction,ID533,In Zone(NeutralZone/ Nose-point),1.080000000023574
+Preinduction,ID533,In Zone(NeutralZone/ Nose-point),1.1600000000253203
 Preinduction,ID533,In Zone(NeutralZone/ Nose-point),9.680000000211294
-Preinduction,ID533,In Zone(NeutralZone/ Nose-point),7.96000000017375
+Preinduction,ID533,In Zone(NeutralZone/ Nose-point),7.880000000172004
 Preinduction,ID533,In Zone(NeutralZone/ Nose-point),4.720000000103028
 Preinduction,ID533,In Zone(NeutralZone/ Nose-point),4.200000000091677
 Preinduction,ID533,In Zone(NeutralZone/ Nose-point),1.2400000000270666
-Preinduction,ID533,In Zone(NeutralZone/ Nose-point),4.24000000009255
+Preinduction,ID533,In Zone(NeutralZone/ Nose-point),4.320000000094296
 Preinduction,ID533,In Zone(NeutralZone/ Nose-point),1.040000000022701
 Preinduction,ID533,In Zone(NeutralZone/ Nose-point),7.400000000161526
 Preinduction,ID533,In Zone(NeutralZone/ Nose-point),22.08000000048196
-Preinduction,ID533,In Zone(O1_prevC1 / Nose-point),19.560000000426953
+Preinduction,ID533,In Zone(O1_prevC1 / Nose-point),19.480000000425207
 Preinduction,ID533,In Zone(O1_prevC1 / Nose-point),5.960000000130094
 Preinduction,ID533,In Zone(O1_prevC1 / Nose-point),4.24000000009255
 Preinduction,ID533,In Zone(O1_prevC1 / Nose-point),4.520000000098662
@@ -237,30 +237,30 @@ Preinduction,ID533,In Zone(O2_prevC2 / Nose-point),6.480000000141445
 Preinduction,ID533,In Zone(O2_prevC2 / Nose-point),2.2800000000497676
 Preinduction,ID533,In Zone(O2_prevC2 / Nose-point),5.280000000115251
 Preinduction,ID533,In Zone(O2_prevC2 / Nose-point),3.760000000082073
-Preinduction,ID533,In Zone(O2_prevC2 / Nose-point),6.0800000001327135
-Preinduction,ID533,In Zone(O2_prevC2 / Nose-point),3.08000000006723
+Preinduction,ID533,In Zone(O2_prevC2 / Nose-point),6.16000000013446
+Preinduction,ID533,In Zone(O2_prevC2 / Nose-point),3.160000000068976
 Preinduction,ID533,In Zone(O2_prevC2 / Nose-point),16.000000000349246
-Preinduction,ID533,In Zone(O2_prevC2 / Nose-point),2.8800000000628643
+Preinduction,ID533,In Zone(O2_prevC2 / Nose-point),2.9600000000646105
 Preinduction,ID533,In Zone(O2_prevC2 / Nose-point),4.960000000108266
-Preinduction,ID533,In Zone(O2_prevC2 / Nose-point),3.760000000082073
+Preinduction,ID533,In Zone(O2_prevC2 / Nose-point),3.840000000083819
 Preinduction,ID533,In Zone(O2_prevC2 / Nose-point),6.200000000135333
 Preinduction,ID533,In Zone(O2_prevC2 / Nose-point),12.72000000027765
 Preinduction,ID533,In Zone(O2_prevC2 / Nose-point),7.96000000017375
 Preinduction,ID533,In Zone(O2_prevC2 / Nose-point),3.08000000006723
 Preinduction,ID533,In Zone(O2_prevC2 / Nose-point),17.520000000382424
-Preinduction,ID533,In Zone(O2_round / Nose-point),2.9600000000646105
+Preinduction,ID533,In Zone(O2_round / Nose-point),3.0400000000663567
 Preinduction,ID533,In Zone(O2_round / Nose-point),2.360000000051514
 Preinduction,ID533,In Zone(O2_round / Nose-point),3.4000000000742148
 Preinduction,ID533,In Zone(O2_round / Nose-point),2.760000000060245
-Preinduction,ID533,Other,0.8800000000192085
+Preinduction,ID533,Other,0.7600000000165892
 Preinduction,ID533,Other,0.5200000000113505
 Preinduction,ID533,Other,0.20000000000436557
 Preinduction,ID533,Other,0.08000000000174623
-Preinduction,ID533,Other,0.9200000000200816
-Preinduction,ID533,Other,1.5600000000340515
+Preinduction,ID533,Other,0.7200000000157161
+Preinduction,ID533,Other,1.6400000000357977
+Preinduction,ID533,Other,0.3200000000069849
+Preinduction,ID533,Other,1.4400000000314321
 Preinduction,ID533,Other,0.40000000000873115
-Preinduction,ID533,Other,1.5200000000331784
-Preinduction,ID533,Other,0.2800000000061118
 Preinduction,ID533,Other,0.8400000000183354
 Preinduction,ID533,Other,0.40000000000873115
 Preinduction,ID541,In Zone(C1_prevO1 / Nose-point),14.240000000310829
@@ -269,57 +269,58 @@ Preinduction,ID541,In Zone(C1_prevO1 / Nose-point),95.60000000208674
 Preinduction,ID541,In Zone(C1_prevO1 / Nose-point),256.0400000055888
 Preinduction,ID541,In Zone(C1_prevO1 / Nose-point),98.08000000214088
 Preinduction,ID541,In Zone(C2_prevO2 / Nose-point),10.040000000219152
-Preinduction,ID541,In Zone(C2_prevO2 / Nose-point),2.3200000000506407
-Preinduction,ID541,In Zone(C2_prevO2 / Nose-point),2.0000000000436557
+Preinduction,ID541,In Zone(C2_prevO2 / Nose-point),2.040000000044529
+Preinduction,ID541,In Zone(C2_prevO2 / Nose-point),2.120000000046275
 Preinduction,ID541,In Zone(C2_prevO2 / Nose-point),13.520000000295113
 Preinduction,ID541,In Zone(C2_prevO2 / Nose-point),18.680000000407745
 Preinduction,ID541,In Zone(NeutralZone/ Nose-point),4.080000000089058
-Preinduction,ID541,In Zone(NeutralZone/ Nose-point),2.2000000000480213
+Preinduction,ID541,In Zone(NeutralZone/ Nose-point),2.2800000000497676
 Preinduction,ID541,In Zone(O1_prevC1 / Nose-point),3.3200000000724685
 Preinduction,ID541,In Zone(O1_prevC1 / Nose-point),1.9600000000427826
+Preinduction,ID541,In Zone(O1_prevC1 / Nose-point),1.040000000022701
 Preinduction,ID541,In Zone(O1_prevC1 / Nose-point),3.7200000000811997
-Preinduction,ID541,In Zone(O1_prevC1 / Nose-point),2.040000000044529
-Preinduction,ID541,In Zone(O1_round / Nose-point),1.9200000000419095
-Preinduction,ID541,In Zone(O2_prevC2 / Nose-point),2.760000000060245
+Preinduction,ID541,In Zone(O1_prevC1 / Nose-point),1.9600000000427826
+Preinduction,ID541,In Zone(O1_round / Nose-point),1.8400000000401633
+Preinduction,ID541,In Zone(O2_prevC2 / Nose-point),2.840000000061991
 Preinduction,ID541,In Zone(O2_prevC2 / Nose-point),3.0000000000654836
 Preinduction,ID541,In Zone(O2_prevC2 / Nose-point),2.040000000044529
 Preinduction,ID541,In Zone(O2_prevC2 / Nose-point),3.08000000006723
+Preinduction,ID541,In Zone(O2_prevC2 / Nose-point),1.040000000022701
 Preinduction,ID541,In Zone(O2_prevC2 / Nose-point),1.8000000000392902
 Preinduction,ID541,In Zone(O2_prevC2 / Nose-point),5.000000000109139
 Preinduction,ID541,Other,0.16000000000349246
 Preinduction,ID541,Other,0.8000000000174623
-Preinduction,ID541,Other,1.9200000000419095
+Preinduction,ID541,Other,0.8800000000192085
 Preinduction,ID541,Other,0.20000000000436557
-Preinduction,ID541,Other,1.4400000000314321
-Preinduction,ID541,Other,1.8400000000401633
-W1,ID588,In Zone(C1_prevO1 / Nose-point),24.12000000052649
-W1,ID588,In Zone(C1_prevO1 / Nose-point),129.1600000028193
+Preinduction,ID541,Other,0.2800000000061118
+Preinduction,ID541,Other,1.3200000000288128
+Preinduction,ID541,Other,0.680000000014843
+Preinduction,ID541,Other,0.12000000000261934
+W1,ID588,In Zone(C1_prevO1 / Nose-point),24.00000000052387
+W1,ID588,In Zone(C1_prevO1 / Nose-point),129.08000000281754
 W1,ID588,In Zone(C1_prevO1 / Nose-point),93.64000000204396
 W1,ID588,In Zone(C1_prevO1 / Nose-point),66.3600000014485
 W1,ID588,In Zone(C1_prevO1 / Nose-point),128.92000000281405
-W1,ID588,In Zone(C1_prevO1 / Nose-point),44.760000000977016
+W1,ID588,In Zone(C1_prevO1 / Nose-point),44.640000000974396
 W1,ID588,In Zone(C2_prevO2 / Nose-point),12.84000000028027
 W1,ID588,In Zone(C2_prevO2 / Nose-point),17.48000000038155
 W1,ID588,In Zone(NeutralZone/ Nose-point),2.480000000054133
-W1,ID588,In Zone(NeutralZone/ Nose-point),1.400000000030559
+W1,ID588,In Zone(NeutralZone/ Nose-point),2.080000000045402
 W1,ID588,In Zone(NeutralZone/ Nose-point),3.480000000075961
 W1,ID588,In Zone(NeutralZone/ Nose-point),2.760000000060245
-W1,ID588,In Zone(NeutralZone/ Nose-point),3.200000000069849
-W1,ID588,In Zone(NeutralZone/ Nose-point),3.520000000076834
+W1,ID588,In Zone(NeutralZone/ Nose-point),7.680000000167638
 W1,ID588,In Zone(O1_prevC1 / Nose-point),2.800000000061118
 W1,ID588,In Zone(O1_prevC1 / Nose-point),12.120000000264554
 W1,ID588,In Zone(O1_round / Nose-point),2.9600000000646105
-W1,ID588,In Zone(O2_prevC2 / Nose-point),20.16000000044005
-W1,ID588,In Zone(O2_prevC2 / Nose-point),2.5600000000558794
-W1,ID588,In Zone(O2_prevC2 / Nose-point),8.240000000179862
+W1,ID588,In Zone(O2_prevC2 / Nose-point),20.28000000044267
+W1,ID588,In Zone(O2_prevC2 / Nose-point),2.480000000054133
+W1,ID588,In Zone(O2_prevC2 / Nose-point),8.320000000181608
 W1,ID588,In Zone(O2_prevC2 / Nose-point),8.640000000188593
-W1,ID588,In Zone(O2_prevC2 / Nose-point),3.480000000075961
-W1,ID588,Other,0.7200000000157161
-W1,ID588,Other,0.6000000000130967
+W1,ID588,In Zone(O2_prevC2 / Nose-point),3.6000000000785803
+W1,ID588,Other,0.8000000000174623
 W1,ID588,Other,1.0000000000218279
 W1,ID588,Other,0.9200000000200816
-W1,ID588,Other,0.6000000000130967
-W1,ID588,Other,0.9600000000209548
+W1,ID588,Other,0.5200000000113505
 W1,ID590,In Zone(C1_prevO1 / Nose-point),152.60000000333093
 W1,ID590,In Zone(C1_prevO1 / Nose-point),348.08000000759785
 W1,ID590,In Zone(C1_prevO1 / Nose-point),85.52000000186672
@@ -329,266 +330,264 @@ W1,ID590,In Zone(NeutralZone/ Nose-point),3.2400000000707223
 W1,ID590,In Zone(O2_prevC2 / Nose-point),6.520000000142318
 W1,ID590,Other,0.6000000000130967
 W1,ID566,In Zone(C1_prevO1 / Nose-point),15.040000000328291
-W1,ID566,In Zone(C1_prevO1 / Nose-point),67.80000000147993
+W1,ID566,In Zone(C1_prevO1 / Nose-point),67.72000000147818
 W1,ID566,In Zone(C1_prevO1 / Nose-point),56.76000000123895
-W1,ID566,In Zone(C1_prevO1 / Nose-point),89.28000000194879
+W1,ID566,In Zone(C1_prevO1 / Nose-point),89.20000000194705
 W1,ID566,In Zone(C2_prevO2 / Nose-point),44.96000000098138
-W1,ID566,In Zone(C2_prevO2 / Nose-point),173.44000000378583
+W1,ID566,In Zone(C2_prevO2 / Nose-point),173.56000000378845
 W1,ID566,In Zone(C2_prevO2 / Nose-point),103.28000000225438
 W1,ID566,In Zone(C2_prevO2 / Nose-point),23.840000000520376
 W1,ID566,In Zone(NeutralZone/ Nose-point),3.08000000006723
 W1,ID566,In Zone(NeutralZone/ Nose-point),1.080000000023574
-W1,ID566,In Zone(NeutralZone/ Nose-point),1.2800000000279397
+W1,ID566,In Zone(NeutralZone/ Nose-point),1.360000000029686
 W1,ID566,In Zone(NeutralZone/ Nose-point),6.16000000013446
 W1,ID566,In Zone(NeutralZone/ Nose-point),2.360000000051514
 W1,ID566,In Zone(NeutralZone/ Nose-point),2.480000000054133
-W1,ID566,In Zone(NeutralZone/ Nose-point),3.3200000000724685
+W1,ID566,In Zone(NeutralZone/ Nose-point),3.4000000000742148
 W1,ID566,In Zone(O2_prevC2 / Nose-point),2.120000000046275
 W1,ID566,In Zone(O2_prevC2 / Nose-point),3.08000000006723
-W1,ID566,Other,0.5600000000122236
-W1,ID580,In Zone(C1_prevO1 / Nose-point),212.72000000464323
+W1,ID566,Other,0.44000000000960426
+W1,ID580,In Zone(C1_prevO1 / Nose-point),212.6000000046406
 W1,ID580,In Zone(C1_prevO1 / Nose-point),142.48000000311004
 W1,ID580,In Zone(C1_prevO1 / Nose-point),97.44000000212691
 W1,ID580,In Zone(C2_prevO2 / Nose-point),18.36000000040076
-W1,ID580,In Zone(C2_prevO2 / Nose-point),3.5600000000777072
+W1,ID580,In Zone(C2_prevO2 / Nose-point),3.6800000000803266
 W1,ID580,In Zone(C2_prevO2 / Nose-point),90.56000000197673
-W1,ID580,In Zone(NeutralZone/ Nose-point),3.3600000000733417
+W1,ID580,In Zone(NeutralZone/ Nose-point),3.440000000075088
 W1,ID580,In Zone(NeutralZone/ Nose-point),6.4400000001405715
 W1,ID580,In Zone(NeutralZone/ Nose-point),2.840000000061991
 W1,ID580,In Zone(O1_prevC1 / Nose-point),9.680000000211294
-W1,ID580,In Zone(O2_prevC2 / Nose-point),10.28000000022439
-W1,ID580,In Zone(O2_prevC2 / Nose-point),1.5600000000340515
+W1,ID580,In Zone(O2_prevC2 / Nose-point),10.480000000228756
+W1,ID580,In Zone(O2_prevC2 / Nose-point),1.6800000000366708
 W1,ID580,Other,0.20000000000436557
-W1,ID580,Other,0.40000000000873115
-W1,ID533,In Zone(C1_prevO1 / Nose-point),30.000000000654836
-W1,ID533,In Zone(C1_prevO1 / Nose-point),71.64000000156375
+W1,ID533,In Zone(C1_prevO1 / Nose-point),29.92000000065309
+W1,ID533,In Zone(C1_prevO1 / Nose-point),71.52000000156113
 W1,ID533,In Zone(C2_prevO2 / Nose-point),287.84000000628293
 W1,ID533,In Zone(C2_prevO2 / Nose-point),14.800000000323053
 W1,ID533,In Zone(C2_prevO2 / Nose-point),138.92000000303233
-W1,ID533,In Zone(NeutralZone/ Nose-point),1.8800000000410364
-W1,ID533,In Zone(NeutralZone/ Nose-point),1.1200000000244472
+W1,ID533,In Zone(NeutralZone/ Nose-point),2.0000000000436557
+W1,ID533,In Zone(NeutralZone/ Nose-point),1.2000000000261934
 W1,ID533,In Zone(NeutralZone/ Nose-point),3.0400000000663567
 W1,ID533,In Zone(NeutralZone/ Nose-point),2.5200000000550062
-W1,ID533,In Zone(O1_prevC1 / Nose-point),8.440000000184227
+W1,ID533,In Zone(O1_prevC1 / Nose-point),8.320000000181608
 W1,ID533,In Zone(O1_prevC1 / Nose-point),4.480000000097789
 W1,ID533,In Zone(O1_round / Nose-point),1.6800000000366708
-W1,ID533,In Zone(O2_prevC2 / Nose-point),6.200000000135333
+W1,ID533,In Zone(O2_prevC2 / Nose-point),5.080000000110886
 W1,ID533,In Zone(O2_prevC2 / Nose-point),5.52000000012049
 W1,ID533,In Zone(O2_prevC2 / Nose-point),19.76000000043132
-W1,ID533,Other,0.4800000000104774
+W1,ID533,Other,1.6000000000349246
 W1,ID533,Other,0.7600000000165892
-W1,ID533,Other,0.8000000000174623
-W1,ID541,In Zone(C1_prevO1 / Nose-point),19.040000000415603
-W1,ID541,In Zone(C1_prevO1 / Nose-point),204.24000000445812
-W1,ID541,In Zone(C1_prevO1 / Nose-point),362.52000000791304
+W1,ID533,Other,0.9200000000200816
+W1,ID541,In Zone(C1_prevO1 / Nose-point),18.960000000413856
+W1,ID541,In Zone(C1_prevO1 / Nose-point),204.16000000445638
+W1,ID541,In Zone(C1_prevO1 / Nose-point),362.24000000790693
 W1,ID541,In Zone(C2_prevO2 / Nose-point),1.0000000000218279
 W1,ID541,In Zone(NeutralZone/ Nose-point),2.5600000000558794
 W1,ID541,In Zone(O1_prevC1 / Nose-point),1.2400000000270666
 W1,ID541,In Zone(O2_prevC2 / Nose-point),2.2000000000480213
 W1,ID541,In Zone(O2_prevC2 / Nose-point),3.9600000000864384
-W1,ID541,In Zone(O2_prevC2 / Nose-point),1.8000000000392902
-W1,ID541,Other,1.1200000000244472
-W1,ID541,Other,0.2400000000052387
-W2,ID588,In Zone(C1_prevO1 / Nose-point),15.040000000328291
-W2,ID588,In Zone(C1_prevO1 / Nose-point),21.160000000461878
-W2,ID588,In Zone(C1_prevO1 / Nose-point),27.000000000589353
+W1,ID541,In Zone(O2_prevC2 / Nose-point),2.080000000045402
+W1,ID541,Other,1.2000000000261934
+W1,ID541,Other,0.3200000000069849
+W2,ID588,In Zone(C1_prevO1 / Nose-point),14.960000000326545
+W2,ID588,In Zone(C1_prevO1 / Nose-point),21.08000000046013
+W2,ID588,In Zone(C1_prevO1 / Nose-point),26.920000000587606
 W2,ID588,In Zone(C1_prevO1 / Nose-point),20.640000000450527
-W2,ID588,In Zone(C1_prevO1 / Nose-point),13.320000000290747
-W2,ID588,In Zone(C1_prevO1 / Nose-point),3.0400000000663567
+W2,ID588,In Zone(C1_prevO1 / Nose-point),13.440000000293367
+W2,ID588,In Zone(C1_prevO1 / Nose-point),2.8800000000628643
 W2,ID588,In Zone(C1_prevO1 / Nose-point),43.40000000094733
-W2,ID588,In Zone(C1_prevO1 / Nose-point),30.600000000667933
-W2,ID588,In Zone(C1_prevO1 / Nose-point),24.080000000525615
+W2,ID588,In Zone(C1_prevO1 / Nose-point),30.480000000665314
+W2,ID588,In Zone(C1_prevO1 / Nose-point),24.00000000052387
 W2,ID588,In Zone(C1_prevO1 / Nose-point),8.040000000175496
-W2,ID588,In Zone(C2_prevO2 / Nose-point),16.920000000369328
-W2,ID588,In Zone(C2_prevO2 / Nose-point),12.360000000269793
-W2,ID588,In Zone(C2_prevO2 / Nose-point),21.360000000466243
+W2,ID588,In Zone(C2_prevO2 / Nose-point),17.120000000373693
+W2,ID588,In Zone(C2_prevO2 / Nose-point),12.440000000271539
+W2,ID588,In Zone(C2_prevO2 / Nose-point),21.280000000464497
 W2,ID588,In Zone(C2_prevO2 / Nose-point),48.600000001060835
 W2,ID588,In Zone(C2_prevO2 / Nose-point),24.760000000540458
-W2,ID588,In Zone(C2_prevO2 / Nose-point),11.480000000250584
+W2,ID588,In Zone(C2_prevO2 / Nose-point),11.56000000025233
 W2,ID588,In Zone(C2_prevO2 / Nose-point),35.80000000078144
 W2,ID588,In Zone(C2_prevO2 / Nose-point),25.360000000553555
 W2,ID588,In Zone(C2_prevO2 / Nose-point),2.360000000051514
 W2,ID588,In Zone(C2_prevO2 / Nose-point),24.840000000542204
 W2,ID588,In Zone(C2_prevO2 / Nose-point),10.360000000226137
 W2,ID588,In Zone(NeutralZone/ Nose-point),4.3600000000951695
-W2,ID588,In Zone(NeutralZone/ Nose-point),2.2800000000497676
+W2,ID588,In Zone(NeutralZone/ Nose-point),2.360000000051514
 W2,ID588,In Zone(NeutralZone/ Nose-point),1.6000000000349246
 W2,ID588,In Zone(NeutralZone/ Nose-point),7.000000000152795
-W2,ID588,In Zone(NeutralZone/ Nose-point),3.6400000000794535
+W2,ID588,In Zone(NeutralZone/ Nose-point),3.840000000083819
 W2,ID588,In Zone(NeutralZone/ Nose-point),4.160000000090804
 W2,ID588,In Zone(NeutralZone/ Nose-point),4.760000000103901
-W2,ID588,In Zone(NeutralZone/ Nose-point),5.080000000110886
+W2,ID588,In Zone(NeutralZone/ Nose-point),5.200000000113505
 W2,ID588,In Zone(NeutralZone/ Nose-point),1.4400000000314321
 W2,ID588,In Zone(NeutralZone/ Nose-point),1.8000000000392902
-W2,ID588,In Zone(NeutralZone/ Nose-point),1.5200000000331784
+W2,ID588,In Zone(NeutralZone/ Nose-point),1.4800000000323053
 W2,ID588,In Zone(NeutralZone/ Nose-point),2.8800000000628643
 W2,ID588,In Zone(NeutralZone/ Nose-point),9.440000000206055
 W2,ID588,In Zone(NeutralZone/ Nose-point),1.0000000000218279
-W2,ID588,In Zone(O1_prevC1 / Nose-point),10.640000000232249
-W2,ID588,In Zone(O1_prevC1 / Nose-point),1.4800000000323053
+W2,ID588,In Zone(O1_prevC1 / Nose-point),10.560000000230502
+W2,ID588,In Zone(O1_prevC1 / Nose-point),1.360000000029686
 W2,ID588,In Zone(O1_prevC1 / Nose-point),5.920000000129221
 W2,ID588,In Zone(O1_prevC1 / Nose-point),3.5600000000777072
 W2,ID588,In Zone(O1_prevC1 / Nose-point),1.9600000000427826
-W2,ID588,In Zone(O1_prevC1 / Nose-point),4.320000000094296
+W2,ID588,In Zone(O1_prevC1 / Nose-point),4.400000000096043
 W2,ID588,In Zone(O1_prevC1 / Nose-point),4.200000000091677
 W2,ID588,In Zone(O1_round / Nose-point),1.400000000030559
 W2,ID588,In Zone(O2_prevC2 / Nose-point),3.120000000068103
-W2,ID588,In Zone(O2_prevC2 / Nose-point),4.640000000101281
-W2,ID588,In Zone(O2_prevC2 / Nose-point),6.68000000014581
-W2,ID588,In Zone(O2_prevC2 / Nose-point),2.120000000046275
+W2,ID588,In Zone(O2_prevC2 / Nose-point),4.720000000103028
+W2,ID588,In Zone(O2_prevC2 / Nose-point),6.560000000143191
+W2,ID588,In Zone(O2_prevC2 / Nose-point),2.2800000000497676
 W2,ID588,In Zone(O2_prevC2 / Nose-point),3.0000000000654836
-W2,ID588,In Zone(O2_prevC2 / Nose-point),5.4000000001178705
+W2,ID588,In Zone(O2_prevC2 / Nose-point),5.480000000119617
 W2,ID588,In Zone(O2_prevC2 / Nose-point),6.04000000013184
-W2,ID588,In Zone(O2_prevC2 / Nose-point),3.0000000000654836
-W2,ID588,In Zone(O2_prevC2 / Nose-point),3.9600000000864384
+W2,ID588,In Zone(O2_prevC2 / Nose-point),2.9600000000646105
+W2,ID588,In Zone(O2_prevC2 / Nose-point),4.040000000088185
 W2,ID588,In Zone(O2_prevC2 / Nose-point),8.60000000018772
 W2,ID588,In Zone(O2_prevC2 / Nose-point),4.800000000104774
 W2,ID588,In Zone(O2_prevC2 / Nose-point),10.52000000022963
 W2,ID588,In Zone(O2_round / Nose-point),1.1200000000244472
-W2,ID588,In Zone(O2_round / Nose-point),1.400000000030559
+W2,ID588,In Zone(O2_round / Nose-point),1.3200000000288128
 W2,ID588,In Zone(O2_round / Nose-point),5.240000000114378
-W2,ID588,Other,1.360000000029686
+W2,ID588,Other,1.4800000000323053
 W2,ID588,Other,0.08000000000174623
-W2,ID588,Other,0.6400000000139698
-W2,ID588,Other,0.6000000000130967
-W2,ID588,Other,1.040000000022701
 W2,ID588,Other,0.44000000000960426
-W2,ID588,Other,0.6000000000130967
+W2,ID588,Other,0.4800000000104774
+W2,ID588,Other,1.040000000022701
+W2,ID588,Other,0.5200000000113505
+W2,ID588,Other,0.5200000000113505
 W2,ID588,Other,0.5200000000113505
 W2,ID566,In Zone(C1_prevO1 / Nose-point),10.52000000022963
-W2,ID566,In Zone(C1_prevO1 / Nose-point),6.320000000137952
+W2,ID566,In Zone(C1_prevO1 / Nose-point),6.200000000135333
 W2,ID566,In Zone(C1_prevO1 / Nose-point),21.32000000046537
-W2,ID566,In Zone(C1_prevO1 / Nose-point),67.08000000146421
+W2,ID566,In Zone(C1_prevO1 / Nose-point),66.88000000145985
 W2,ID566,In Zone(C1_prevO1 / Nose-point),28.40000000061991
-W2,ID566,In Zone(C1_prevO1 / Nose-point),90.12000000196713
-W2,ID566,In Zone(C1_prevO1 / Nose-point),2.0000000000436557
+W2,ID566,In Zone(C1_prevO1 / Nose-point),90.00000000196451
+W2,ID566,In Zone(C1_prevO1 / Nose-point),1.8800000000410364
 W2,ID566,In Zone(C1_prevO1 / Nose-point),22.08000000048196
 W2,ID566,In Zone(C2_prevO2 / Nose-point),16.000000000349246
 W2,ID566,In Zone(C2_prevO2 / Nose-point),138.92000000303233
 W2,ID566,In Zone(C2_prevO2 / Nose-point),78.84000000172091
-W2,ID566,In Zone(C2_prevO2 / Nose-point),26.160000000571017
+W2,ID566,In Zone(C2_prevO2 / Nose-point),26.240000000572763
 W2,ID566,In Zone(C2_prevO2 / Nose-point),26.96000000058848
 W2,ID566,In Zone(C2_prevO2 / Nose-point),21.760000000474975
-W2,ID566,In Zone(C2_prevO2 / Nose-point),1.6000000000349246
-W2,ID566,In Zone(NeutralZone/ Nose-point),1.6000000000349246
+W2,ID566,In Zone(C2_prevO2 / Nose-point),1.720000000037544
+W2,ID566,In Zone(NeutralZone/ Nose-point),1.720000000037544
 W2,ID566,In Zone(NeutralZone/ Nose-point),3.760000000082073
 W2,ID566,In Zone(NeutralZone/ Nose-point),1.6800000000366708
-W2,ID566,In Zone(NeutralZone/ Nose-point),4.720000000103028
+W2,ID566,In Zone(NeutralZone/ Nose-point),4.800000000104774
 W2,ID566,In Zone(NeutralZone/ Nose-point),2.44000000005326
 W2,ID566,In Zone(NeutralZone/ Nose-point),2.9200000000637374
 W2,ID566,In Zone(NeutralZone/ Nose-point),3.520000000076834
-W2,ID566,In Zone(NeutralZone/ Nose-point),1.4800000000323053
+W2,ID566,In Zone(NeutralZone/ Nose-point),1.6000000000349246
 W2,ID566,In Zone(NeutralZone/ Nose-point),1.8400000000401633
-W2,ID566,In Zone(O1_prevC1 / Nose-point),2.44000000005326
-W2,ID566,In Zone(O1_prevC1 / Nose-point),3.3200000000724685
+W2,ID566,In Zone(O1_prevC1 / Nose-point),2.3200000000506407
+W2,ID566,In Zone(O1_prevC1 / Nose-point),3.4000000000742148
 W2,ID566,In Zone(O2_prevC2 / Nose-point),1.8000000000392902
 W2,ID566,In Zone(O2_prevC2 / Nose-point),2.120000000046275
-W2,ID566,In Zone(O2_prevC2 / Nose-point),2.3200000000506407
+W2,ID566,In Zone(O2_prevC2 / Nose-point),2.2400000000488944
 W2,ID566,Other,0.5600000000122236
 W2,ID566,Other,0.8000000000174623
-W2,ID566,Other,0.6400000000139698
-W2,ID566,Other,0.5200000000113505
+W2,ID566,Other,0.8800000000192085
+W2,ID566,Other,0.44000000000960426
 W2,ID566,Other,0.9200000000200816
-W2,ID566,Other,0.6400000000139698
-W2,ID566,Other,1.040000000022701
 W2,ID566,Other,0.7200000000157161
-W2,ID584,In Zone(C1_prevO1 / Nose-point),2.840000000061991
-W2,ID584,In Zone(C1_prevO1 / Nose-point),110.36000000240892
-W2,ID584,In Zone(C1_prevO1 / Nose-point),23.200000000506407
-W2,ID584,In Zone(C1_prevO1 / Nose-point),166.2000000036278
-W2,ID584,In Zone(C1_prevO1 / Nose-point),19.600000000427826
-W2,ID584,In Zone(C2_prevO2 / Nose-point),62.80000000137079
-W2,ID584,In Zone(C2_prevO2 / Nose-point),106.88000000233296
-W2,ID584,In Zone(C2_prevO2 / Nose-point),54.80000000119617
-W2,ID584,In Zone(NeutralZone/ Nose-point),1.2400000000270666
-W2,ID584,In Zone(NeutralZone/ Nose-point),1.2800000000279397
-W2,ID584,In Zone(NeutralZone/ Nose-point),2.840000000061991
-W2,ID584,In Zone(NeutralZone/ Nose-point),2.0000000000436557
-W2,ID584,In Zone(NeutralZone/ Nose-point),1.4800000000323053
-W2,ID584,In Zone(NeutralZone/ Nose-point),12.360000000269793
-W2,ID584,In Zone(O1_prevC1 / Nose-point),1.1600000000253203
-W2,ID584,In Zone(O1_prevC1 / Nose-point),2.2400000000488944
-W2,ID584,In Zone(O1_prevC1 / Nose-point),3.5600000000777072
-W2,ID584,In Zone(O1_prevC1 / Nose-point),12.360000000269793
-W2,ID584,In Zone(O1_round / Nose-point),1.8400000000401633
-W2,ID584,In Zone(O2_prevC2 / Nose-point),5.080000000110886
-W2,ID584,In Zone(O2_prevC2 / Nose-point),1.2800000000279397
-W2,ID584,Other,1.360000000029686
-W2,ID584,Other,0.44000000000960426
-W2,ID584,Other,0.16000000000349246
-W2,ID584,Other,0.44000000000960426
-W2,ID584,Other,0.9600000000209548
-W2,ID584,Other,0.20000000000436557
-W2,ID584,Other,0.9200000000200816
-W2,ID533,In Zone(C1_prevO1 / Nose-point),36.76000000080239
-W2,ID533,In Zone(C1_prevO1 / Nose-point),30.480000000665314
+W2,ID566,Other,1.040000000022701
+W2,ID566,Other,0.6400000000139698
+W2,ID580,In Zone(C1_prevO1 / Nose-point),2.840000000061991
+W2,ID580,In Zone(C1_prevO1 / Nose-point),110.2400000024063
+W2,ID580,In Zone(C1_prevO1 / Nose-point),23.12000000050466
+W2,ID580,In Zone(C1_prevO1 / Nose-point),166.2000000036278
+W2,ID580,In Zone(C1_prevO1 / Nose-point),19.480000000425207
+W2,ID580,In Zone(C2_prevO2 / Nose-point),62.80000000137079
+W2,ID580,In Zone(C2_prevO2 / Nose-point),106.96000000233471
+W2,ID580,In Zone(C2_prevO2 / Nose-point),54.80000000119617
+W2,ID580,In Zone(NeutralZone/ Nose-point),1.3200000000288128
+W2,ID580,In Zone(NeutralZone/ Nose-point),1.2800000000279397
+W2,ID580,In Zone(NeutralZone/ Nose-point),1.040000000022701
+W2,ID580,In Zone(NeutralZone/ Nose-point),2.840000000061991
+W2,ID580,In Zone(NeutralZone/ Nose-point),2.0000000000436557
+W2,ID580,In Zone(NeutralZone/ Nose-point),1.4800000000323053
+W2,ID580,In Zone(NeutralZone/ Nose-point),12.480000000272412
+W2,ID580,In Zone(O1_prevC1 / Nose-point),1.2400000000270666
+W2,ID580,In Zone(O1_prevC1 / Nose-point),2.2800000000497676
+W2,ID580,In Zone(O1_prevC1 / Nose-point),3.5600000000777072
+W2,ID580,In Zone(O1_prevC1 / Nose-point),12.360000000269793
+W2,ID580,In Zone(O1_round / Nose-point),1.760000000038417
+W2,ID580,In Zone(O2_prevC2 / Nose-point),5.080000000110886
+W2,ID580,In Zone(O2_prevC2 / Nose-point),1.2800000000279397
+W2,ID580,Other,1.2800000000279397
+W2,ID580,Other,0.44000000000960426
+W2,ID580,Other,0.2400000000052387
+W2,ID580,Other,0.44000000000960426
+W2,ID580,Other,0.12000000000261934
+W2,ID580,Other,0.9200000000200816
+W2,ID533,In Zone(C1_prevO1 / Nose-point),36.680000000800646
+W2,ID533,In Zone(C1_prevO1 / Nose-point),30.360000000662694
 W2,ID533,In Zone(C1_prevO1 / Nose-point),36.84000000080414
-W2,ID533,In Zone(C1_prevO1 / Nose-point),40.56000000088534
-W2,ID533,In Zone(C1_prevO1 / Nose-point),71.88000000156899
-W2,ID533,In Zone(C1_prevO1 / Nose-point),5.0400000001100125
-W2,ID533,In Zone(C1_prevO1 / Nose-point),38.720000000845175
+W2,ID533,In Zone(C1_prevO1 / Nose-point),40.48000000088359
+W2,ID533,In Zone(C1_prevO1 / Nose-point),71.80000000156724
+W2,ID533,In Zone(C1_prevO1 / Nose-point),4.720000000103028
+W2,ID533,In Zone(C1_prevO1 / Nose-point),38.64000000084343
 W2,ID533,In Zone(C2_prevO2 / Nose-point),19.12000000041735
 W2,ID533,In Zone(C2_prevO2 / Nose-point),8.60000000018772
 W2,ID533,In Zone(C2_prevO2 / Nose-point),10.52000000022963
-W2,ID533,In Zone(C2_prevO2 / Nose-point),163.6800000035728
+W2,ID533,In Zone(C2_prevO2 / Nose-point),163.60000000357104
 W2,ID533,In Zone(C2_prevO2 / Nose-point),30.120000000657456
 W2,ID533,In Zone(C2_prevO2 / Nose-point),17.400000000379805
-W2,ID533,In Zone(NeutralZone/ Nose-point),1.3200000000288128
-W2,ID533,In Zone(NeutralZone/ Nose-point),1.1600000000253203
+W2,ID533,In Zone(NeutralZone/ Nose-point),1.4400000000314321
+W2,ID533,In Zone(NeutralZone/ Nose-point),1.2800000000279397
 W2,ID533,In Zone(NeutralZone/ Nose-point),3.3600000000733417
 W2,ID533,In Zone(NeutralZone/ Nose-point),1.9600000000427826
+W2,ID533,In Zone(NeutralZone/ Nose-point),1.400000000030559
 W2,ID533,In Zone(NeutralZone/ Nose-point),1.2400000000270666
 W2,ID533,In Zone(NeutralZone/ Nose-point),4.160000000090804
+W2,ID533,In Zone(O1_prevC1 / Nose-point),1.080000000023574
 W2,ID533,In Zone(O1_prevC1 / Nose-point),1.4800000000323053
-W2,ID533,In Zone(O1_prevC1 / Nose-point),4.400000000096043
-W2,ID533,In Zone(O1_prevC1 / Nose-point),2.6000000000567525
+W2,ID533,In Zone(O1_prevC1 / Nose-point),4.320000000094296
+W2,ID533,In Zone(O1_prevC1 / Nose-point),2.480000000054133
+W2,ID533,In Zone(O1_prevC1 / Nose-point),1.080000000023574
 W2,ID533,In Zone(O1_prevC1 / Nose-point),1.400000000030559
-W2,ID533,In Zone(O1_round / Nose-point),5.200000000113505
+W2,ID533,In Zone(O1_round / Nose-point),5.120000000111759
 W2,ID533,In Zone(O2_prevC2 / Nose-point),2.2000000000480213
 W2,ID533,In Zone(O2_prevC2 / Nose-point),2.720000000059372
 W2,ID533,In Zone(O2_prevC2 / Nose-point),2.120000000046275
 W2,ID533,In Zone(O2_prevC2 / Nose-point),7.160000000156288
 W2,ID533,In Zone(O2_prevC2 / Nose-point),2.8800000000628643
-W2,ID533,In Zone(O2_prevC2 / Nose-point),3.08000000006723
-W2,ID533,In Zone(O2_prevC2 / Nose-point),17.000000000371074
-W2,ID533,In Zone(O2_prevC2 / Nose-point),2.5200000000550062
-W2,ID533,In Zone(O2_prevC2 / Nose-point),4.800000000104774
+W2,ID533,In Zone(O2_prevC2 / Nose-point),3.160000000068976
+W2,ID533,In Zone(O2_prevC2 / Nose-point),17.120000000373693
+W2,ID533,In Zone(O2_prevC2 / Nose-point),2.6000000000567525
+W2,ID533,In Zone(O2_prevC2 / Nose-point),4.88000000010652
 W2,ID533,In Zone(O2_prevC2 / Nose-point),5.160000000112632
-W2,ID533,In Zone(O2_prevC2 / Nose-point),4.320000000094296
-W2,ID533,Other,0.8000000000174623
+W2,ID533,In Zone(O2_prevC2 / Nose-point),4.480000000097789
+W2,ID533,Other,0.8800000000192085
 W2,ID533,Other,1.4400000000314321
-W2,ID533,Other,2.0000000000436557
-W2,ID533,Other,0.12000000000261934
+W2,ID533,Other,0.9200000000200816
 W2,ID533,Other,0.40000000000873115
-W2,ID533,Other,1.0000000000218279
-W2,ID533,Other,0.5200000000113505
-W2,ID533,Other,0.08000000000174623
-W2,ID533,Other,1.0000000000218279
-W2,ID533,Other,0.5600000000122236
-W2,ID541,In Zone(C1_prevO1 / Nose-point),2.160000000047148
-W2,ID541,In Zone(C1_prevO1 / Nose-point),16.480000000359723
+W2,ID533,Other,0.6000000000130967
+W2,ID533,Other,0.4800000000104774
+W2,ID541,In Zone(C1_prevO1 / Nose-point),2.040000000044529
+W2,ID541,In Zone(C1_prevO1 / Nose-point),16.360000000357104
 W2,ID541,In Zone(C1_prevO1 / Nose-point),298.2000000065091
-W2,ID541,In Zone(C1_prevO1 / Nose-point),249.040000005436
-W2,ID541,In Zone(C2_prevO2 / Nose-point),11.320000000247092
+W2,ID541,In Zone(C1_prevO1 / Nose-point),248.9200000054334
+W2,ID541,In Zone(C2_prevO2 / Nose-point),11.200000000244472
 W2,ID541,In Zone(C2_prevO2 / Nose-point),11.000000000240107
 W2,ID541,In Zone(NeutralZone/ Nose-point),1.5600000000340515
-W2,ID541,In Zone(NeutralZone/ Nose-point),1.6400000000357977
+W2,ID541,In Zone(NeutralZone/ Nose-point),1.760000000038417
 W2,ID541,In Zone(O1_prevC1 / Nose-point),3.800000000082946
-W2,ID541,In Zone(O2_prevC2 / Nose-point),1.6800000000366708
-W2,ID541,In Zone(O2_prevC2 / Nose-point),2.2000000000480213
-W2,ID541,Other,0.680000000014843
-W2,ID541,Other,0.12000000000261934
-W2,ID590,In Zone(C1_prevO1 / Nose-point),36.0000000007858
-W2,ID590,In Zone(C1_prevO1 / Nose-point),459.96000001003995
-W2,ID590,In Zone(C2_prevO2 / Nose-point),5.120000000111759
-W2,ID590,In Zone(C2_prevO2 / Nose-point),2.9600000000646105
+W2,ID541,In Zone(O2_prevC2 / Nose-point),1.8000000000392902
+W2,ID541,In Zone(O2_prevC2 / Nose-point),2.2800000000497676
+W2,ID541,Other,0.8000000000174623
+W2,ID541,Other,0.16000000000349246
+W2,ID590,In Zone(C1_prevO1 / Nose-point),35.880000000783184
+W2,ID590,In Zone(C1_prevO1 / Nose-point),460.0000000100408
+W2,ID590,In Zone(C2_prevO2 / Nose-point),5.240000000114378
+W2,ID590,In Zone(C2_prevO2 / Nose-point),3.08000000006723
 W2,ID590,In Zone(C2_prevO2 / Nose-point),73.96000000161439
-W2,ID590,In Zone(C2_prevO2 / Nose-point),5.600000000122236
+W2,ID590,In Zone(C2_prevO2 / Nose-point),5.480000000119617
 W2,ID590,In Zone(NeutralZone/ Nose-point),5.440000000118744
 W2,ID590,In Zone(NeutralZone/ Nose-point),2.400000000052387
 W2,ID590,In Zone(NeutralZone/ Nose-point),1.080000000023574
-W2,ID590,In Zone(O1_prevC1 / Nose-point),5.000000000109139
+W2,ID590,In Zone(O1_prevC1 / Nose-point),4.88000000010652
 W2,ID590,In Zone(O2_prevC2 / Nose-point),1.2400000000270666
 W2,ID590,Other,0.5200000000113505
+W2,ID590,Other,0.40000000000873115
 W2,ID590,Other,0.2800000000061118
-W2,ID590,Other,0.3200000000069849

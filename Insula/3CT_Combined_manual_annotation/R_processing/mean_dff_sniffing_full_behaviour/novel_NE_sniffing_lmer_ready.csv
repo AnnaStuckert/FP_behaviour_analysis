@@ -1,7 +1,7 @@
 mouse_id,week,behavior,mean_dFF
-533,Preinduction,Sniffing,-1.0709061734729277
-541,Preinduction,Sniffing,-0.13291381951279094
-566,Preinduction,Sniffing,-0.5135547089098216
-580,Preinduction,Sniffing,-0.8361267393899617
-588,Preinduction,Sniffing,1.2075460258585684
-590,Preinduction,Sniffing,-1.0059104823143956
+533,Preinduction,Sniffing,-1.5213210536218655
+533,W2,Sniffing,-0.20262531660146554
+541,W1,Sniffing,-5.160715638159355
+580,Preinduction,Sniffing,-0.9872844311572787
+580,W1,Sniffing,-0.9439140255388356
+580,W2,Sniffing,-1.5089629650683796

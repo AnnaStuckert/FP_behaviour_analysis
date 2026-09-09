@@ -1,0 +1,634 @@
+---
+title: "3CT"
+output:
+  pdf_document: default
+  html_document: default
+date: '2022-12-02'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Load data
+```{r}
+
+# Loading
+library(pacman)
+p_load(readxl, tidyverse)
+p_load(broom, ggsignif, multcomp, emmeans)
+
+df <- read_excel("3CT_larger_arena_FP.xlsx") #this fiel for larger arena
+
+```
+
+Add 1cm zone with surrounding zone
+```{r}
+df <- df %>% mutate(social_time=(`In zone SocialZone multiCond cumulative s`+df$SocialZoneRound))
+
+df <- df %>% mutate(novel_time=(`In zone NoveltyZone multiCond cumulative s`+df$NoveltyZoneRound))
+
+```
+
+
+Removal of mouse 224 from dataset it turned it it was not double transgenic
+```{r}
+# remove WT mice
+df<-df[!(df$ID==429),]
+df<-df[!(df$ID==374),]
+df<-df[!(df$ID==461),]
+df<-df[!(df$ID==463),]
+df<-df[!(df$ID==402),]
+
+
+#sorting away PFC animals
+
+df<-df[!(df$ID==423),]
+df<-df[!(df$ID==376),]
+df<-df[!(df$ID==372),]
+df<-df[!(df$ID==398),]
+df<-df[!(df$ID==400),]
+df<-df[!(df$ID==459),]
+df<-df[!(df$ID==450),]
+df<-df[!(df$ID==584),]
+df<-df[!(df$ID==597),]
+
+
+#sorting away insula animals
+# df<-df[!(df$ID==533),]
+# df<-df[!(df$ID==541),]
+# df<-df[!(df$ID==580),]
+# df<-df[!(df$ID==566),]
+# df<-df[!(df$ID==588),]
+# df<-df[!(df$ID==590),]
+
+```
+
+
+We will primarily analyse time spent in the different zones. We expect:
+
+Habituation phase: time spent in neutral, social, and novel zone will be equal.
+For social phase (1 mouse introduced): time spent in social will be bigger than neutral and novel zone combined.
+for novelty phase (1 novel mouse introduced into novelty zone): time spent in novelty zone will be bigger then in neutral and social zone combined.
+
+
+Divide dataset up into Habituation, social, and novelty phases
+
+```{r}
+
+#use this for LMM approach with full sample size
+habituation_cond <-  df %>% filter(Condition == "Hab")
+social_cond<-  df %>% filter(Condition == "Social")
+novelty_cond<-  df %>% filter(Condition == "Novel")
+```
+
+with 1cm zone and surrounding zone
+```{r}
+habituation_cond <- habituation_cond %>% mutate(social_preference_relative=((`In zone SocialZone multiCond cumulative s`-`In zone NoveltyZone multiCond cumulative s`)/(`In zone NoveltyZone multiCond cumulative s`+`In zone SocialZone multiCond cumulative s`)))
+
+
+
+social_cond <- social_cond %>% mutate(social_preference_relative=((social_cond$social_time-social_cond$novel_time)/(social_cond$social_time+social_cond$novel_time)))
+
+novelty_cond <- novelty_cond %>% mutate(novelty_preference_relative=((novelty_cond$novel_time-novelty_cond$social_time)/(novelty_cond$novel_time+novelty_cond$social_time)))
+
+```
+
+LMM sociability
+
+```{r}
+#Loading packages for linear mixed effects modelling
+library(lmerTest)
+library(lme4)
+
+social_cond$Week <- factor(social_cond$Week , levels = c("Preinduction","1st week post induction","2nd week post induction"))
+
+levels(social_cond$Week)[levels(social_cond$Week) == "1st week post induction"] <- "1st week"
+levels(social_cond$Week)[levels(social_cond$Week) == "2nd week post induction"] <- "2nd week"
+
+
+#creating a linear model of the same variables as included in the anova
+m_anova <-lmer(social_preference_relative ~  Week + (1|ID), data=social_cond)
+
+summary(m_anova)
+
+# Obtain estimated marginal means
+emmeans_results <- emmeans(m_anova, ~ Week)
+
+# for plot
+emmeans_results_df <- as.data.frame(emmeans_results)
+
+# Perform pairwise comparisons
+pairwise_results <- contrast(emmeans_results, method = "pairwise")
+
+# Display the results
+summary(pairwise_results)
+
+#bonferroni
+pwc <- pairs(emmeans_results, adjust = "bon")
+pwc
+
+# # for plot
+# emmeans_results_df <- as.data.frame(emmeans_results)
+# 
+# emm_single <- emmeans_results[[1]]  # Extract the first emmGrid object
+# class(emm_single)
+# 
+# pairwise_results <- contrast(emm_single, method = "pairwise")
+# class(pairwise_results)
+# 
+# #pairwise_results <- lapply(emmeans_results, contrast, method = "pairwise")
+# 
+# # Perform pairwise comparisons
+# #pairwise_results <- contrast(emmeans_results, method = "pairwise")
+# # Display the results
+# summary(pairwise_results)
+# 
+# #bonferroni
+# #pwc <- pairs(emmeans_results, adjust = "bon")
+# #pwc
+# 
+# pwc <- contrast(emm_single, method = "pairwise", adjust = "bon")
+# summary(pwc)
+```
+
+ 
+
+
+# assumption checks
+```{r}
+p_load(performance)
+
+check <- check_model(m_anova)
+check
+```
+
+#assumption checks
+```{r}
+
+qqnorm(residuals(m_anova)); qqline(residuals(m_anova))  # Q-Q plot - some tails
+shapiro.test(residuals(m_anova))  # Shapiro-Wilk test (for small samples)
+
+```
+
+
+#assumption checks
+
+
+```{r}
+#assumption check 1 - Normality of residuals (should be normally distributed) - violates
+qqnorm(resid(m_anova))
+qqline(resid(m_anova))
+shapiro.test(residuals(m_anova)) 
+#probs a lil' bit non-normal, thus, when calculating confidence intervals, used "boot" method which assumes non-normality
+```
+
+```{r}
+#checks for distribution, compliments residual plot
+hist(resid(m_anova)) 
+```
+
+```{r}
+#Assumption 2 - Homoscedasticity (variance should be consistent) - passes
+plot(fitted(m_anova), resid(m_anova))
+#meets assumption, evenly distributed, thus, Homoscedasticity
+```
+
+```{r}
+#When you plot residuals by ID, you're looking for:
+#No systematic pattern across individuals.
+#No obvious trends within IDs (e.g., all high or all low residuals).
+#Ideally, residuals centered around zero with some variation.
+boxplot(resid(m_anova) ~ social_cond$ID)
+```
+
+```{r}
+#Assumption 3 - confidence intervals - passes
+confint(m_anova, method = "boot")
+#if CI includes zero between 2.5% and 97.5% then that effect is not statistically significant.
+
+```
+
+
+# Raincloud
+
+```{r}
+# Convert emmeans pairwise comparisons to data frame (BONFERRONI already applied in pwc)
+pairwise_results_oft <- as.data.frame(pwc)
+
+# Filter significant results (optional, not required for plotting)
+sig_results_oft <- pairwise_results_oft %>%
+  dplyr::filter(p.value < 0.05)
+
+# Add significance labels
+sig_labels_oft <- pairwise_results_oft %>%
+  dplyr::mutate(
+    label = dplyr::case_when(
+      p.value < 0.001 ~ "***",
+      p.value < 0.01 ~ "**",
+      p.value < 0.05 ~ "*",
+      TRUE ~ "ns"
+    )
+  )
+
+# View labeled results
+sig_labels_oft
+```
+
+
+
+```{r}
+
+library(dplyr)
+library(tidyr)
+
+# IMPORTANT: ensure this is a data.frame
+pairwise_results_oft <- as.data.frame(pwc)
+
+# pre-compute safe y-position reference (NEVER rely on df inside pipe)
+y_max <- max(social_cond$social_preference_relative, na.rm = TRUE)
+
+sig_labels_oft <- pairwise_results_oft %>%
+  
+  # split contrasts into groups
+  separate(contrast, into = c("group1", "group2"), sep = " - ") %>%
+  
+  mutate(
+    # significance labels (Bonferroni already in pwc)
+    label = case_when(
+      p.value < 0.001 ~ "***",
+      p.value < 0.01 ~ "**",
+      p.value < 0.05 ~ "*",
+      TRUE ~ "ns"
+    ),
+    
+    # safe, automatic y positioning
+    y.position = y_max * (1 + 0.10 * row_number())
+  ) %>%
+  
+  # explicitly use dplyr::select to avoid masking issues
+  dplyr::select(group1, group2, y.position, label)
+
+sig_labels_oft
+
+```
+```{r}
+emmeans_results_df
+```
+
+```{r}
+p_load(ggpubr, ggdist)
+
+plot_raincloud <- ggplot(social_cond, aes(x = Week, y = social_preference_relative, fill = Week, color = Week)) +
+  
+  # Half-violin, nudged left
+  stat_halfeye(
+    side = "left",
+    adjust = 0.5,
+    justification = 1.1,
+    .width = 0,
+    point_colour = NA,
+    alpha = 0.6,
+    scale = 0.5, #make plot narrower
+    position = position_nudge(x = -0.05)
+  ) +
+  
+#  # Boxplot
+#  geom_boxplot(
+#    width = 0.05,
+#    outlier.shape = NA,
+#    alpha = 0.7,
+#    color = "black",
+#    show.legend=FALSE,
+#    position = position_nudge(x = -0.15)
+#  ) +
+  
+  
+  #connect IDs
+  geom_line(
+  aes(x = Week, y = social_preference_relative, group = ID),
+  color = "gray50",
+  linewidth = 0.5,
+  alpha = 0.4
+) +
+
+ # Jittered points
+  geom_jitter(
+    width = 0.04,
+    size = 2.0,
+    alpha = 0.5,
+  ) +
+  
+  #add means for SE bars
+  geom_point(
+    data = emmeans_results_df,
+    aes(x = Week, y = emmean),
+    color = "black",
+    size = 3.0,
+    inherit.aes = FALSE,
+    position = position_nudge(x = -0.15)
+  ) +
+  
+    
+  #adding in model SE data
+  geom_errorbar(
+    data = emmeans_results_df,
+    aes(x = Week, ymin = emmean - SE, ymax = emmean + SE),
+    width = 0.10,
+    inherit.aes = FALSE,
+    linewidth = 0.6,
+    position = position_nudge(x = -0.15)
+  ) +
+  
+  
+  # # Add in significant lines and asterisks
+  # stat_pvalue_manual(
+  #   sig_labels_oft,
+  #   label = "p.adj.signif",
+  #   tip.length = 0.02,
+  #   size = 6,
+  #   inherit.aes = FALSE
+  # ) +
+  
+  stat_pvalue_manual(
+    sig_labels_oft,
+    label = "label",
+    tip.length = 0.02,
+    size = 6,
+    inherit.aes = FALSE
+  ) +
+
+  # Manual colors
+  scale_fill_manual(values = c("Preinduction" = "#feca8d", "1st week" = "#f1605d", "2nd week" = "#440f76")) +
+  scale_color_manual(values = c("Preinduction" = "#feca8d", "1st week" = "#f1605d", "2nd week" = "#440f76")) +
+  
+  # Labels and theme
+  labs(
+    x = "Timepoint",
+    y = "Social Preference %",
+    fill = "Group",
+    color = "Group"
+  ) +
+  theme_bw() +
+  theme(
+    text = element_text(size = 16),
+    legend.position = "right"
+  )
+
+plot_raincloud
+ggsave("3CT_sociability.svg", plot = plot_raincloud, width = 8, height = 6)
+```
+
+
+
+LLM
+
+```{r}
+#Loading packages for linear mixed effects modelling
+library(lmerTest)
+library(lme4)
+
+novelty_cond$Week <- factor(novelty_cond$Week , levels = c("Preinduction","1st week post induction","2nd week post induction"))
+
+levels(novelty_cond$Week)[levels(novelty_cond$Week) == "1st week post induction"] <- "1st week"
+levels(novelty_cond$Week)[levels(novelty_cond$Week) == "2nd week post induction"] <- "2nd week"
+
+
+#creating a linear model of the same variables as included in the anova
+m_anova <-lmer(novelty_preference_relative ~  Week + (1|ID), data=novelty_cond)
+summary(m_anova)
+
+# Obtain estimated marginal means
+emmeans_results <- emmeans(m_anova, ~ Week)
+
+# for plot
+emmeans_results_df <- as.data.frame(emmeans_results)
+
+# Perform pairwise comparisons
+pairwise_results <- contrast(emmeans_results, method = "pairwise")
+
+# Display the results
+summary(pairwise_results)
+
+#bonferroni
+pwc <- pairs(emmeans_results, adjust = "bon")
+pwc
+```
+
+
+
+
+# assumption checks
+```{r}
+p_load(performance)
+
+check <- check_model(m_anova)
+check
+```
+
+
+#assumption checks
+
+
+```{r}
+#assumption check 1 - Normality of residuals (should be normally distributed) 
+qqnorm(resid(m_anova))
+qqline(resid(m_anova))
+shapiro.test(residuals(m_anova)) 
+#probs a lil' bit non-normal, thus, when calculating confidence intervals, used "boot" method which assumes non-normality
+```
+
+```{r}
+#checks for distribution, compliments residual plot
+hist(resid(m_anova)) 
+```
+
+```{r}
+#Assumption 2 - Homoscedasticity (variance should be consistent) - passes
+plot(fitted(m_anova), resid(m_anova))
+#meets assumption, evenly distributed, thus, Homoscedasticity
+```
+
+```{r}
+#When you plot residuals by ID, you're looking for:
+#No systematic pattern across individuals.
+#No obvious trends within IDs (e.g., all high or all low residuals).
+#Ideally, residuals centered around zero with some variation.
+boxplot(resid(m_anova) ~ novelty_cond$ID)
+```
+
+```{r}
+#Assumption 3 - confidence intervals - passes
+confint(m_anova, method = "boot")
+#if CI includes zero between 2.5% and 97.5% then that effect is not statistically significant.
+
+```
+
+
+# Raincloud
+
+```{r}
+# Convert emmeans pairwise comparisons to data frame (BONFERRONI already applied in pwc)
+pairwise_results_oft <- as.data.frame(pwc)
+
+# Filter significant results (optional, not required for plotting)
+sig_results_oft <- pairwise_results_oft %>%
+  dplyr::filter(p.value < 0.05)
+
+# Add significance labels
+sig_labels_oft <- pairwise_results_oft %>%
+  dplyr::mutate(
+    label = dplyr::case_when(
+      p.value < 0.001 ~ "***",
+      p.value < 0.01 ~ "**",
+      p.value < 0.05 ~ "*",
+      TRUE ~ "ns"
+    )
+  )
+
+# View labeled results
+sig_labels_oft
+```
+
+
+```{r}
+
+library(dplyr)
+library(tidyr)
+
+# IMPORTANT: ensure this is a data.frame
+pairwise_results_oft <- as.data.frame(pwc)
+
+# pre-compute safe y-position reference (NEVER rely on df inside pipe)
+y_max <- max(novelty_cond$novelty_preference_relative, na.rm = TRUE)
+
+sig_labels_oft <- pairwise_results_oft %>%
+  
+  # split contrasts into groups
+  separate(contrast, into = c("group1", "group2"), sep = " - ") %>%
+  
+  mutate(
+    # significance labels (Bonferroni already in pwc)
+    label = case_when(
+      p.value < 0.001 ~ "***",
+      p.value < 0.01 ~ "**",
+      p.value < 0.05 ~ "*",
+      TRUE ~ "ns"
+    ),
+    
+    # safe, automatic y positioning
+    y.position = y_max * (1 + 0.10 * row_number())
+  ) %>%
+  
+  # explicitly use dplyr::select to avoid masking issues
+  dplyr::select(group1, group2, y.position, label)
+
+sig_labels_oft
+
+```
+
+
+```{r}
+p_load(ggpubr, ggdist)
+
+plot_raincloud <- ggplot(novelty_cond, aes(x = Week, y = novelty_preference_relative, fill = Week, color = Week)) +
+  
+  # Half-violin, nudged left
+  stat_halfeye(
+    side = "left",
+    adjust = 0.5,
+    justification = 1.1,
+    .width = 0,
+    point_colour = NA,
+    alpha = 0.6,
+    scale = 0.5, #make plot narrower
+    position = position_nudge(x = -0.05)
+  ) +
+  
+#  # Boxplot
+#  geom_boxplot(
+#    width = 0.05,
+#    outlier.shape = NA,
+#    alpha = 0.7,
+#    color = "black",
+#    show.legend=FALSE,
+#    position = position_nudge(x = -0.15)
+#  ) +
+  
+  
+  #connect IDs
+  geom_line(
+  aes(x = Week, y = novelty_preference_relative, group = ID),
+  color = "gray50",
+  linewidth = 0.5,
+  alpha = 0.4
+) +
+
+ # Jittered points
+  geom_jitter(
+    width = 0.04,
+    size = 2.0,
+    alpha = 0.5,
+  ) +
+  
+  #add means for SE bars
+  geom_point(
+    data = emmeans_results_df,
+    aes(x = Week, y = emmean),
+    color = "black",
+    size = 3.0,
+    inherit.aes = FALSE,
+    position = position_nudge(x = -0.15)
+  ) +
+  
+    
+  #adding in model SE data
+  geom_errorbar(
+    data = emmeans_results_df,
+    aes(x = Week, ymin = emmean - SE, ymax = emmean + SE),
+    width = 0.10,
+    inherit.aes = FALSE,
+    linewidth = 0.6,
+    position = position_nudge(x = -0.15)
+  ) +
+  
+  
+  # # Add in significant lines and asterisks
+  # stat_pvalue_manual(
+  #   sig_labels_oft,
+  #   label = "p.adj.signif",
+  #   tip.length = 0.02,
+  #   size = 6,
+  #   inherit.aes = FALSE
+  # ) +
+  
+  stat_pvalue_manual(
+    sig_labels_oft,
+    label = "label",
+    tip.length = 0.02,
+    size = 6,
+    inherit.aes = FALSE
+  ) +
+
+  # Manual colors
+  scale_fill_manual(values = c("Preinduction" = "#feca8d", "1st week" = "#f1605d", "2nd week" = "#440f76")) +
+  scale_color_manual(values = c("Preinduction" = "#feca8d", "1st week" = "#f1605d", "2nd week" = "#440f76")) +
+  
+  # Labels and theme
+  labs(
+    x = "Timepoint",
+    y = "Social Novelty Preference %",
+    fill = "Group",
+    color = "Group"
+  ) +
+  theme_bw() +
+  theme(
+    text = element_text(size = 16),
+    legend.position = "right"
+  )
+
+plot_raincloud
+ggsave("3CT_social_novelty.svg", plot = plot_raincloud, width = 8, height = 6)
+```
+
+

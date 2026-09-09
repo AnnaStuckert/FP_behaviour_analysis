@@ -77,8 +77,8 @@ summary_df <- df %>%
 y_max <- max(summary_df$mean + summary_df$se)
 
 dunnett_table$y <- c(
-  y_max * 1.2,
-  y_max * 1.3
+  y_max * 1.8,
+  y_max * 1.9
 )
 
 # =========================
@@ -128,6 +128,7 @@ plot_bar <- ggplot(summary_df, aes(x = week, y = mean, fill = week)) +
     legend.position = "none",
     text = element_text(size = 14)
   ) +
+  scale_y_continuous(limits = c(-2, 10))+
 
   geom_text(
     data = dunnett_table,
@@ -239,8 +240,8 @@ summary_df <- df %>%
 y_max <- max(summary_df$mean + summary_df$se)
 
 dunnett_table$y <- c(
-  y_max * 1.2,
-  y_max * 1.3
+  y_max * 1.8,
+  y_max * 1.9
 )
 
 # =========================
@@ -290,6 +291,7 @@ plot_bar <- ggplot(summary_df, aes(x = week, y = mean, fill = week)) +
     legend.position = "none",
     text = element_text(size = 14)
   ) +
+  scale_y_continuous(limits = c(-2, 10))+
 
   geom_text(
     data = dunnett_table,

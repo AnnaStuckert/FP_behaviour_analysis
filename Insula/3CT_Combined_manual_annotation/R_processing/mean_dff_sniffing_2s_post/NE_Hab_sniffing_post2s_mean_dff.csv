@@ -1,0 +1,9 @@
+mouse_id,genotype,condition,week,behavior,mean_dFF,n_events
+588,NE,Hab,Preinduction,Sniffing,-1.3149641268850776,4
+590,NE,Hab,Preinduction,Sniffing,-1.5817923268846177,2
+566,NE,Hab,Preinduction,Sniffing,-2.2336755686725343,1
+590,NE,Hab,W1,Sniffing,0.4434558723163358,1
+541,NE,Hab,W1,Sniffing,-1.0082947345376188,1
+590,NE,Hab,W2,Sniffing,-3.852584422353905,2
+580,NE,Hab,W2,Sniffing,-1.9212823372501049,1
+541,NE,Hab,W2,Sniffing,-1.9528310184342548,1

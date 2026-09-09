@@ -1,299 +1,791 @@
 week,mouse_id,behavior,duration_s
-Preinduction,ID588,In Zone(C1_prevO1 / Center-point),12.2000000002663
-Preinduction,ID588,In Zone(C1_prevO1 / Center-point),40.84000000089145
-Preinduction,ID588,In Zone(C1_prevO1 / Center-point),35.360000000771834
-Preinduction,ID588,In Zone(C1_prevO1 / Center-point),93.56000000204222
-Preinduction,ID588,In Zone(C1_prevO1 / Center-point),80.72000000176195
-Preinduction,ID588,In Zone(C2_prevO2 / Center-point),10.040000000219152
-Preinduction,ID588,In Zone(C2_prevO2 / Center-point),13.520000000295113
-Preinduction,ID588,In Zone(C2_prevO2 / Center-point),26.360000000575383
-Preinduction,ID588,In Zone(C2_prevO2 / Center-point),29.840000000651344
-Preinduction,ID588,In Zone(C2_prevO2 / Center-point),16.80000000036671
-Preinduction,ID588,In Zone(C2_prevO2 / Center-point),25.720000000561413
-Preinduction,ID588,In Zone(NeutralZone/ Center-point),1.2800000000279397
-Preinduction,ID588,In Zone(NeutralZone/ Center-point),9.64000000021042
-Preinduction,ID588,In Zone(NeutralZone/ Center-point),3.7200000000811997
-Preinduction,ID588,In Zone(NeutralZone/ Center-point),10.000000000218279
-Preinduction,ID588,In Zone(NeutralZone/ Center-point),2.9200000000637374
-Preinduction,ID588,In Zone(NeutralZone/ Center-point),3.160000000068976
-Preinduction,ID588,In Zone(NeutralZone/ Center-point),2.6800000000584987
-Preinduction,ID588,In Zone(NeutralZone/ Center-point),2.44000000005326
-Preinduction,ID588,In Zone(NeutralZone/ Center-point),2.8800000000628643
-Preinduction,ID588,In Zone(O1_prevC1 / Center-point),11.56000000025233
-Preinduction,ID588,In Zone(O1_prevC1 / Center-point),8.160000000178115
-Preinduction,ID588,In Zone(O1_prevC1 / Center-point),25.480000000556174
-Preinduction,ID588,In Zone(O1_prevC1 / Center-point),7.440000000162399
-Preinduction,ID588,In Zone(O2_prevC2 / Center-point),6.04000000013184
-Preinduction,ID588,In Zone(O2_prevC2 / Center-point),32.280000000704604
-Preinduction,ID588,In Zone(O2_prevC2 / Center-point),71.84000000156811
-Preinduction,ID588,In Zone(O2_prevC2 / Center-point),12.2000000002663
-Preinduction,ID588,Other,1.080000000023574
-Preinduction,ID588,Other,0.12000000000261934
-Preinduction,ID590,In Zone(C1_prevO1 / Center-point),12.08000000026368
-Preinduction,ID590,In Zone(C1_prevO1 / Center-point),323.4800000070609
-Preinduction,ID590,In Zone(C1_prevO1 / Center-point),24.040000000524742
-Preinduction,ID590,In Zone(C2_prevO2 / Center-point),196.36000000428612
-Preinduction,ID590,In Zone(C2_prevO2 / Center-point),14.040000000306463
-Preinduction,ID590,In Zone(C2_prevO2 / Center-point),6.960000000151922
-Preinduction,ID590,In Zone(NeutralZone/ Center-point),5.080000000110886
-Preinduction,ID590,In Zone(NeutralZone/ Center-point),1.2400000000270666
-Preinduction,ID590,In Zone(NeutralZone/ Center-point),3.3200000000724685
-Preinduction,ID590,In Zone(O1_prevC1 / Center-point),4.320000000094296
-Preinduction,ID590,In Zone(O1_prevC1 / Center-point),4.520000000098662
-Preinduction,ID590,In Zone(O2_prevC2 / Center-point),3.4000000000742148
-Preinduction,ID590,Other,0.9200000000200816
-Preinduction,ID590,Other,0.12000000000261934
-Preinduction,ID566,In Zone(C1_prevO1 / Center-point),146.28000000319298
-Preinduction,ID566,In Zone(C1_prevO1 / Center-point),107.48000000234606
-Preinduction,ID566,In Zone(C1_prevO1 / Center-point),64.7200000014127
-Preinduction,ID566,In Zone(C1_prevO1 / Center-point),68.76000000150088
-Preinduction,ID566,In Zone(C2_prevO2 / Center-point),16.120000000351865
-Preinduction,ID566,In Zone(C2_prevO2 / Center-point),39.2800000008574
-Preinduction,ID566,In Zone(C2_prevO2 / Center-point),71.44000000155938
-Preinduction,ID566,In Zone(C2_prevO2 / Center-point),43.36000000094646
-Preinduction,ID566,In Zone(C2_prevO2 / Center-point),3.3200000000724685
-Preinduction,ID566,In Zone(NeutralZone/ Center-point),5.560000000121363
-Preinduction,ID566,In Zone(NeutralZone/ Center-point),1.720000000037544
-Preinduction,ID566,In Zone(NeutralZone/ Center-point),1.1200000000244472
-Preinduction,ID566,In Zone(O1_prevC1 / Center-point),2.6400000000576256
-Preinduction,ID566,In Zone(O2_prevC2 / Center-point),9.12000000019907
-Preinduction,ID566,In Zone(O2_prevC2 / Center-point),17.96000000039203
-Preinduction,ID566,Other,0.6000000000130967
-Preinduction,ID566,Other,0.40000000000873115
-Preinduction,ID580,In Zone(C1_prevO1 / Center-point),16.920000000369328
-Preinduction,ID580,In Zone(C1_prevO1 / Center-point),56.12000000122498
-Preinduction,ID580,In Zone(C1_prevO1 / Center-point),55.400000001209264
-Preinduction,ID580,In Zone(C1_prevO1 / Center-point),105.96000000231288
-Preinduction,ID580,In Zone(C1_prevO1 / Center-point),126.60000000276341
-Preinduction,ID580,In Zone(C1_prevO1 / Center-point),108.80000000237487
-Preinduction,ID580,In Zone(C2_prevO2 / Center-point),16.04000000035012
-Preinduction,ID580,In Zone(C2_prevO2 / Center-point),11.920000000260188
-Preinduction,ID580,In Zone(C2_prevO2 / Center-point),50.32000000109838
-Preinduction,ID580,In Zone(NeutralZone/ Center-point),3.120000000068103
-Preinduction,ID580,In Zone(NeutralZone/ Center-point),1.0000000000218279
-Preinduction,ID580,In Zone(NeutralZone/ Center-point),5.080000000110886
-Preinduction,ID580,In Zone(NeutralZone/ Center-point),2.2800000000497676
-Preinduction,ID580,In Zone(NeutralZone/ Center-point),6.760000000147556
-Preinduction,ID580,In Zone(NeutralZone/ Center-point),9.160000000199943
-Preinduction,ID580,In Zone(O1_prevC1 / Center-point),6.4400000001405715
-Preinduction,ID580,In Zone(O2_prevC2 / Center-point),10.960000000239233
-Preinduction,ID580,In Zone(O2_prevC2 / Center-point),5.080000000110886
-Preinduction,ID580,Other,0.40000000000873115
-Preinduction,ID580,Other,0.680000000014843
-Preinduction,ID580,Other,0.8400000000183354
-Preinduction,ID533,In Zone(C1_prevO1 / Center-point),5.4000000001178705
-Preinduction,ID533,In Zone(C1_prevO1 / Center-point),6.600000000144064
-Preinduction,ID533,In Zone(C1_prevO1 / Center-point),2.120000000046275
-Preinduction,ID533,In Zone(C1_prevO1 / Center-point),2.5200000000550062
-Preinduction,ID533,In Zone(C1_prevO1 / Center-point),5.080000000110886
-Preinduction,ID533,In Zone(C1_prevO1 / Center-point),19.52000000042608
-Preinduction,ID533,In Zone(C1_prevO1 / Center-point),27.440000000598957
-Preinduction,ID533,In Zone(C1_prevO1 / Center-point),29.320000000639993
-Preinduction,ID533,In Zone(C1_prevO1 / Center-point),112.76000000246131
-Preinduction,ID533,In Zone(C2_prevO2 / Center-point),5.920000000129221
-Preinduction,ID533,In Zone(C2_prevO2 / Center-point),14.920000000325672
-Preinduction,ID533,In Zone(C2_prevO2 / Center-point),52.28000000114116
-Preinduction,ID533,In Zone(C2_prevO2 / Center-point),26.240000000572763
-Preinduction,ID533,In Zone(C2_prevO2 / Center-point),32.800000000715954
-Preinduction,ID533,In Zone(NeutralZone/ Center-point),2.480000000054133
-Preinduction,ID533,In Zone(NeutralZone/ Center-point),6.16000000013446
-Preinduction,ID533,In Zone(NeutralZone/ Center-point),12.32000000026892
-Preinduction,ID533,In Zone(NeutralZone/ Center-point),1.720000000037544
-Preinduction,ID533,In Zone(NeutralZone/ Center-point),3.3600000000733417
-Preinduction,ID533,In Zone(NeutralZone/ Center-point),3.0000000000654836
-Preinduction,ID533,In Zone(NeutralZone/ Center-point),37.800000000825094
-Preinduction,ID533,In Zone(NeutralZone/ Center-point),15.600000000340515
-Preinduction,ID533,In Zone(NeutralZone/ Center-point),14.320000000312575
-Preinduction,ID533,In Zone(NeutralZone/ Center-point),4.520000000098662
-Preinduction,ID533,In Zone(NeutralZone/ Center-point),12.84000000028027
-Preinduction,ID533,In Zone(NeutralZone/ Center-point),2.120000000046275
-Preinduction,ID533,In Zone(NeutralZone/ Center-point),3.2800000000715954
-Preinduction,ID533,In Zone(NeutralZone/ Center-point),3.520000000076834
-Preinduction,ID533,In Zone(NeutralZone/ Center-point),21.280000000464497
-Preinduction,ID533,In Zone(NeutralZone/ Center-point),14.00000000030559
-Preinduction,ID533,In Zone(NeutralZone/ Center-point),1.6000000000349246
-Preinduction,ID533,In Zone(O1_prevC1 / Center-point),20.240000000441796
-Preinduction,ID533,In Zone(O1_prevC1 / Center-point),2.760000000060245
-Preinduction,ID533,In Zone(O1_prevC1 / Center-point),2.800000000061118
-Preinduction,ID533,In Zone(O1_prevC1 / Center-point),18.280000000399014
-Preinduction,ID533,In Zone(O2_prevC2 / Center-point),7.1200000001554145
-Preinduction,ID533,In Zone(O2_prevC2 / Center-point),1.2000000000261934
-Preinduction,ID533,In Zone(O2_prevC2 / Center-point),17.040000000371947
-Preinduction,ID533,In Zone(O2_prevC2 / Center-point),10.720000000233995
-Preinduction,ID533,In Zone(O2_prevC2 / Center-point),14.080000000307336
-Preinduction,ID533,Other,0.6000000000130967
-Preinduction,ID533,Other,0.2800000000061118
-Preinduction,ID533,Other,0.7200000000157161
-Preinduction,ID533,Other,0.680000000014843
-Preinduction,ID533,Other,0.40000000000873115
-Preinduction,ID533,Other,0.16000000000349246
-Preinduction,ID541,In Zone(C1_prevO1 / Center-point),66.08000000144239
-Preinduction,ID541,In Zone(C1_prevO1 / Center-point),98.76000000215572
-Preinduction,ID541,In Zone(C1_prevO1 / Center-point),264.92000000578264
-Preinduction,ID541,In Zone(C1_prevO1 / Center-point),97.68000000213215
-Preinduction,ID541,In Zone(C2_prevO2 / Center-point),10.840000000236614
-Preinduction,ID541,In Zone(C2_prevO2 / Center-point),19.00000000041473
-Preinduction,ID541,In Zone(C2_prevO2 / Center-point),22.680000000495056
-Preinduction,ID541,In Zone(NeutralZone/ Center-point),3.200000000069849
-Preinduction,ID541,In Zone(NeutralZone/ Center-point),11.240000000245345
-Preinduction,ID541,In Zone(NeutralZone/ Center-point),1.2800000000279397
-Preinduction,ID541,In Zone(O1_prevC1 / Center-point),2.0000000000436557
-Preinduction,ID541,In Zone(O1_prevC1 / Center-point),1.040000000022701
-Preinduction,ID541,Other,0.8400000000183354
-Preinduction,ID541,Other,0.08000000000174623
-Preinduction,ID541,Other,0.08000000000174623
-Preinduction,ID541,Other,0.16000000000349246
-W1,ID588,In Zone(C1_prevO1 / Center-point),156.60000000341824
-W1,ID588,In Zone(C1_prevO1 / Center-point),99.28000000216707
-W1,ID588,In Zone(C1_prevO1 / Center-point),78.64000000171654
-W1,ID588,In Zone(C1_prevO1 / Center-point),184.28000000402244
-W1,ID588,In Zone(C2_prevO2 / Center-point),15.40000000033615
-W1,ID588,In Zone(C2_prevO2 / Center-point),23.440000000511645
-W1,ID588,In Zone(NeutralZone/ Center-point),3.0400000000663567
-W1,ID588,In Zone(NeutralZone/ Center-point),5.600000000122236
-W1,ID588,In Zone(NeutralZone/ Center-point),8.520000000185973
-W1,ID588,In Zone(O1_prevC1 / Center-point),3.120000000068103
-W1,ID588,In Zone(O2_prevC2 / Center-point),20.16000000044005
-W1,ID588,Other,0.6400000000139698
-W1,ID588,Other,1.1600000000253203
-W1,ID590,In Zone(C1_prevO1 / Center-point),599.920000013095
-W1,ID566,In Zone(C1_prevO1 / Center-point),14.280000000311702
-W1,ID566,In Zone(C1_prevO1 / Center-point),71.20000000155414
-W1,ID566,In Zone(C1_prevO1 / Center-point),64.40000000140572
-W1,ID566,In Zone(C1_prevO1 / Center-point),88.6800000019357
-W1,ID566,In Zone(C2_prevO2 / Center-point),48.64000000106171
-W1,ID566,In Zone(C2_prevO2 / Center-point),174.16000000380154
-W1,ID566,In Zone(C2_prevO2 / Center-point),109.56000000239146
-W1,ID566,In Zone(C2_prevO2 / Center-point),27.400000000598084
-W1,ID566,In Zone(NeutralZone/ Center-point),1.6000000000349246
-W1,ID580,In Zone(C1_prevO1 / Center-point),213.48000000465981
-W1,ID580,In Zone(C1_prevO1 / Center-point),149.28000000325846
-W1,ID580,In Zone(C1_prevO1 / Center-point),97.1600000021208
-W1,ID580,In Zone(C2_prevO2 / Center-point),27.120000000591972
-W1,ID580,In Zone(C2_prevO2 / Center-point),93.04000000203087
-W1,ID580,In Zone(O1_prevC1 / Center-point),10.120000000220898
-W1,ID580,In Zone(O2_prevC2 / Center-point),9.680000000211294
-W1,ID533,In Zone(C1_prevO1 / Center-point),1.2000000000261934
-W1,ID533,In Zone(C1_prevO1 / Center-point),36.44000000079541
-W1,ID533,In Zone(C1_prevO1 / Center-point),69.60000000151922
-W1,ID533,In Zone(C2_prevO2 / Center-point),289.1200000063109
-W1,ID533,In Zone(C2_prevO2 / Center-point),22.240000000485452
-W1,ID533,In Zone(C2_prevO2 / Center-point),140.96000000307686
-W1,ID533,In Zone(NeutralZone/ Center-point),2.2800000000497676
-W1,ID533,In Zone(NeutralZone/ Center-point),3.2400000000707223
-W1,ID533,In Zone(NeutralZone/ Center-point),2.720000000059372
-W1,ID533,In Zone(O1_prevC1 / Center-point),12.520000000273285
-W1,ID533,In Zone(O2_prevC2 / Center-point),3.880000000084692
-W1,ID533,In Zone(O2_prevC2 / Center-point),15.360000000335276
-W1,ID533,Other,0.3200000000069849
-W1,ID541,In Zone(C1_prevO1 / Center-point),599.920000013095
-W2,ID588,In Zone(C1_prevO1 / Center-point),14.960000000326545
-W2,ID588,In Zone(C1_prevO1 / Center-point),25.200000000550062
-W2,ID588,In Zone(C1_prevO1 / Center-point),34.80000000075961
-W2,ID588,In Zone(C1_prevO1 / Center-point),25.080000000547443
-W2,ID588,In Zone(C1_prevO1 / Center-point),19.360000000422588
-W2,ID588,In Zone(C1_prevO1 / Center-point),49.760000001086155
-W2,ID588,In Zone(C1_prevO1 / Center-point),42.4000000009255
-W2,ID588,In Zone(C1_prevO1 / Center-point),25.520000000557047
-W2,ID588,In Zone(C1_prevO1 / Center-point),22.72000000049593
-W2,ID588,In Zone(C2_prevO2 / Center-point),16.520000000360596
-W2,ID588,In Zone(C2_prevO2 / Center-point),12.400000000270666
-W2,ID588,In Zone(C2_prevO2 / Center-point),22.800000000497676
-W2,ID588,In Zone(C2_prevO2 / Center-point),49.120000001072185
-W2,ID588,In Zone(C2_prevO2 / Center-point),28.160000000614673
-W2,ID588,In Zone(C2_prevO2 / Center-point),11.120000000242726
-W2,ID588,In Zone(C2_prevO2 / Center-point),40.88000000089232
-W2,ID588,In Zone(C2_prevO2 / Center-point),25.92000000056578
-W2,ID588,In Zone(C2_prevO2 / Center-point),25.400000000554428
-W2,ID588,In Zone(C2_prevO2 / Center-point),8.960000000195578
-W2,ID588,In Zone(NeutralZone/ Center-point),1.8400000000401633
-W2,ID588,In Zone(NeutralZone/ Center-point),1.4800000000323053
-W2,ID588,In Zone(NeutralZone/ Center-point),2.5200000000550062
-W2,ID588,In Zone(NeutralZone/ Center-point),3.6800000000803266
-W2,ID588,In Zone(NeutralZone/ Center-point),2.160000000047148
-W2,ID588,In Zone(NeutralZone/ Center-point),9.24000000020169
-W2,ID588,In Zone(NeutralZone/ Center-point),1.1200000000244472
-W2,ID588,In Zone(NeutralZone/ Center-point),2.6000000000567525
-W2,ID588,In Zone(NeutralZone/ Center-point),3.760000000082073
-W2,ID588,In Zone(NeutralZone/ Center-point),5.080000000110886
-W2,ID588,In Zone(NeutralZone/ Center-point),5.440000000118744
-W2,ID588,In Zone(NeutralZone/ Center-point),2.6400000000576256
-W2,ID588,In Zone(O1_prevC1 / Center-point),10.120000000220898
-W2,ID588,In Zone(O1_prevC1 / Center-point),1.1200000000244472
-W2,ID588,In Zone(O1_prevC1 / Center-point),4.280000000093423
-W2,ID588,In Zone(O1_prevC1 / Center-point),4.520000000098662
-W2,ID588,In Zone(O2_prevC2 / Center-point),9.360000000204309
-W2,ID588,In Zone(O2_prevC2 / Center-point),7.560000000165019
-W2,ID588,In Zone(O2_prevC2 / Center-point),16.84000000036758
-W2,ID588,In Zone(O2_prevC2 / Center-point),3.0400000000663567
-W2,ID588,Other,0.40000000000873115
-W2,ID566,In Zone(C1_prevO1 / Center-point),22.400000000488944
-W2,ID566,In Zone(C1_prevO1 / Center-point),23.24000000050728
-W2,ID566,In Zone(C1_prevO1 / Center-point),70.92000000154803
-W2,ID566,In Zone(C1_prevO1 / Center-point),32.560000000710716
-W2,ID566,In Zone(C1_prevO1 / Center-point),89.32000000194967
-W2,ID566,In Zone(C1_prevO1 / Center-point),21.400000000467116
-W2,ID566,In Zone(C2_prevO2 / Center-point),17.240000000376313
-W2,ID566,In Zone(C2_prevO2 / Center-point),143.24000000312662
-W2,ID566,In Zone(C2_prevO2 / Center-point),82.96000000181084
-W2,ID566,In Zone(C2_prevO2 / Center-point),28.040000000612054
-W2,ID566,In Zone(C2_prevO2 / Center-point),29.840000000651344
-W2,ID566,In Zone(C2_prevO2 / Center-point),26.400000000576256
-W2,ID566,In Zone(NeutralZone/ Center-point),5.7600000001257285
-W2,ID566,In Zone(NeutralZone/ Center-point),6.16000000013446
-W2,ID566,Other,0.3200000000069849
-W2,ID566,Other,0.08000000000174623
-W2,ID584,In Zone(C1_prevO1 / Center-point),4.560000000099535
-W2,ID584,In Zone(C1_prevO1 / Center-point),111.84000000244123
-W2,ID584,In Zone(C1_prevO1 / Center-point),27.0800000005911
-W2,ID584,In Zone(C1_prevO1 / Center-point),171.5600000037448
-W2,ID584,In Zone(C1_prevO1 / Center-point),18.76000000040949
-W2,ID584,In Zone(C2_prevO2 / Center-point),63.48000000138563
-W2,ID584,In Zone(C2_prevO2 / Center-point),111.32000000242988
-W2,ID584,In Zone(C2_prevO2 / Center-point),67.48000000147294
-W2,ID584,In Zone(NeutralZone/ Center-point),1.5600000000340515
-W2,ID584,In Zone(O1_prevC1 / Center-point),5.080000000110886
-W2,ID584,In Zone(O1_prevC1 / Center-point),10.720000000233995
-W2,ID584,In Zone(O2_prevC2 / Center-point),5.160000000112632
-W2,ID584,Other,0.6000000000130967
-W2,ID584,Other,0.44000000000960426
-W2,ID584,Other,0.2400000000052387
-W2,ID533,In Zone(C1_prevO1 / Center-point),41.680000000909786
-W2,ID533,In Zone(C1_prevO1 / Center-point),33.28000000072643
-W2,ID533,In Zone(C1_prevO1 / Center-point),40.120000000875734
-W2,ID533,In Zone(C1_prevO1 / Center-point),43.80000000095606
-W2,ID533,In Zone(C1_prevO1 / Center-point),80.08000000174798
-W2,ID533,In Zone(C1_prevO1 / Center-point),38.200000000833825
-W2,ID533,In Zone(C2_prevO2 / Center-point),21.280000000464497
-W2,ID533,In Zone(C2_prevO2 / Center-point),7.520000000164146
-W2,ID533,In Zone(C2_prevO2 / Center-point),10.040000000219152
-W2,ID533,In Zone(C2_prevO2 / Center-point),166.56000000363565
-W2,ID533,In Zone(C2_prevO2 / Center-point),32.64000000071246
-W2,ID533,In Zone(C2_prevO2 / Center-point),30.480000000665314
-W2,ID533,In Zone(NeutralZone/ Center-point),1.4400000000314321
-W2,ID533,In Zone(NeutralZone/ Center-point),1.8800000000410364
-W2,ID533,In Zone(NeutralZone/ Center-point),3.0000000000654836
-W2,ID533,In Zone(NeutralZone/ Center-point),15.520000000338769
-W2,ID533,In Zone(NeutralZone/ Center-point),4.200000000091677
-W2,ID533,In Zone(NeutralZone/ Center-point),7.880000000172004
-W2,ID533,In Zone(NeutralZone/ Center-point),3.520000000076834
-W2,ID533,In Zone(O2_prevC2 / Center-point),5.080000000110886
-W2,ID533,In Zone(O2_prevC2 / Center-point),9.920000000216532
-W2,ID533,Other,0.8800000000192085
-W2,ID533,Other,0.40000000000873115
-W2,ID533,Other,0.4800000000104774
-W2,ID541,In Zone(C1_prevO1 / Center-point),4.320000000094296
-W2,ID541,In Zone(C1_prevO1 / Center-point),19.12000000041735
-W2,ID541,In Zone(C1_prevO1 / Center-point),547.5200000119512
-W2,ID541,In Zone(C2_prevO2 / Center-point),11.480000000250584
-W2,ID541,In Zone(C2_prevO2 / Center-point),12.640000000275904
-W2,ID541,In Zone(O1_prevC1 / Center-point),4.080000000089058
-W2,ID541,Other,0.7200000000157161
-W2,ID590,In Zone(C1_prevO1 / Center-point),41.680000000909786
-W2,ID590,In Zone(C1_prevO1 / Center-point),459.24000001002423
-W2,ID590,In Zone(C2_prevO2 / Center-point),5.920000000129221
-W2,ID590,In Zone(C2_prevO2 / Center-point),5.960000000130094
-W2,ID590,In Zone(C2_prevO2 / Center-point),82.96000000181084
-W2,ID590,In Zone(NeutralZone/ Center-point),2.9600000000646105
-W2,ID590,Other,0.40000000000873115
-W2,ID590,Other,0.7600000000165892
+Preinduction,ID584,In Zone(C1_prevO1 / Center-point),15.760000000344007
+Preinduction,ID584,In Zone(C1_prevO1 / Center-point),28.76000000062777
+Preinduction,ID584,In Zone(C1_prevO1 / Center-point),35.04000000076485
+Preinduction,ID584,In Zone(C1_prevO1 / Center-point),130.9200000028577
+Preinduction,ID584,In Zone(C1_prevO1 / Center-point),53.360000001164735
+Preinduction,ID584,In Zone(C1_prevO1 / Center-point),140.64000000306987
+Preinduction,ID584,In Zone(C2_prevO2 / Center-point),19.92000000043481
+Preinduction,ID584,In Zone(C2_prevO2 / Center-point),25.360000000553555
+Preinduction,ID584,In Zone(C2_prevO2 / Center-point),38.56000000084168
+Preinduction,ID584,In Zone(C2_prevO2 / Center-point),20.600000000449654
+Preinduction,ID584,In Zone(C2_prevO2 / Center-point),30.280000000660948
+Preinduction,ID584,In Zone(NeutralZone/ Center-point),8.320000000181608
+Preinduction,ID584,In Zone(NeutralZone/ Center-point),1.9200000000419095
+Preinduction,ID584,In Zone(NeutralZone/ Center-point),1.3200000000288128
+Preinduction,ID584,In Zone(NeutralZone/ Center-point),3.520000000076834
+Preinduction,ID584,In Zone(NeutralZone/ Center-point),1.5600000000340515
+Preinduction,ID584,In Zone(NeutralZone/ Center-point),3.0000000000654836
+Preinduction,ID584,In Zone(NeutralZone/ Center-point),5.360000000116997
+Preinduction,ID584,In Zone(NeutralZone/ Center-point),15.760000000344007
+Preinduction,ID584,In Zone(O1_prevC1 / Center-point),6.400000000139698
+Preinduction,ID584,In Zone(O2_prevC2 / Center-point),2.400000000052387
+Preinduction,ID584,In Zone(O2_prevC2 / Center-point),9.920000000216532
+Preinduction,ID584,Other,1.2000000000261934
+Preinduction,ID450,In Zone(C1_prevO1 / Center-point),13.960000000304717
+Preinduction,ID450,In Zone(C1_prevO1 / Center-point),2.5200000000550062
+Preinduction,ID450,In Zone(C1_prevO1 / Center-point),45.04000000098313
+Preinduction,ID450,In Zone(C1_prevO1 / Center-point),23.320000000509026
+Preinduction,ID450,In Zone(C1_prevO1 / Center-point),9.12000000019907
+Preinduction,ID450,In Zone(C2_prevO2 / Center-point),21.160000000461878
+Preinduction,ID450,In Zone(C2_prevO2 / Center-point),1.080000000023574
+Preinduction,ID450,In Zone(C2_prevO2 / Center-point),57.36000000125205
+Preinduction,ID450,In Zone(C2_prevO2 / Center-point),3.760000000082073
+Preinduction,ID450,In Zone(C2_prevO2 / Center-point),140.3200000030629
+Preinduction,ID450,In Zone(C2_prevO2 / Center-point),150.76000000329077
+Preinduction,ID450,In Zone(C2_prevO2 / Center-point),52.40000000114378
+Preinduction,ID450,In Zone(NeutralZone/ Center-point),3.480000000075961
+Preinduction,ID450,In Zone(NeutralZone/ Center-point),3.800000000082946
+Preinduction,ID450,In Zone(NeutralZone/ Center-point),3.2800000000715954
+Preinduction,ID450,In Zone(NeutralZone/ Center-point),1.4400000000314321
+Preinduction,ID450,In Zone(NeutralZone/ Center-point),3.480000000075961
+Preinduction,ID450,In Zone(NeutralZone/ Center-point),1.8400000000401633
+Preinduction,ID450,In Zone(NeutralZone/ Center-point),2.360000000051514
+Preinduction,ID450,In Zone(NeutralZone/ Center-point),8.08000000017637
+Preinduction,ID450,In Zone(NeutralZone/ Center-point),8.720000000190339
+Preinduction,ID450,In Zone(NeutralZone/ Center-point),8.040000000175496
+Preinduction,ID450,In Zone(NeutralZone/ Center-point),3.6400000000794535
+Preinduction,ID450,In Zone(NeutralZone/ Center-point),2.2400000000488944
+Preinduction,ID450,In Zone(O1_prevC1 / Center-point),1.400000000030559
+Preinduction,ID450,In Zone(O1_prevC1 / Center-point),4.560000000099535
+Preinduction,ID450,In Zone(O1_prevC1 / Center-point),4.960000000108266
+Preinduction,ID450,In Zone(O2_prevC2 / Center-point),4.440000000096916
+Preinduction,ID450,In Zone(O2_prevC2 / Center-point),5.880000000128348
+Preinduction,ID450,In Zone(O2_prevC2 / Center-point),4.080000000089058
+Preinduction,ID450,Other,1.360000000029686
+Preinduction,ID450,Other,0.8800000000192085
+Preinduction,ID450,Other,0.8000000000174623
+Preinduction,ID450,Other,0.3200000000069849
+Preinduction,ID597,In Zone(C1_prevO1 / Center-point),70.84000000154629
+Preinduction,ID597,In Zone(C1_prevO1 / Center-point),227.00000000495493
+Preinduction,ID597,In Zone(C1_prevO1 / Center-point),57.76000000126078
+Preinduction,ID597,In Zone(C1_prevO1 / Center-point),59.04000000128872
+Preinduction,ID597,In Zone(C2_prevO2 / Center-point),64.2800000014031
+Preinduction,ID597,In Zone(C2_prevO2 / Center-point),40.240000000878354
+Preinduction,ID597,In Zone(C2_prevO2 / Center-point),22.120000000482833
+Preinduction,ID597,In Zone(C2_prevO2 / Center-point),25.28000000055181
+Preinduction,ID597,In Zone(NeutralZone/ Center-point),3.160000000068976
+Preinduction,ID597,In Zone(NeutralZone/ Center-point),4.920000000107393
+Preinduction,ID597,In Zone(NeutralZone/ Center-point),1.1600000000253203
+Preinduction,ID597,In Zone(NeutralZone/ Center-point),2.8800000000628643
+Preinduction,ID597,In Zone(NeutralZone/ Center-point),2.360000000051514
+Preinduction,ID597,In Zone(NeutralZone/ Center-point),2.2000000000480213
+Preinduction,ID597,In Zone(NeutralZone/ Center-point),1.080000000023574
+Preinduction,ID597,In Zone(O2_prevC2 / Center-point),9.360000000204309
+Preinduction,ID597,In Zone(O2_prevC2 / Center-point),4.88000000010652
+Preinduction,ID597,Other,0.20000000000436557
+Preinduction,ID597,Other,0.2800000000061118
+Preinduction,ID597,Other,0.6000000000130967
+Preinduction,ID597,Other,0.2400000000052387
+Preinduction,ID376,In Zone(C1_prevO1 / Center-point),352.0399999996798
+Preinduction,ID376,In Zone(C2_prevO2 / Center-point),5.559999999994943
+Preinduction,ID376,In Zone(C2_prevO2 / Center-point),217.4799999998022
+Preinduction,ID376,In Zone(NeutralZone/ Center-point),13.47999999998774
+Preinduction,ID376,In Zone(O2_prevC2 / Center-point),10.919999999990068
+Preinduction,ID376,Other,0.3999999999996362
+Preinduction,ID372,In Zone(C1_prevO1 / Center-point),13.199999999987995
+Preinduction,ID372,In Zone(C1_prevO1 / Center-point),22.959999999979118
+Preinduction,ID372,In Zone(C1_prevO1 / Center-point),32.23999999997068
+Preinduction,ID372,In Zone(C1_prevO1 / Center-point),93.75999999991473
+Preinduction,ID372,In Zone(C1_prevO1 / Center-point),41.95999999996184
+Preinduction,ID372,In Zone(C1_prevO1 / Center-point),42.67999999996118
+Preinduction,ID372,In Zone(C2_prevO2 / Center-point),16.47999999998501
+Preinduction,ID372,In Zone(C2_prevO2 / Center-point),25.479999999976826
+Preinduction,ID372,In Zone(C2_prevO2 / Center-point),55.15999999994983
+Preinduction,ID372,In Zone(C2_prevO2 / Center-point),83.27999999992426
+Preinduction,ID372,In Zone(C2_prevO2 / Center-point),29.999999999972715
+Preinduction,ID372,In Zone(C2_prevO2 / Center-point),90.83999999991738
+Preinduction,ID372,In Zone(C2_prevO2 / Center-point),7.679999999993015
+Preinduction,ID372,In Zone(NeutralZone/ Center-point),1.799999999998363
+Preinduction,ID372,In Zone(NeutralZone/ Center-point),6.359999999994216
+Preinduction,ID372,In Zone(NeutralZone/ Center-point),7.759999999992942
+Preinduction,ID372,In Zone(O1_prevC1 / Center-point),7.039999999993597
+Preinduction,ID372,In Zone(O1_prevC1 / Center-point),1.5599999999985812
+Preinduction,ID372,In Zone(O1_prevC1 / Center-point),6.559999999994034
+Preinduction,ID372,In Zone(O2_prevC2 / Center-point),2.2799999999979264
+Preinduction,ID372,In Zone(O2_prevC2 / Center-point),3.1199999999971624
+Preinduction,ID372,In Zone(O2_prevC2 / Center-point),6.199999999994361
+Preinduction,ID372,Other,0.23999999999978172
+Preinduction,ID372,Other,0.3999999999996362
+Preinduction,ID372,Other,0.11999999999989086
+Preinduction,ID372,Other,0.7199999999993452
+Preinduction,ID374,In Zone(C1_prevO1 / Center-point),25.240000000550936
+Preinduction,ID374,In Zone(C1_prevO1 / Center-point),32.48000000070897
+Preinduction,ID374,In Zone(C1_prevO1 / Center-point),27.560000000601576
+Preinduction,ID374,In Zone(C1_prevO1 / Center-point),43.480000000949076
+Preinduction,ID374,In Zone(C1_prevO1 / Center-point),4.560000000099535
+Preinduction,ID374,In Zone(C2_prevO2 / Center-point),17.360000000378932
+Preinduction,ID374,In Zone(C2_prevO2 / Center-point),20.80000000045402
+Preinduction,ID374,In Zone(C2_prevO2 / Center-point),44.72000000097614
+Preinduction,ID374,In Zone(C2_prevO2 / Center-point),89.52000000195403
+Preinduction,ID374,In Zone(C2_prevO2 / Center-point),67.08000000146421
+Preinduction,ID374,In Zone(C2_prevO2 / Center-point),163.0800000035597
+Preinduction,ID374,In Zone(NeutralZone/ Center-point),2.3200000000506407
+Preinduction,ID374,In Zone(NeutralZone/ Center-point),2.2400000000488944
+Preinduction,ID374,In Zone(NeutralZone/ Center-point),5.600000000122236
+Preinduction,ID374,In Zone(NeutralZone/ Center-point),14.00000000030559
+Preinduction,ID374,In Zone(NeutralZone/ Center-point),9.88000000021566
+Preinduction,ID374,In Zone(NeutralZone/ Center-point),3.0000000000654836
+Preinduction,ID374,In Zone(NeutralZone/ Center-point),3.6800000000803266
+Preinduction,ID374,In Zone(NeutralZone/ Center-point),2.9200000000637374
+Preinduction,ID374,In Zone(O1_prevC1 / Center-point),1.9200000000419095
+Preinduction,ID374,In Zone(O2_prevC2 / Center-point),3.440000000075088
+Preinduction,ID374,In Zone(O2_prevC2 / Center-point),14.12000000030821
+Preinduction,ID374,Other,0.9200000000200816
+Preinduction,ID429,In Zone(C1_prevO1 / Center-point),14.480000000316068
+Preinduction,ID429,In Zone(C1_prevO1 / Center-point),8.520000000185973
+Preinduction,ID429,In Zone(C1_prevO1 / Center-point),17.040000000371947
+Preinduction,ID429,In Zone(C1_prevO1 / Center-point),12.160000000265427
+Preinduction,ID429,In Zone(C1_prevO1 / Center-point),14.960000000326545
+Preinduction,ID429,In Zone(C1_prevO1 / Center-point),63.44000000138476
+Preinduction,ID429,In Zone(C1_prevO1 / Center-point),16.920000000369328
+Preinduction,ID429,In Zone(C1_prevO1 / Center-point),25.28000000055181
+Preinduction,ID429,In Zone(C1_prevO1 / Center-point),22.240000000485452
+Preinduction,ID429,In Zone(C1_prevO1 / Center-point),120.68000000263419
+Preinduction,ID429,In Zone(C2_prevO2 / Center-point),17.280000000377186
+Preinduction,ID429,In Zone(C2_prevO2 / Center-point),26.040000000568398
+Preinduction,ID429,In Zone(C2_prevO2 / Center-point),14.880000000324799
+Preinduction,ID429,In Zone(C2_prevO2 / Center-point),17.920000000391155
+Preinduction,ID429,In Zone(C2_prevO2 / Center-point),22.60000000049331
+Preinduction,ID429,In Zone(C2_prevO2 / Center-point),2.9600000000646105
+Preinduction,ID429,In Zone(C2_prevO2 / Center-point),8.680000000189466
+Preinduction,ID429,In Zone(NeutralZone/ Center-point),2.0000000000436557
+Preinduction,ID429,In Zone(NeutralZone/ Center-point),9.960000000217406
+Preinduction,ID429,In Zone(NeutralZone/ Center-point),1.8800000000410364
+Preinduction,ID429,In Zone(NeutralZone/ Center-point),3.880000000084692
+Preinduction,ID429,In Zone(NeutralZone/ Center-point),6.400000000139698
+Preinduction,ID429,In Zone(NeutralZone/ Center-point),2.160000000047148
+Preinduction,ID429,In Zone(NeutralZone/ Center-point),2.6000000000567525
+Preinduction,ID429,In Zone(NeutralZone/ Center-point),3.2400000000707223
+Preinduction,ID429,In Zone(NeutralZone/ Center-point),3.4000000000742148
+Preinduction,ID429,In Zone(NeutralZone/ Center-point),1.8000000000392902
+Preinduction,ID429,In Zone(NeutralZone/ Center-point),2.2400000000488944
+Preinduction,ID429,In Zone(NeutralZone/ Center-point),8.08000000017637
+Preinduction,ID429,In Zone(O1_prevC1 / Center-point),9.800000000213913
+Preinduction,ID429,In Zone(O1_prevC1 / Center-point),2.160000000047148
+Preinduction,ID429,In Zone(O1_prevC1 / Center-point),13.920000000303844
+Preinduction,ID429,In Zone(O1_prevC1 / Center-point),2.840000000061991
+Preinduction,ID429,In Zone(O1_prevC1 / Center-point),7.920000000172877
+Preinduction,ID429,In Zone(O1_prevC1 / Center-point),3.5600000000777072
+Preinduction,ID429,In Zone(O2_prevC2 / Center-point),11.520000000251457
+Preinduction,ID429,In Zone(O2_prevC2 / Center-point),11.880000000259315
+Preinduction,ID429,In Zone(O2_prevC2 / Center-point),23.280000000508153
+Preinduction,ID429,In Zone(O2_prevC2 / Center-point),14.240000000310829
+Preinduction,ID429,In Zone(O2_prevC2 / Center-point),15.680000000342261
+Preinduction,ID429,In Zone(O2_prevC2 / Center-point),9.360000000204309
+Preinduction,ID423,In Zone(C2_prevO2 / Center-point),115.52000000252156
+Preinduction,ID423,In Zone(C2_prevO2 / Center-point),15.000000000327418
+Preinduction,ID423,In Zone(C2_prevO2 / Center-point),103.48000000225875
+Preinduction,ID423,In Zone(C2_prevO2 / Center-point),141.3600000030856
+Preinduction,ID423,In Zone(C2_prevO2 / Center-point),118.32000000258267
+Preinduction,ID423,In Zone(NeutralZone/ Center-point),6.920000000151049
+Preinduction,ID423,In Zone(NeutralZone/ Center-point),4.320000000094296
+Preinduction,ID423,In Zone(NeutralZone/ Center-point),4.960000000108266
+Preinduction,ID423,In Zone(NeutralZone/ Center-point),1.9600000000427826
+Preinduction,ID423,In Zone(NeutralZone/ Center-point),7.600000000165892
+Preinduction,ID423,In Zone(NeutralZone/ Center-point),4.88000000010652
+Preinduction,ID423,In Zone(O1_prevC1 / Center-point),2.760000000060245
+Preinduction,ID423,In Zone(O1_prevC1 / Center-point),5.680000000123982
+Preinduction,ID423,In Zone(O2_prevC2 / Center-point),2.6800000000584987
+Preinduction,ID423,In Zone(O2_prevC2 / Center-point),33.840000000738655
+Preinduction,ID423,In Zone(O2_prevC2 / Center-point),29.52000000064436
+Preinduction,ID423,Other,0.680000000014843
+Preinduction,ID423,Other,0.40000000000873115
+Preinduction,ID463,In Zone(C1_prevO1 / Center-point),51.439999999953216
+Preinduction,ID463,In Zone(C1_prevO1 / Center-point),47.59999999995671
+Preinduction,ID463,In Zone(C1_prevO1 / Center-point),46.799999999957436
+Preinduction,ID463,In Zone(C2_prevO2 / Center-point),19.399999999982356
+Preinduction,ID463,In Zone(C2_prevO2 / Center-point),52.639999999952124
+Preinduction,ID463,In Zone(C2_prevO2 / Center-point),266.8799999997573
+Preinduction,ID463,In Zone(C2_prevO2 / Center-point),1.7599999999983993
+Preinduction,ID463,In Zone(NeutralZone/ Center-point),4.839999999995598
+Preinduction,ID463,In Zone(NeutralZone/ Center-point),13.239999999987958
+Preinduction,ID463,In Zone(NeutralZone/ Center-point),4.679999999995744
+Preinduction,ID463,In Zone(NeutralZone/ Center-point),9.039999999991778
+Preinduction,ID463,In Zone(NeutralZone/ Center-point),6.039999999994507
+Preinduction,ID463,In Zone(NeutralZone/ Center-point),1.8399999999983265
+Preinduction,ID463,In Zone(NeutralZone/ Center-point),6.039999999994507
+Preinduction,ID463,In Zone(O1_prevC1 / Center-point),8.199999999992542
+Preinduction,ID463,In Zone(O2_prevC2 / Center-point),24.479999999977736
+Preinduction,ID463,In Zone(O2_prevC2 / Center-point),7.599999999993088
+Preinduction,ID463,In Zone(O2_prevC2 / Center-point),27.319999999975153
+Preinduction,ID463,Other,0.07999999999992724
+Preinduction,ID459,In Zone(C1_prevO1 / Center-point),137.8799999998746
+Preinduction,ID459,In Zone(C1_prevO1 / Center-point),77.31999999992968
+Preinduction,ID459,In Zone(C1_prevO1 / Center-point),219.95999999979995
+Preinduction,ID459,In Zone(C1_prevO1 / Center-point),27.559999999974934
+Preinduction,ID459,In Zone(C2_prevO2 / Center-point),36.55999999996675
+Preinduction,ID459,In Zone(C2_prevO2 / Center-point),29.999999999972715
+Preinduction,ID459,In Zone(NeutralZone/ Center-point),7.559999999993124
+Preinduction,ID459,In Zone(NeutralZone/ Center-point),18.639999999983047
+Preinduction,ID459,In Zone(NeutralZone/ Center-point),3.599999999996726
+Preinduction,ID459,In Zone(NeutralZone/ Center-point),2.5599999999976717
+Preinduction,ID459,In Zone(NeutralZone/ Center-point),2.399999999997817
+Preinduction,ID459,In Zone(NeutralZone/ Center-point),5.199999999995271
+Preinduction,ID459,In Zone(O1_prevC1 / Center-point),10.59999999999036
+Preinduction,ID459,In Zone(O2_prevC2 / Center-point),19.479999999982283
+Preinduction,ID459,Other,0.23999999999978172
+Preinduction,ID459,Other,0.31999999999970896
+Preinduction,ID398,In Zone(Arena / Center-point),1.6800000000366708
+Preinduction,ID398,In Zone(C1_prevO1 / Center-point),9.360000000204309
+Preinduction,ID398,In Zone(C1_prevO1 / Center-point),50.160000001094886
+Preinduction,ID398,In Zone(C1_prevO1 / Center-point),189.80000000414293
+Preinduction,ID398,In Zone(C2_prevO2 / Center-point),60.560000001321896
+Preinduction,ID398,In Zone(C2_prevO2 / Center-point),163.28000000356406
+Preinduction,ID398,In Zone(C2_prevO2 / Center-point),18.160000000396394
+Preinduction,ID398,In Zone(NeutralZone/ Center-point),8.280000000180735
+Preinduction,ID398,In Zone(NeutralZone/ Center-point),3.7200000000811997
+Preinduction,ID398,In Zone(NeutralZone/ Center-point),1.4400000000314321
+Preinduction,ID398,In Zone(NeutralZone/ Center-point),14.800000000323053
+Preinduction,ID398,In Zone(NeutralZone/ Center-point),28.200000000615546
+Preinduction,ID398,In Zone(NeutralZone/ Center-point),5.000000000109139
+Preinduction,ID398,In Zone(NeutralZone/ Center-point),4.840000000105647
+Preinduction,ID398,In Zone(O1_prevC1 / Center-point),11.120000000242726
+Preinduction,ID398,In Zone(O2_prevC2 / Center-point),2.160000000047148
+Preinduction,ID398,In Zone(O2_prevC2 / Center-point),9.520000000207801
+Preinduction,ID398,In Zone(O2_prevC2 / Center-point),11.880000000259315
+Preinduction,ID398,In Zone(O2_prevC2 / Center-point),4.280000000093423
+Preinduction,ID398,Other,0.9200000000200816
+Preinduction,ID398,Other,0.7200000000157161
+Preinduction,ID400,In Zone(C1_prevO1 / Center-point),182.48000000398315
+Preinduction,ID400,In Zone(C2_prevO2 / Center-point),38.2400000008347
+Preinduction,ID400,In Zone(C2_prevO2 / Center-point),376.1200000082099
+Preinduction,ID400,In Zone(NeutralZone/ Center-point),2.9200000000637374
+Preinduction,ID400,Other,0.12000000000261934
+W1,ID376,In Zone(C1_prevO1 / Center-point),12.399999999988722
+W1,ID376,In Zone(C1_prevO1 / Center-point),73.75999999993292
+W1,ID376,In Zone(C1_prevO1 / Center-point),36.99999999996635
+W1,ID376,In Zone(C1_prevO1 / Center-point),25.799999999976535
+W1,ID376,In Zone(C1_prevO1 / Center-point),2.439999999997781
+W1,ID376,In Zone(C1_prevO1 / Center-point),44.11999999995987
+W1,ID376,In Zone(C1_prevO1 / Center-point),24.239999999977954
+W1,ID376,In Zone(C1_prevO1 / Center-point),37.23999999996613
+W1,ID376,In Zone(C2_prevO2 / Center-point),40.79999999996289
+W1,ID376,In Zone(C2_prevO2 / Center-point),64.79999999994106
+W1,ID376,In Zone(C2_prevO2 / Center-point),28.479999999974098
+W1,ID376,In Zone(C2_prevO2 / Center-point),47.679999999956635
+W1,ID376,In Zone(C2_prevO2 / Center-point),59.35999999994601
+W1,ID376,In Zone(C2_prevO2 / Center-point),22.43999999997959
+W1,ID376,In Zone(NeutralZone/ Center-point),2.9199999999973443
+W1,ID376,In Zone(NeutralZone/ Center-point),6.359999999994216
+W1,ID376,In Zone(NeutralZone/ Center-point),3.479999999996835
+W1,ID376,In Zone(NeutralZone/ Center-point),5.119999999995343
+W1,ID376,In Zone(NeutralZone/ Center-point),2.2799999999979264
+W1,ID376,In Zone(NeutralZone/ Center-point),4.599999999995816
+W1,ID376,In Zone(NeutralZone/ Center-point),1.7199999999984357
+W1,ID376,In Zone(NeutralZone/ Center-point),7.599999999993088
+W1,ID376,In Zone(NeutralZone/ Center-point),1.3199999999987995
+W1,ID376,In Zone(O1_prevC1 / Center-point),4.4799999999959255
+W1,ID376,In Zone(O1_prevC1 / Center-point),3.799999999996544
+W1,ID376,In Zone(O1_prevC1 / Center-point),12.399999999988722
+W1,ID376,In Zone(O2_prevC2 / Center-point),1.159999999998945
+W1,ID376,In Zone(O2_prevC2 / Center-point),12.279999999988831
+W1,ID376,In Zone(O2_prevC2 / Center-point),7.279999999993379
+W1,ID376,Other,0.07999999999992724
+W1,ID376,Other,0.7199999999993452
+W1,ID376,Other,0.9999999999990905
+W1,ID376,Other,0.7199999999993452
+W1,ID372,In Zone(C1_prevO1 / Center-point),54.87999999995009
+W1,ID372,In Zone(C1_prevO1 / Center-point),140.9599999998718
+W1,ID372,In Zone(C1_prevO1 / Center-point),46.07999999995809
+W1,ID372,In Zone(C1_prevO1 / Center-point),130.75999999988107
+W1,ID372,In Zone(C1_prevO1 / Center-point),41.79999999996198
+W1,ID372,In Zone(C2_prevO2 / Center-point),33.079999999969914
+W1,ID372,In Zone(C2_prevO2 / Center-point),79.55999999992764
+W1,ID372,In Zone(C2_prevO2 / Center-point),23.159999999978936
+W1,ID372,In Zone(C2_prevO2 / Center-point),21.31999999998061
+W1,ID372,In Zone(C2_prevO2 / Center-point),18.43999999998323
+W1,ID372,In Zone(NeutralZone/ Center-point),3.479999999996835
+W1,ID372,In Zone(O2_prevC2 / Center-point),5.679999999994834
+W1,ID372,Other,0.6799999999993815
+W1,ID374,In Zone(C1_prevO1 / Center-point),111.96000000244385
+W1,ID374,In Zone(C1_prevO1 / Center-point),53.600000001169974
+W1,ID374,In Zone(C1_prevO1 / Center-point),47.40000000103464
+W1,ID374,In Zone(C1_prevO1 / Center-point),23.160000000505534
+W1,ID374,In Zone(C1_prevO1 / Center-point),12.520000000273285
+W1,ID374,In Zone(C1_prevO1 / Center-point),38.16000000083295
+W1,ID374,In Zone(C2_prevO2 / Center-point),64.44000000140659
+W1,ID374,In Zone(C2_prevO2 / Center-point),52.36000000114291
+W1,ID374,In Zone(C2_prevO2 / Center-point),55.08000000120228
+W1,ID374,In Zone(C2_prevO2 / Center-point),26.360000000575383
+W1,ID374,In Zone(C2_prevO2 / Center-point),70.44000000153756
+W1,ID374,In Zone(C2_prevO2 / Center-point),36.12000000078842
+W1,ID374,In Zone(NeutralZone/ Center-point),2.0000000000436557
+W1,ID374,In Zone(NeutralZone/ Center-point),3.800000000082946
+W1,ID374,Other,2.480000000054133
+W1,ID429,In Zone(C1_prevO1 / Center-point),20.840000000454893
+W1,ID429,In Zone(C1_prevO1 / Center-point),36.0000000007858
+W1,ID429,In Zone(C1_prevO1 / Center-point),23.400000000510772
+W1,ID429,In Zone(C1_prevO1 / Center-point),118.32000000258267
+W1,ID429,In Zone(C1_prevO1 / Center-point),85.12000000185799
+W1,ID429,In Zone(C1_prevO1 / Center-point),165.08000000360335
+W1,ID429,In Zone(C1_prevO1 / Center-point),16.68000000036409
+W1,ID429,In Zone(C2_prevO2 / Center-point),16.760000000365835
+W1,ID429,In Zone(C2_prevO2 / Center-point),15.760000000344007
+W1,ID429,In Zone(C2_prevO2 / Center-point),12.160000000265427
+W1,ID429,In Zone(C2_prevO2 / Center-point),7.96000000017375
+W1,ID429,In Zone(C2_prevO2 / Center-point),11.68000000025495
+W1,ID429,In Zone(NeutralZone/ Center-point),2.6400000000576256
+W1,ID429,In Zone(NeutralZone/ Center-point),2.120000000046275
+W1,ID429,In Zone(NeutralZone/ Center-point),4.320000000094296
+W1,ID429,In Zone(NeutralZone/ Center-point),4.320000000094296
+W1,ID429,In Zone(NeutralZone/ Center-point),6.760000000147556
+W1,ID429,In Zone(NeutralZone/ Center-point),4.24000000009255
+W1,ID429,In Zone(NeutralZone/ Center-point),8.240000000179862
+W1,ID429,In Zone(O1_prevC1 / Center-point),16.240000000354485
+W1,ID429,In Zone(O2_prevC2 / Center-point),6.280000000137079
+W1,ID429,In Zone(O2_prevC2 / Center-point),14.840000000323926
+W1,ID429,Other,0.12000000000261934
+W1,ID423,In Zone(C1_prevO1 / Center-point),17.120000000373693
+W1,ID423,In Zone(C1_prevO1 / Center-point),3.160000000068976
+W1,ID423,In Zone(C1_prevO1 / Center-point),15.560000000339642
+W1,ID423,In Zone(C2_prevO2 / Center-point),11.840000000258442
+W1,ID423,In Zone(C2_prevO2 / Center-point),92.36000000201602
+W1,ID423,In Zone(C2_prevO2 / Center-point),106.12000000231637
+W1,ID423,In Zone(C2_prevO2 / Center-point),246.2400000053749
+W1,ID423,In Zone(C2_prevO2 / Center-point),59.44000000129745
+W1,ID423,In Zone(NeutralZone/ Center-point),7.800000000170257
+W1,ID423,In Zone(NeutralZone/ Center-point),1.8400000000401633
+W1,ID423,In Zone(NeutralZone/ Center-point),1.4800000000323053
+W1,ID423,In Zone(NeutralZone/ Center-point),2.5200000000550062
+W1,ID423,In Zone(NeutralZone/ Center-point),4.0000000000873115
+W1,ID423,In Zone(NeutralZone/ Center-point),2.720000000059372
+W1,ID423,In Zone(NeutralZone/ Center-point),16.520000000360596
+W1,ID423,In Zone(NeutralZone/ Center-point),4.88000000010652
+W1,ID423,In Zone(O1_prevC1 / Center-point),2.760000000060245
+W1,ID423,In Zone(O1_prevC1 / Center-point),2.800000000061118
+W1,ID423,Other,0.40000000000873115
+W1,ID423,Other,0.3200000000069849
+W1,ID450,In Zone(C1_prevO1 / Center-point),6.359999999994216
+W1,ID450,In Zone(C1_prevO1 / Center-point),32.47999999997046
+W1,ID450,In Zone(C1_prevO1 / Center-point),46.15999999995802
+W1,ID450,In Zone(C1_prevO1 / Center-point),63.83999999994194
+W1,ID450,In Zone(C1_prevO1 / Center-point),22.99999999997908
+W1,ID450,In Zone(C1_prevO1 / Center-point),18.759999999982938
+W1,ID450,In Zone(C1_prevO1 / Center-point),19.639999999982138
+W1,ID450,In Zone(C2_prevO2 / Center-point),28.479999999974098
+W1,ID450,In Zone(C2_prevO2 / Center-point),34.43999999996868
+W1,ID450,In Zone(C2_prevO2 / Center-point),47.239999999957035
+W1,ID450,In Zone(C2_prevO2 / Center-point),137.5599999998749
+W1,ID450,In Zone(C2_prevO2 / Center-point),56.75999999994838
+W1,ID450,In Zone(C2_prevO2 / Center-point),25.3999999999769
+W1,ID450,In Zone(NeutralZone/ Center-point),1.9599999999982174
+W1,ID450,In Zone(NeutralZone/ Center-point),1.9199999999982538
+W1,ID450,In Zone(NeutralZone/ Center-point),6.119999999994434
+W1,ID450,In Zone(NeutralZone/ Center-point),2.519999999997708
+W1,ID450,In Zone(NeutralZone/ Center-point),1.999999999998181
+W1,ID450,In Zone(NeutralZone/ Center-point),8.919999999991887
+W1,ID450,In Zone(NeutralZone/ Center-point),2.3599999999978536
+W1,ID450,In Zone(NeutralZone/ Center-point),5.039999999995416
+W1,ID450,In Zone(O1_prevC1 / Center-point),17.639999999983957
+W1,ID450,In Zone(O2_prevC2 / Center-point),5.479999999995016
+W1,ID450,In Zone(O2_prevC2 / Center-point),5.8399999999946886
+W1,ID597,In Zone(Arena / Center-point),23.76000000051863
+W1,ID597,In Zone(C1_prevO1 / Center-point),37.200000000812
+W1,ID597,In Zone(C1_prevO1 / Center-point),33.960000000741275
+W1,ID597,In Zone(C1_prevO1 / Center-point),58.120000001268636
+W1,ID597,In Zone(C1_prevO1 / Center-point),50.24000000109663
+W1,ID597,In Zone(C1_prevO1 / Center-point),88.88000000194006
+W1,ID597,In Zone(C1_prevO1 / Center-point),18.320000000399887
+W1,ID597,In Zone(C2_prevO2 / Center-point),9.00000000019645
+W1,ID597,In Zone(C2_prevO2 / Center-point),41.52000000090629
+W1,ID597,In Zone(C2_prevO2 / Center-point),68.60000000149739
+W1,ID597,In Zone(C2_prevO2 / Center-point),65.12000000142143
+W1,ID597,In Zone(C2_prevO2 / Center-point),25.80000000056316
+W1,ID597,In Zone(C2_prevO2 / Center-point),52.12000000113767
+W1,ID597,In Zone(NeutralZone/ Center-point),4.040000000088185
+W1,ID597,In Zone(NeutralZone/ Center-point),8.440000000184227
+W1,ID597,In Zone(NeutralZone/ Center-point),2.360000000051514
+W1,ID597,In Zone(NeutralZone/ Center-point),2.44000000005326
+W1,ID597,In Zone(O2_prevC2 / Center-point),9.360000000204309
+W1,ID597,Other,0.6000000000130967
+W1,ID463,In Zone(C1_prevO1 / Center-point),45.31999999995878
+W1,ID463,In Zone(C1_prevO1 / Center-point),1.1199999999989814
+W1,ID463,In Zone(C1_prevO1 / Center-point),204.47999999981403
+W1,ID463,In Zone(C1_prevO1 / Center-point),193.91999999982363
+W1,ID463,In Zone(C2_prevO2 / Center-point),64.79999999994106
+W1,ID463,In Zone(C2_prevO2 / Center-point),47.39999999995689
+W1,ID463,In Zone(NeutralZone/ Center-point),3.5199999999967986
+W1,ID463,In Zone(NeutralZone/ Center-point),2.9999999999972715
+W1,ID463,In Zone(NeutralZone/ Center-point),4.079999999996289
+W1,ID463,In Zone(NeutralZone/ Center-point),2.6799999999975626
+W1,ID463,In Zone(O2_prevC2 / Center-point),15.879999999985557
+W1,ID463,In Zone(O2_prevC2 / Center-point),11.359999999989668
+W1,ID463,Other,0.31999999999970896
+W1,ID463,Other,1.3199999999987995
+W1,ID463,Other,0.6799999999993815
+W1,ID459,In Zone(C1_prevO1 / Center-point),82.03999999992539
+W1,ID459,In Zone(C1_prevO1 / Center-point),123.19999999988795
+W1,ID459,In Zone(C1_prevO1 / Center-point),226.5999999997939
+W1,ID459,In Zone(C1_prevO1 / Center-point),22.679999999979373
+W1,ID459,In Zone(C2_prevO2 / Center-point),21.63999999998032
+W1,ID459,In Zone(C2_prevO2 / Center-point),33.99999999996908
+W1,ID459,In Zone(C2_prevO2 / Center-point),45.39999999995871
+W1,ID459,In Zone(NeutralZone/ Center-point),4.279999999996107
+W1,ID459,In Zone(NeutralZone/ Center-point),2.6799999999975626
+W1,ID459,In Zone(NeutralZone/ Center-point),3.999999999996362
+W1,ID459,In Zone(NeutralZone/ Center-point),2.119999999998072
+W1,ID459,In Zone(NeutralZone/ Center-point),1.359999999998763
+W1,ID459,In Zone(O1_prevC1 / Center-point),15.959999999985484
+W1,ID459,In Zone(O1_prevC1 / Center-point),2.8799999999973807
+W1,ID459,In Zone(O2_prevC2 / Center-point),9.959999999990941
+W1,ID459,Other,0.7599999999993088
+W1,ID459,Other,0.3599999999996726
+W1,ID398,In Zone(C1_prevO1 / Center-point),156.16000000340864
+W1,ID398,In Zone(C1_prevO1 / Center-point),66.8000000014581
+W1,ID398,In Zone(C2_prevO2 / Center-point),245.52000000535918
+W1,ID398,In Zone(C2_prevO2 / Center-point),116.8000000025495
+W1,ID398,In Zone(NeutralZone/ Center-point),1.9600000000427826
+W1,ID398,In Zone(NeutralZone/ Center-point),4.040000000088185
+W1,ID398,In Zone(O1_prevC1 / Center-point),2.840000000061991
+W1,ID398,In Zone(O2_prevC2 / Center-point),5.7600000001257285
+W1,ID400,In Zone(C2_prevO2 / Center-point),599.8800000130941
+W2,ID463,In Zone(C1_prevO1 / Center-point),88.95999999991909
+W2,ID463,In Zone(C1_prevO1 / Center-point),66.59999999993943
+W2,ID463,In Zone(C1_prevO1 / Center-point),239.27999999978238
+W2,ID463,In Zone(C1_prevO1 / Center-point),111.95999999989817
+W2,ID463,In Zone(C2_prevO2 / Center-point),30.39999999997235
+W2,ID463,In Zone(C2_prevO2 / Center-point),24.75999999997748
+W2,ID463,In Zone(C2_prevO2 / Center-point),20.359999999981483
+W2,ID463,In Zone(NeutralZone/ Center-point),2.2399999999979627
+W2,ID463,In Zone(NeutralZone/ Center-point),1.359999999998763
+W2,ID463,In Zone(NeutralZone/ Center-point),2.399999999997817
+W2,ID463,In Zone(NeutralZone/ Center-point),4.559999999995853
+W2,ID463,In Zone(O2_prevC2 / Center-point),6.9999999999936335
+W2,ID459,In Zone(C1_prevO1 / Center-point),10.59999999999036
+W2,ID459,In Zone(C1_prevO1 / Center-point),16.759999999984757
+W2,ID459,In Zone(C1_prevO1 / Center-point),37.399999999965985
+W2,ID459,In Zone(C1_prevO1 / Center-point),80.63999999992666
+W2,ID459,In Zone(C1_prevO1 / Center-point),57.35999999994783
+W2,ID459,In Zone(C1_prevO1 / Center-point),40.679999999963
+W2,ID459,In Zone(C1_prevO1 / Center-point),16.399999999985084
+W2,ID459,In Zone(C1_prevO1 / Center-point),22.839999999979227
+W2,ID459,In Zone(C2_prevO2 / Center-point),12.879999999988286
+W2,ID459,In Zone(C2_prevO2 / Center-point),64.79999999994106
+W2,ID459,In Zone(C2_prevO2 / Center-point),15.479999999985921
+W2,ID459,In Zone(C2_prevO2 / Center-point),66.91999999993914
+W2,ID459,In Zone(C2_prevO2 / Center-point),51.11999999995351
+W2,ID459,In Zone(C2_prevO2 / Center-point),5.999999999994543
+W2,ID459,In Zone(C2_prevO2 / Center-point),27.439999999975043
+W2,ID459,In Zone(NeutralZone/ Center-point),3.919999999996435
+W2,ID459,In Zone(NeutralZone/ Center-point),1.5999999999985448
+W2,ID459,In Zone(NeutralZone/ Center-point),4.9999999999954525
+W2,ID459,In Zone(NeutralZone/ Center-point),2.639999999997599
+W2,ID459,In Zone(NeutralZone/ Center-point),2.399999999997817
+W2,ID459,In Zone(NeutralZone/ Center-point),7.599999999993088
+W2,ID459,In Zone(NeutralZone/ Center-point),5.6399999999948704
+W2,ID459,In Zone(NeutralZone/ Center-point),1.999999999998181
+W2,ID459,In Zone(O2_prevC2 / Center-point),24.359999999977845
+W2,ID459,In Zone(O2_prevC2 / Center-point),15.479999999985921
+W2,ID459,Other,0.7199999999993452
+W2,ID459,Other,0.7199999999993452
+W2,ID459,Other,0.11999999999989086
+W2,ID459,Other,0.3999999999996362
+W2,ID398,In Zone(C1_prevO1 / Center-point),20.840000000454893
+W2,ID398,In Zone(C1_prevO1 / Center-point),39.20000000085565
+W2,ID398,In Zone(C1_prevO1 / Center-point),41.52000000090629
+W2,ID398,In Zone(C1_prevO1 / Center-point),29.840000000651344
+W2,ID398,In Zone(C1_prevO1 / Center-point),26.880000000586733
+W2,ID398,In Zone(C1_prevO1 / Center-point),21.800000000475848
+W2,ID398,In Zone(C2_prevO2 / Center-point),142.60000000311265
+W2,ID398,In Zone(C2_prevO2 / Center-point),81.60000000178115
+W2,ID398,In Zone(C2_prevO2 / Center-point),32.08000000070024
+W2,ID398,In Zone(C2_prevO2 / Center-point),17.560000000383297
+W2,ID398,In Zone(C2_prevO2 / Center-point),23.3600000005099
+W2,ID398,In Zone(C2_prevO2 / Center-point),78.44000000171218
+W2,ID398,In Zone(NeutralZone/ Center-point),3.760000000082073
+W2,ID398,In Zone(NeutralZone/ Center-point),1.0000000000218279
+W2,ID398,In Zone(NeutralZone/ Center-point),1.2800000000279397
+W2,ID398,In Zone(NeutralZone/ Center-point),6.520000000142318
+W2,ID398,In Zone(NeutralZone/ Center-point),1.4400000000314321
+W2,ID398,In Zone(O1_prevC1 / Center-point),2.9200000000637374
+W2,ID398,In Zone(O2_prevC2 / Center-point),19.720000000430446
+W2,ID398,In Zone(O2_prevC2 / Center-point),5.480000000119617
+W2,ID398,Other,0.7600000000165892
+W2,ID398,Other,0.40000000000873115
+W2,ID398,Other,0.8800000000192085
+W2,ID400,In Zone(C1_prevO1 / Center-point),44.44000000097003
+W2,ID400,In Zone(C1_prevO1 / Center-point),106.28000000231987
+W2,ID400,In Zone(C1_prevO1 / Center-point),137.0400000029913
+W2,ID400,In Zone(C1_prevO1 / Center-point),161.5600000035265
+W2,ID400,In Zone(C1_prevO1 / Center-point),1.2000000000261934
+W2,ID400,In Zone(C2_prevO2 / Center-point),13.320000000290747
+W2,ID400,In Zone(C2_prevO2 / Center-point),52.080000001136796
+W2,ID400,In Zone(C2_prevO2 / Center-point),23.800000000519503
+W2,ID400,In Zone(C2_prevO2 / Center-point),54.80000000119617
+W2,ID400,In Zone(NeutralZone/ Center-point),1.400000000030559
+W2,ID400,In Zone(O2_prevC2 / Center-point),1.9200000000419095
+W2,ID400,In Zone(O2_prevC2 / Center-point),1.1200000000244472
+W2,ID400,Other,0.12000000000261934
+W2,ID400,Other,0.8000000000174623
+W2,ID376,In Zone(C1_prevO1 / Center-point),17.039999999984502
+W2,ID376,In Zone(C1_prevO1 / Center-point),43.7599999999602
+W2,ID376,In Zone(C1_prevO1 / Center-point),12.199999999988904
+W2,ID376,In Zone(C1_prevO1 / Center-point),13.559999999987667
+W2,ID376,In Zone(C1_prevO1 / Center-point),7.279999999993379
+W2,ID376,In Zone(C1_prevO1 / Center-point),14.559999999986758
+W2,ID376,In Zone(C1_prevO1 / Center-point),14.079999999987194
+W2,ID376,In Zone(C1_prevO1 / Center-point),7.3199999999933425
+W2,ID376,In Zone(C1_prevO1 / Center-point),20.9999999999809
+W2,ID376,In Zone(C1_prevO1 / Center-point),9.239999999991596
+W2,ID376,In Zone(C1_prevO1 / Center-point),9.439999999991414
+W2,ID376,In Zone(C1_prevO1 / Center-point),46.03999999995813
+W2,ID376,In Zone(C1_prevO1 / Center-point),5.07999999999538
+W2,ID376,In Zone(C1_prevO1 / Center-point),7.279999999993379
+W2,ID376,In Zone(C1_prevO1 / Center-point),8.27999999999247
+W2,ID376,In Zone(C1_prevO1 / Center-point),9.71999999999116
+W2,ID376,In Zone(C1_prevO1 / Center-point),4.319999999996071
+W2,ID376,In Zone(C2_prevO2 / Center-point),5.239999999995234
+W2,ID376,In Zone(C2_prevO2 / Center-point),8.919999999991887
+W2,ID376,In Zone(C2_prevO2 / Center-point),5.07999999999538
+W2,ID376,In Zone(C2_prevO2 / Center-point),5.719999999994798
+W2,ID376,In Zone(C2_prevO2 / Center-point),52.23999999995249
+W2,ID376,In Zone(C2_prevO2 / Center-point),25.559999999976753
+W2,ID376,In Zone(C2_prevO2 / Center-point),29.639999999973043
+W2,ID376,In Zone(C2_prevO2 / Center-point),14.439999999986867
+W2,ID376,In Zone(C2_prevO2 / Center-point),6.239999999994325
+W2,ID376,In Zone(C2_prevO2 / Center-point),14.599999999986721
+W2,ID376,In Zone(C2_prevO2 / Center-point),21.99999999997999
+W2,ID376,In Zone(C2_prevO2 / Center-point),10.439999999990505
+W2,ID376,In Zone(C2_prevO2 / Center-point),20.159999999981665
+W2,ID376,In Zone(C2_prevO2 / Center-point),15.319999999986067
+W2,ID376,In Zone(C2_prevO2 / Center-point),11.59999999998945
+W2,ID376,In Zone(C2_prevO2 / Center-point),4.19999999999618
+W2,ID376,In Zone(NeutralZone/ Center-point),3.999999999996362
+W2,ID376,In Zone(NeutralZone/ Center-point),1.0799999999990177
+W2,ID376,In Zone(NeutralZone/ Center-point),1.8799999999982901
+W2,ID376,In Zone(NeutralZone/ Center-point),2.399999999997817
+W2,ID376,In Zone(NeutralZone/ Center-point),1.679999999998472
+W2,ID376,In Zone(NeutralZone/ Center-point),4.9999999999954525
+W2,ID376,In Zone(NeutralZone/ Center-point),2.6799999999975626
+W2,ID376,In Zone(NeutralZone/ Center-point),2.8799999999973807
+W2,ID376,In Zone(NeutralZone/ Center-point),1.9599999999982174
+W2,ID376,In Zone(NeutralZone/ Center-point),12.319999999988795
+W2,ID376,In Zone(NeutralZone/ Center-point),2.9199999999973443
+W2,ID376,In Zone(NeutralZone/ Center-point),0.9999999999990905
+W2,ID376,In Zone(NeutralZone/ Center-point),3.2399999999970532
+W2,ID376,In Zone(NeutralZone/ Center-point),1.3199999999987995
+W2,ID376,In Zone(O1_prevC1 / Center-point),2.399999999997817
+W2,ID376,In Zone(O1_prevC1 / Center-point),3.3199999999969805
+W2,ID376,In Zone(O1_prevC1 / Center-point),1.5599999999985812
+W2,ID376,In Zone(O1_prevC1 / Center-point),4.599999999995816
+W2,ID376,In Zone(O1_prevC1 / Center-point),1.999999999998181
+W2,ID376,In Zone(O1_prevC1 / Center-point),3.799999999996544
+W2,ID376,In Zone(O1_prevC1 / Center-point),4.1599999999962165
+W2,ID376,In Zone(O2_prevC2 / Center-point),5.959999999994579
+W2,ID376,In Zone(O2_prevC2 / Center-point),8.439999999992324
+W2,ID376,In Zone(O2_prevC2 / Center-point),2.4799999999977445
+W2,ID376,In Zone(O2_prevC2 / Center-point),9.079999999991742
+W2,ID376,Other,0.11999999999989086
+W2,ID376,Other,0.5199999999995271
+W2,ID376,Other,0.5199999999995271
+W2,ID376,Other,0.3999999999996362
+W2,ID376,Other,0.9999999999990905
+W2,ID376,Other,0.6799999999993815
+W2,ID376,Other,1.2399999999988722
+W2,ID376,Other,0.9999999999990905
+W2,ID376,Other,0.6799999999993815
+W2,ID372,In Zone(C1_prevO1 / Center-point),7.3199999999933425
+W2,ID372,In Zone(C1_prevO1 / Center-point),57.35999999994783
+W2,ID372,In Zone(C1_prevO1 / Center-point),4.559999999995853
+W2,ID372,In Zone(C1_prevO1 / Center-point),10.759999999990214
+W2,ID372,In Zone(C1_prevO1 / Center-point),94.03999999991447
+W2,ID372,In Zone(C1_prevO1 / Center-point),336.39999999969405
+W2,ID372,In Zone(C2_prevO2 / Center-point),24.839999999977408
+W2,ID372,In Zone(C2_prevO2 / Center-point),24.31999999997788
+W2,ID372,In Zone(C2_prevO2 / Center-point),28.919999999973697
+W2,ID372,In Zone(NeutralZone/ Center-point),1.6399999999985084
+W2,ID372,In Zone(NeutralZone/ Center-point),4.279999999996107
+W2,ID372,In Zone(O1_prevC1 / Center-point),2.2799999999979264
+W2,ID372,In Zone(O2_prevC2 / Center-point),2.75999999999749
+W2,ID372,Other,0.3999999999996362
+W2,ID374,In Zone(Arena / Center-point),137.91999999987456
+W2,ID374,In Zone(Arena / Center-point),8.639999999992142
+W2,ID374,In Zone(C1_prevO1 / Center-point),27.119999999975335
+W2,ID374,In Zone(C1_prevO1 / Center-point),7.359999999993306
+W2,ID374,In Zone(C2_prevO2 / Center-point),5.359999999995125
+W2,ID374,In Zone(C2_prevO2 / Center-point),9.679999999991196
+W2,ID374,In Zone(C2_prevO2 / Center-point),389.27999999964595
+W2,ID374,In Zone(C2_prevO2 / Center-point),12.879999999988286
+W2,ID374,In Zone(NeutralZone/ Center-point),1.479999999998654
+W2,ID374,Other,0.1999999999998181
+W2,ID429,In Zone(Arena / Center-point),1.3200000000288128
+W2,ID429,In Zone(Arena / Center-point),53.32000000116386
+W2,ID429,In Zone(Arena / Center-point),8.280000000180735
+W2,ID429,In Zone(Arena / Center-point),1.360000000029686
+W2,ID429,In Zone(Arena / Center-point),5.7600000001257285
+W2,ID429,In Zone(Arena / Center-point),4.120000000089931
+W2,ID429,In Zone(Arena / Center-point),27.960000000610307
+W2,ID429,In Zone(Arena / Center-point),3.9600000000864384
+W2,ID429,In Zone(Arena / Center-point),15.120000000330037
+W2,ID429,In Zone(C1_prevO1 / Center-point),1.360000000029686
+W2,ID429,In Zone(C1_prevO1 / Center-point),2.2800000000497676
+W2,ID429,In Zone(C1_prevO1 / Center-point),16.640000000363216
+W2,ID429,In Zone(C1_prevO1 / Center-point),3.6400000000794535
+W2,ID429,In Zone(C1_prevO1 / Center-point),22.48000000049069
+W2,ID429,In Zone(C1_prevO1 / Center-point),15.040000000328291
+W2,ID429,In Zone(C1_prevO1 / Center-point),89.40000000195141
+W2,ID429,In Zone(C1_prevO1 / Center-point),6.200000000135333
+W2,ID429,In Zone(C1_prevO1 / Center-point),1.2800000000279397
+W2,ID429,In Zone(C1_prevO1 / Center-point),2.9200000000637374
+W2,ID429,In Zone(C1_prevO1 / Center-point),175.00000000381988
+W2,ID429,In Zone(C1_prevO1 / Center-point),9.88000000021566
+W2,ID429,In Zone(C2_prevO2 / Center-point),26.520000000578875
+W2,ID429,In Zone(C2_prevO2 / Center-point),1.8800000000410364
+W2,ID429,In Zone(C2_prevO2 / Center-point),3.5600000000777072
+W2,ID429,In Zone(C2_prevO2 / Center-point),18.040000000393775
+W2,ID429,In Zone(C2_prevO2 / Center-point),1.1200000000244472
+W2,ID429,In Zone(C2_prevO2 / Center-point),11.520000000251457
+W2,ID429,In Zone(C2_prevO2 / Center-point),24.64000000053784
+W2,ID429,In Zone(C2_prevO2 / Center-point),5.880000000128348
+W2,ID429,In Zone(NeutralZone/ Center-point),4.960000000108266
+W2,ID429,In Zone(NeutralZone/ Center-point),3.6400000000794535
+W2,ID429,In Zone(NeutralZone/ Center-point),2.800000000061118
+W2,ID429,In Zone(NeutralZone/ Center-point),1.080000000023574
+W2,ID429,In Zone(NeutralZone/ Center-point),3.3200000000724685
+W2,ID429,In Zone(NeutralZone/ Center-point),3.6000000000785803
+W2,ID429,In Zone(NeutralZone/ Center-point),3.6800000000803266
+W2,ID429,In Zone(O1_prevC1 / Center-point),4.040000000088185
+W2,ID429,In Zone(O1_prevC1 / Center-point),3.6800000000803266
+W2,ID429,Other,0.44000000000960426
+W2,ID429,Other,0.040000000000873115
+W2,ID429,Other,0.040000000000873115
+W2,ID429,Other,0.5600000000122236
+W2,ID429,Other,0.36000000000785803
+W2,ID429,Other,0.2800000000061118
+W2,ID429,Other,0.20000000000436557
+W2,ID429,Other,0.040000000000873115
+W2,ID429,Other,1.9200000000419095
+W2,ID429,Other,0.2800000000061118
+W2,ID429,Other,1.6000000000349246
+W2,ID429,Other,0.8000000000174623
+W2,ID429,Other,0.8400000000183354
+W2,ID429,Other,1.2000000000261934
+W2,ID423,In Zone(C1_prevO1 / Center-point),32.440000000708096
+W2,ID423,In Zone(C1_prevO1 / Center-point),15.840000000345754
+W2,ID423,In Zone(C1_prevO1 / Center-point),30.68000000066968
+W2,ID423,In Zone(C1_prevO1 / Center-point),33.320000000727305
+W2,ID423,In Zone(C1_prevO1 / Center-point),13.640000000297732
+W2,ID423,In Zone(C1_prevO1 / Center-point),14.040000000306463
+W2,ID423,In Zone(C1_prevO1 / Center-point),4.400000000096043
+W2,ID423,In Zone(C1_prevO1 / Center-point),56.840000001240696
+W2,ID423,In Zone(C1_prevO1 / Center-point),9.200000000200816
+W2,ID423,In Zone(C2_prevO2 / Center-point),4.080000000089058
+W2,ID423,In Zone(C2_prevO2 / Center-point),98.36000000214699
+W2,ID423,In Zone(C2_prevO2 / Center-point),16.400000000357977
+W2,ID423,In Zone(C2_prevO2 / Center-point),99.6800000021758
+W2,ID423,In Zone(C2_prevO2 / Center-point),28.88000000063039
+W2,ID423,In Zone(C2_prevO2 / Center-point),48.00000000104774
+W2,ID423,In Zone(C2_prevO2 / Center-point),29.480000000643486
+W2,ID423,In Zone(C2_prevO2 / Center-point),16.280000000355358
+W2,ID423,In Zone(C2_prevO2 / Center-point),15.560000000339642
+W2,ID423,In Zone(NeutralZone/ Center-point),7.080000000154541
+W2,ID423,In Zone(NeutralZone/ Center-point),3.2800000000715954
+W2,ID423,In Zone(NeutralZone/ Center-point),2.8800000000628643
+W2,ID423,In Zone(NeutralZone/ Center-point),4.720000000103028
+W2,ID423,In Zone(NeutralZone/ Center-point),1.8400000000401633
+W2,ID423,In Zone(NeutralZone/ Center-point),7.160000000156288
+W2,ID423,In Zone(O2_prevC2 / Center-point),4.0000000000873115
+W2,ID423,Other,0.5200000000113505
+W2,ID423,Other,0.5200000000113505
+W2,ID423,Other,0.8000000000174623
+W2,ID584,In Zone(Arena / Center-point),40.43999999996322
+W2,ID584,In Zone(Arena / Center-point),8.71999999999207
+W2,ID584,In Zone(Arena / Center-point),10.119999999990796
+W2,ID584,In Zone(C1_prevO1 / Center-point),36.91999999996642
+W2,ID584,In Zone(C1_prevO1 / Center-point),3.879999999996471
+W2,ID584,In Zone(C1_prevO1 / Center-point),220.15999999979977
+W2,ID584,In Zone(C1_prevO1 / Center-point),24.5199999999777
+W2,ID584,In Zone(C2_prevO2 / Center-point),2.5999999999976353
+W2,ID584,In Zone(C2_prevO2 / Center-point),15.959999999985484
+W2,ID584,In Zone(C2_prevO2 / Center-point),3.2399999999970532
+W2,ID584,In Zone(C2_prevO2 / Center-point),99.19999999990978
+W2,ID584,In Zone(C2_prevO2 / Center-point),19.479999999982283
+W2,ID584,In Zone(C2_prevO2 / Center-point),5.399999999995089
+W2,ID584,In Zone(C2_prevO2 / Center-point),75.59999999993124
+W2,ID584,In Zone(NeutralZone/ Center-point),1.1999999999989086
+W2,ID584,In Zone(NeutralZone/ Center-point),7.479999999993197
+W2,ID584,In Zone(O2_prevC2 / Center-point),5.07999999999538
+W2,ID584,In Zone(O2_prevC2 / Center-point),18.039999999983593
+W2,ID584,Other,0.8799999999991996
+W2,ID584,Other,0.9599999999991269
+W2,ID597,In Zone(C1_prevO1 / Center-point),14.840000000323926
+W2,ID597,In Zone(C1_prevO1 / Center-point),31.000000000676664
+W2,ID597,In Zone(C1_prevO1 / Center-point),54.96000000119966
+W2,ID597,In Zone(C1_prevO1 / Center-point),83.1600000018152
+W2,ID597,In Zone(C1_prevO1 / Center-point),47.92000000104599
+W2,ID597,In Zone(C1_prevO1 / Center-point),70.60000000154105
+W2,ID597,In Zone(C1_prevO1 / Center-point),48.8000000010652
+W2,ID597,In Zone(C1_prevO1 / Center-point),71.560000001562
+W2,ID597,In Zone(C2_prevO2 / Center-point),23.440000000511645
+W2,ID597,In Zone(C2_prevO2 / Center-point),19.480000000425207
+W2,ID597,In Zone(C2_prevO2 / Center-point),2.2800000000497676
+W2,ID597,In Zone(C2_prevO2 / Center-point),41.76000000091153
+W2,ID597,In Zone(C2_prevO2 / Center-point),39.120000000853906
+W2,ID597,In Zone(NeutralZone/ Center-point),6.68000000014581
+W2,ID597,In Zone(NeutralZone/ Center-point),4.24000000009255
+W2,ID597,In Zone(NeutralZone/ Center-point),2.040000000044529
+W2,ID597,In Zone(NeutralZone/ Center-point),2.760000000060245
+W2,ID597,In Zone(NeutralZone/ Center-point),3.440000000075088
+W2,ID597,In Zone(NeutralZone/ Center-point),6.120000000133587
+W2,ID597,In Zone(NeutralZone/ Center-point),2.2000000000480213
+W2,ID597,In Zone(NeutralZone/ Center-point),8.680000000189466
+W2,ID597,In Zone(O1_prevC1 / Center-point),2.080000000045402
+W2,ID597,In Zone(O2_prevC2 / Center-point),8.680000000189466
+W2,ID597,Other,1.8800000000410364
+W2,ID597,Other,2.080000000045402
+W2,ID597,Other,0.08000000000174623
+W2,ID450,In Zone(C1_prevO1 / Center-point),16.720000000364962
+W2,ID450,In Zone(C1_prevO1 / Center-point),11.640000000254076
+W2,ID450,In Zone(C1_prevO1 / Center-point),12.640000000275904
+W2,ID450,In Zone(C1_prevO1 / Center-point),17.880000000390282
+W2,ID450,In Zone(C1_prevO1 / Center-point),21.7200000004741
+W2,ID450,In Zone(C1_prevO1 / Center-point),20.520000000447908
+W2,ID450,In Zone(C1_prevO1 / Center-point),16.68000000036409
+W2,ID450,In Zone(C1_prevO1 / Center-point),29.560000000645232
+W2,ID450,In Zone(C1_prevO1 / Center-point),32.12000000070111
+W2,ID450,In Zone(C1_prevO1 / Center-point),25.96000000056665
+W2,ID450,In Zone(C1_prevO1 / Center-point),22.280000000486325
+W2,ID450,In Zone(C1_prevO1 / Center-point),36.04000000078668
+W2,ID450,In Zone(C1_prevO1 / Center-point),5.320000000116124
+W2,ID450,In Zone(C2_prevO2 / Center-point),14.840000000323926
+W2,ID450,In Zone(C2_prevO2 / Center-point),4.560000000099535
+W2,ID450,In Zone(C2_prevO2 / Center-point),29.200000000637374
+W2,ID450,In Zone(C2_prevO2 / Center-point),15.28000000033353
+W2,ID450,In Zone(C2_prevO2 / Center-point),18.600000000406
+W2,ID450,In Zone(C2_prevO2 / Center-point),18.080000000394648
+W2,ID450,In Zone(C2_prevO2 / Center-point),23.24000000050728
+W2,ID450,In Zone(C2_prevO2 / Center-point),28.36000000061904
+W2,ID450,In Zone(C2_prevO2 / Center-point),27.200000000593718
+W2,ID450,In Zone(C2_prevO2 / Center-point),24.720000000539585
+W2,ID450,In Zone(C2_prevO2 / Center-point),25.760000000562286
+W2,ID450,In Zone(NeutralZone/ Center-point),1.2000000000261934
+W2,ID450,In Zone(NeutralZone/ Center-point),1.400000000030559
+W2,ID450,In Zone(NeutralZone/ Center-point),1.6800000000366708
+W2,ID450,In Zone(NeutralZone/ Center-point),3.2800000000715954
+W2,ID450,In Zone(NeutralZone/ Center-point),2.2800000000497676
+W2,ID450,In Zone(NeutralZone/ Center-point),1.1600000000253203
+W2,ID450,In Zone(NeutralZone/ Center-point),3.6000000000785803
+W2,ID450,In Zone(NeutralZone/ Center-point),2.9200000000637374
+W2,ID450,In Zone(NeutralZone/ Center-point),3.840000000083819
+W2,ID450,In Zone(NeutralZone/ Center-point),1.3200000000288128
+W2,ID450,In Zone(NeutralZone/ Center-point),1.2000000000261934
+W2,ID450,In Zone(NeutralZone/ Center-point),3.3200000000724685
+W2,ID450,In Zone(NeutralZone/ Center-point),4.840000000105647
+W2,ID450,In Zone(NeutralZone/ Center-point),4.840000000105647
+W2,ID450,In Zone(NeutralZone/ Center-point),1.2000000000261934
+W2,ID450,In Zone(NeutralZone/ Center-point),2.44000000005326
+W2,ID450,In Zone(O1_prevC1 / Center-point),3.200000000069849
+W2,ID450,In Zone(O2_prevC2 / Center-point),3.760000000082073
+W2,ID450,In Zone(O2_prevC2 / Center-point),5.800000000126602
+W2,ID450,In Zone(O2_prevC2 / Center-point),6.16000000013446
+W2,ID450,In Zone(O2_prevC2 / Center-point),13.280000000289874
+W2,ID450,In Zone(O2_prevC2 / Center-point),4.600000000100408
+W2,ID450,In Zone(O2_prevC2 / Center-point),11.760000000256696
+W2,ID450,In Zone(O2_prevC2 / Center-point),9.520000000207801
+W2,ID450,Other,0.20000000000436557
+W2,ID450,Other,0.2800000000061118
+W2,ID450,Other,0.6000000000130967
+W2,ID450,Other,0.12000000000261934
+W2,ID450,Other,0.8800000000192085
+W2,ID450,Other,0.2800000000061118
